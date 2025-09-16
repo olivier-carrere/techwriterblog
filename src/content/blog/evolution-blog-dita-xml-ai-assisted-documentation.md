@@ -14,7 +14,7 @@ tags: [DITA, Markdown, IA]
 
 This blog has a history. Years ago, it was created to explore **DITA XML**, sharing insights, tips, and reflections on structured content management, and was hosted on **WordPress**.
 
-As technology and tools evolved, so did the blog. The focus expanded to include **RestructuredText and DITA XML**, and the blog was [developed using Python Sphinx](https://redaction-technique.org/), reflecting the growing interest in documentation frameworks among technical writers and developers alike.
+As technology and tools evolved, so did the blog. The focus expanded to include **RestructuredText and DITA XML**, and the blog was [developed using Python Sphinx](https://docs.redaction-technique.org/), reflecting the growing interest in documentation frameworks among technical writers and developers alike.
 
 Today, this blog is taking another step forward. The spotlight is now on **Markdown**, especially in the context of **Astro** and **Starlight**, which are shaping the future of documentation-oriented websites.
 
