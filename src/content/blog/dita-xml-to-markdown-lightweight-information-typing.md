@@ -12,16 +12,16 @@ author: "Olivier Carrère"
 tags: [DITA, Markdown, Information Typing]
 ---
 
-This blog has a history. It began years ago with a strong focus on **DITA XML**—sharing insights, tips, and reflections on structured content management. At that time, DITA represented the gold standard for large-scale technical documentation, but it came with a price: the weight of XML syntax, specialized editors, and complex publishing pipelines. The blog itself was first hosted on **WordPress**, then migrated to [**Sphinx**](https://docs.redaction-technique.org/) to explore alternatives like **reStructuredText**.
+This blog has a history rooted in **DITA XML**. For years, it explored structured content management—sharing insights, tips, and reflections. Back then, DITA was the gold standard for large-scale technical documentation, but its complexity came at a cost: verbose XML syntax, specialized editors, and intricate publishing pipelines. Initially hosted on **WordPress**, the blog later moved to [**Sphinx**](https://www.sphinx-doc.org/) to experiment with alternatives like **reStructuredText**.
 
-Today, the spotlight has shifted. The new focus is on **Markdown**.  
+Today, the focus has shifted to **Markdown**.
 
-Markdown is a **lightweight markup language**. Unlike XML, it is easy to read and write, requires no dedicated software, and integrates seamlessly with modern publishing workflows. Yet, it still provides enough structure for technical writers to apply the **DITA philosophy of information typing**—organizing content into concepts, tasks, and references.  
+Markdown is a **lightweight markup language**. Unlike XML, it’s human-readable, easy to write, and doesn’t require dedicated software. Yet it still allows technical writers to apply the **DITA philosophy of information typing**, structuring content into **concepts, tasks, and references**.
 
-Instead of heavy XML toolchains, writers can now rely on **freely available tools** such as static site generators (**Astro**, **Starlight**) and open ecosystems. This makes structured documentation more accessible—not just to enterprise teams, but also to individual writers, open-source contributors, and small organizations.
+Instead of relying on heavy XML toolchains, writers can leverage **open, freely available tools**—including static site generators like [**Astro**](https://astro.build/) and its [**Starlight**](https://starlight.astro.build/) theme. Structured documentation is now accessible to a wider audience: individual writers, small teams, open-source contributors, and enterprise documentation teams alike.
 
-This blog is a **work in progress**. Many older posts are still in French, but **most new content will be in English**. Over time, older material will either be translated or pruned.
+This blog is a **work in progress**. Most [legacy content remains in French](https://docs.redaction-technique.org/), but **new content will primarily be in English**. Over time, older posts may be translated or curated to align with this new focus.
 
-The goal remains unchanged: to provide insights and practical knowledge that help technical communicators navigate the evolving landscape of documentation—this time with a stronger emphasis on **lightweight, open, and sustainable practices**.
+The mission remains the same: providing practical insights to help technical communicators navigate the evolving landscape of documentation—now with an emphasis on **lightweight, open, and sustainable practices**.
 
-Stay tuned for new posts, tutorials, and explorations at the intersection of **structured writing, lightweight markup, and modern documentation workflows**.
+Stay tuned for posts, tutorials, and experiments at the intersection of **structured writing, lightweight markup, and modern documentation workflows**.
