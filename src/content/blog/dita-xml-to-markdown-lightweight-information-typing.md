@@ -3,7 +3,7 @@ draft: false
 title: "From DITA XML to Markdown: lightweight information typing"
 snippet: "DITA brought structure through XML, but its complexity often felt heavy. Markdown offers a lightweight alternative where technical writers can still apply DITA’s information typing principles—using open, freely available tools and without the XML overhead."
 image: {
-    src: "/images/blog/evolution-blog-dita-xml-ai-assisted-documentation.webp",
+    src: "/images/blog/dita-xml-to-markdown-lightweight-information-typing.webp",
     alt: "Illustration of a feather symbolizing Markdown as a lightweight alternative to DITA XML"
 }
 publishDate: "2025-09-16 11:39"
