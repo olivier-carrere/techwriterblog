@@ -3,7 +3,7 @@ draft: false
 title: "The Evolution of This Blog: From DITA XML to AI-Assisted Documentation"
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image: {
-    src: "/public/images/blog/evolution-blog-dita-xml-ai-assisted-documentation.webp",
+    src: "/images/blog/evolution-blog-dita-xml-ai-assisted-documentation.webp",
     alt: "Feather (Markdown is a lightweight markup language)"
 }
 publishDate: "2025-09-16 11:39"
