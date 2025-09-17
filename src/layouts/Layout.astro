@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
 import "../styles/global.css";
+import { Analytics } from '@vercel/analytics/next';
 
 export interface Props {
   title: string;
@@ -66,5 +67,6 @@ const makeTitle = title
         content-visibility: auto;
       }
     </style>
+    <Analytics />
   </body>
 </html>
