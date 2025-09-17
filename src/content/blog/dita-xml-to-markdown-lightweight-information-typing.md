@@ -6,7 +6,7 @@ image: {
     src: "/images/blog/dita-xml-to-markdown-lightweight-information-typing.webp",
     alt: "Illustration of a feather symbolizing Markdown as a lightweight alternative to DITA XML"
 }
-publishDate: "2025-09-16 11:39"
+publishDate: "2025-09-01 11:39"
 category: "Blog"
 author: "Olivier Carrère"
 tags: [DITA, Markdown, Information Typing]
