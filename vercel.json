@@ -1,8 +1,233 @@
 {
   "redirects": [
     {
-      "source": "/:path*.html",
-      "destination": "https://docs.redaction-technique.org/fr/:path*/",
+      "source": "/creation-du-contenu.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/creation-du-contenu/",
+      "permanent": true
+    },
+    {
+      "source": "/a-propos-de-ce-blog.html",
+      "destination": "https://docs.redaction-technique.org/fr/a-propos-de-ce-blog/",
+      "permanent": true
+    },
+    {
+      "source": "/didacticiels-dita-xml-xsl-fo.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/didacticiels-dita-xml-xsl-fo/",
+      "permanent": true
+    },
+    {
+      "source": "/veille-technologique.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/",
+      "permanent": true
+    },
+    {
+      "source": "/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-rest-texte-conditionnel.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-rest-texte-conditionnel/",
+      "permanent": true
+    },
+    {
+      "source": "/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-jinja-objet-texte-conditionnel.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-jinja-objet-texte-conditionnel/",
+      "permanent": true
+    },
+    {
+      "source": "/inserer-automatiquement-des-donnees-dans-un-fichier-restructuredtext.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/inserer-automatiquement-des-donnees-dans-un-fichier-restructuredtext/",
+      "permanent": true
+    },
+    {
+      "source": "/raspberry-pi-plateforme-documentation.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/raspberry-pi-plateforme-documentation/",
+      "permanent": true
+    },
+    {
+      "source": "/expressions-regulieres-python.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/expressions-regulieres-python/",
+      "permanent": true
+    },
+    {
+      "source": "/sed-modifiez-votre-texte-sans-ouvrir-vos-fichiers.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/sed-modifiez-votre-texte-sans-ouvrir-vos-fichiers/",
+      "permanent": true
+    },
+    {
+      "source": "/inserer-automatiquement-des-donnees-sql-dans-un-fichier-restructuredtext.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/inserer-automatiquement-des-donnees-sql-dans-un-fichier-restructuredtext/",
+      "permanent": true
+    },
+    {
+      "source": "/jourdainisation-en-ligne-python.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/jourdainisation-en-ligne-python/",
+      "permanent": true
+    },
+    {
+      "source": "/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-jinja-texte-conditionnel.html",
+      "destination": "https://docs.redaction-technique.org/fr/veille-technologique/creer-des-documents-differents-a-partir-des-memes-sources-restructuredtext-jinja-texte-conditionnel/",
+      "permanent": true
+    },
+    {
+      "source": "/inserer-automatiquement-des-donnees-dans-un-fichier-dita-xml.html",
+      "destination": "https://docs.redaction-technique.org/fr/inserer-automatiquement-des-donnees-dans-un-fichier-dita-xml/",
+      "permanent": true
+    },
+    {
+      "source": "/du-document-a-la-base-documentaire-modulaire.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/du-document-a-la-base-documentaire-modulaire/",
+      "permanent": true
+    },
+    {
+      "source": "/une-architecture-documentaire-trop-complexe.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/une-architecture-documentaire-trop-complexe/",
+      "permanent": true
+    },
+    {
+      "source": "/format-structuré-dita-xml.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/",
+      "permanent": true
+    },
+    {
+      "source": "/formats-structures-et-non-structures.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/formats-structures-et-non-structures/",
+      "permanent": true
+    },
+    {
+      "source": "/cas-concrets-utilisation-de-dita-xml.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/cas-concrets-utilisation-de-dita-xml/",
+      "permanent": true
+    },
+    {
+      "source": "/cas-concret-documentation-de-nufirewall.html",
+      "destination": "https://docs.redaction-technique.org/fr/format-structuré-dita-xml/cas-concret-documentation-de-nufirewall/",
+      "permanent": true
+    },
+    {
+      "source": "/mener-un-projet-de-bout-en-bout.html",
+      "destination": "https://docs.redaction-technique.org/fr/mener-un-projet-de-bout-en-bout/",
+      "permanent": true
+    },
+    {
+      "source": "/de-la-redaction-a-la-communication-technique.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/de-la-redaction-a-la-communication-technique/",
+      "permanent": true
+    },
+    {
+      "source": "/un-index-est-il-utile-dans-un-pdf.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/un-index-est-il-utile-dans-un-pdf/",
+      "permanent": true
+    },
+    {
+      "source": "/diminuer-les-coûts-améliorer-la-satisfaction-client.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/",
+      "permanent": true
+    },
+    {
+      "source": "/principe-de-simplicite-kiss.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/principe-de-simplicite-kiss/",
+      "permanent": true
+    },
+    {
+      "source": "/les-trois-niveaux-de-la-documentation-technique.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/les-trois-niveaux-de-la-documentation-technique/",
+      "permanent": true
+    },
+    {
+      "source": "/formats-et-outils.html",
+      "destination": "https://docs.redaction-technique.org/fr/diminuer-les-coûts-améliorer-la-satisfaction-client/formats-et-outils/",
+      "permanent": true
+    },
+    {
+      "source": "/process.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/",
+      "permanent": true
+    },
+    {
+      "source": "/integrer-la-documentation-aux-processus-de-developpement.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/integrer-la-documentation-aux-processus-de-developpement/",
+      "permanent": true
+    },
+    {
+      "source": "/utiliser-les-branches-des-systemes-de-gestion-de-sources.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/utiliser-les-branches-des-systemes-de-gestion-de-sources/",
+      "permanent": true
+    },
+    {
+      "source": "/definition-du-projet.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/definition-du-projet/",
+      "permanent": true
+    },
+    {
+      "source": "/traduction.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/traduction/",
+      "permanent": true
+    },
+    {
+      "source": "/format-cible.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/format-cible/",
+      "permanent": true
+    },
+    {
+      "source": "/livraison.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/livraison/",
+      "permanent": true
+    },
+    {
+      "source": "/les-cms-le-workflow-en-prime-mais-une-fiabilite-a-tester.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/les-cms-le-workflow-en-prime-mais-une-fiabilite-a-tester/",
+      "permanent": true
+    },
+    {
+      "source": "/referentiel.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/referentiel/",
+      "permanent": true
+    },
+    {
+      "source": "/un-referentiel-unique.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/un-referentiel-unique/",
+      "permanent": true
+    },
+    {
+      "source": "/base-de-donnees-sql.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/base-de-donnees-sql/",
+      "permanent": true
+    },
+    {
+      "source": "/quel-referentiel-pour-le-travail-de-groupe.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/quel-referentiel-pour-le-travail-de-groupe/",
+      "permanent": true
+    },
+    {
+      "source": "/les-repertoires-reseau-partages-peu-adaptes-au-travail-de-groupe.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/les-repertoires-reseau-partages-peu-adaptes-au-travail-de-groupe/",
+      "permanent": true
+    },
+    {
+      "source": "/git-du-fichier-au-contenu.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/git-du-fichier-au-contenu/",
+      "permanent": true
+    },
+    {
+      "source": "/les-systemes-de-gestion-de-versions-rustiques-mais-fiables.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/référentiel/les-systemes-de-gestion-de-versions-rustiques-mais-fiables/",
+      "permanent": true
+    },
+    {
+      "source": "/validation-et-controle-qualite.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/validation-et-controle-qualite/",
+      "permanent": true
+    },
+    {
+      "source": "/tester-les-produits-pour-les-documenter.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/tester-les-produits-pour-les-documenter/",
+      "permanent": true
+    },
+    {
+      "source": "/format-source.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/format-source/",
+      "permanent": true
+    },
+    {
+      "source": "/collecte-de-l-information.html",
+      "destination": "https://docs.redaction-technique.org/fr/process/collecte-de-l-information/",
       "permanent": true
     }
   ]
