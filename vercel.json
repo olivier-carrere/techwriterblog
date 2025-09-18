@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*.html",
+      "destination": "/fr/:path*/",
+      "permanent": true
+    }
+  ]
+}
