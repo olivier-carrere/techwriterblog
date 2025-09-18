@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "A Web Journey: From HTML to Git-Based Markdown Workflows"
+title: "A web journey: From HTML to Git-based Markdown workflows"
 snippet: "Tracing over two decades of web publishing, from raw HTML and Dreamweaver to CMSes, structured content, static site generators, and modern Git-based Markdown workflows. Lessons for solo and team content developers on maintainability, collaboration, and performance."
 image: {
     src: "/images/blog/web-journey-markdown-workflow.webp",
