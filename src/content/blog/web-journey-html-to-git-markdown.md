@@ -6,7 +6,7 @@ image: {
     src: "/images/blog/web-journey-markdown-workflow.webp",
     alt: "Illustration of a web journey showing the evolution from HTML to Markdown and Git-based workflows"
 }
-publishDate: "2025-08-10 10:00"
+publishDate: "2025-07-10 10:00"
 category: "Blog"
 author: "Olivier Carrère"
 tags: ["HTML", "WordPress", "DITA", "Markdown", "Sphinx", "Static Sites", "Docs-as-Code", "Git", "Content Management"]
