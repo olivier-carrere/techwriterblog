@@ -31,6 +31,8 @@ The first challenge was to add structure to the old Word files:
 Instead of publishing massive files, we needed **one Markdown file per conference section**.
 ChatGPT generated a custom **Python script** that split Markdown files into multiple smaller files based on titles.
 
+![Structuring legacy content: Multicolored folders](/images/blog/turn-word-files-seo-optimized-web-pages-ai-large.webp)
+
 This step alone transformed chaotic transcripts into readable, accessible documents.
 
 ## Enriching metadata with GPT-4o

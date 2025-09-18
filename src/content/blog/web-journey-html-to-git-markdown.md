@@ -32,6 +32,8 @@ In professional settings, I shifted from general web pages to **structured conte
 
 At another company, I published documentation websites using **Python Sphinx**, generating static HTML from **reStructuredText** sources.
 
+![Web design sketch](/images/blog/web-journey-markdown-workflow-large.webp)
+
 Currently, at **Unity**, I use **Markdown**, edited either in **Visual Studio Code** or **Emacs**, which is then rendered into HTML pages. Moving away from CMSes, using **version control systems such as Subversion and later Git** was critical for managing changes, enabling collaboration, and maintaining a reliable history of content. This workflow emphasizes simplicity, version control, and maintainability while giving full control over the final output.
 
 ## Modern web workflows: Beyond CMS

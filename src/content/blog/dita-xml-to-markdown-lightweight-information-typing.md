@@ -18,6 +18,8 @@ Today, the focus has shifted to **Markdown**.
 
 Markdown is a **lightweight markup language**. Unlike XML, it’s human-readable, easy to write, and doesn’t require dedicated software. Yet it still allows technical writers to apply the **DITA philosophy of information typing**, structuring content into **concepts, tasks, and references**.
 
+![DITA information typing: Staircase steps](/images/blog/dita-xml-to-markdown-lightweight-information-typing-large.webp)
+
 Instead of relying on heavy XML toolchains, writers can leverage **open, freely available tools**—including static site generators like [**Astro**](https://astro.build/) and its [**Starlight**](https://starlight.astro.build/) theme. Structured documentation is now accessible to a wider audience: individual writers, small teams, open-source contributors, and enterprise documentation teams alike.
 
 This blog is a **work in progress**. Most [legacy content remains in French](https://docs.redaction-technique.org/), but **new content will primarily be in English**. Over time, older posts may be translated or curated to align with this new focus.
