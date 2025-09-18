@@ -78,10 +78,11 @@ This project shows how **AI-assisted automation** can help even resource-limited
 
 ## Lessons learned
 
-- **Cost control is possible**: By running scripts iteratively, reviewing diffs, and only scaling once satisfied, we kept the entire project under **$30**.
-- **Human-in-the-loop matters**: Automated metadata generation is powerful, but occasional prompt tuning and git-based review were essential for accuracy.
-- **Environmental awareness is key**: Processing 6 million tokens had a measurable carbon footprint. Future work should explore greener infrastructure and ways to minimize energy use.
-- **AI is a collaborator, not a replacement**: The best results came from combining GPT automation with careful human validation.
+* **Cost control is possible**: By running scripts iteratively, reviewing diffs, and only scaling once satisfied, we kept the entire project under **\$30**.
+* **Human-in-the-loop matters**: Automated metadata generation is powerful, but occasional prompt tuning and git-based review were essential for accuracy.
+* **User expertise is crucial**: The person guiding the AI must have some knowledge of what they want it to do. For example, explicitly asking GPT to use the [**Python BeautifulSoup library**](https://pypi.org/project/beautifulsoup4/) ensured proper handling of embedded HTML fragments within Markdown content.
+* **Environmental awareness is key**: Processing 6 million tokens had a measurable carbon footprint. Future work should explore greener infrastructure and ways to minimize energy use.
+* **AI is a collaborator, not a replacement**: The best results came from combining GPT automation with careful human validation.
 
 ## Looking ahead
 
