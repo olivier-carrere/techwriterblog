@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/:path*.html",
-      "destination": "/fr/:path*/",
+      "destination": "https://docs.redaction-technique.org/fr/:path*/",
       "permanent": true
     }
   ]
