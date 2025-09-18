@@ -14,6 +14,9 @@ tags: ["DITA", "Markdown", "Information Typing", "Content Model", "Docs-as-Code"
 
 If you’ve spent years working daily with the DITA XML platform, you know that DITA is more than a markup language. It’s a way of thinking about information design. Writing tasks, concepts, and references in DITA teaches you to break down content into consistent building blocks, which makes documentation easier to navigate, maintain, and reuse.
 
+![XML overhead: A cargo ship](/images/blog/strong-information-typing-without-xml-overhead-large.webp)
+
+
 The good news is: you don’t need an XML editor or a DITA-OT pipeline to keep practicing those principles. With Markdown and modern docs-as-code workflows, you can implement DITA’s information typing philosophy in a lightweight, flexible way.
 
 ## The DITA mindset
