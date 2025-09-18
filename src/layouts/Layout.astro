@@ -20,7 +20,7 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
-const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about all things documentation as code";
+const makeTitle = title ? `${title} | Redaction-technique.org` : "`A blog about all things documentation as code";
 ---
 
 <!doctype html>
@@ -34,7 +34,7 @@ const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about a
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Markdown & AI-Aided Rapid Documentation Development"
+      description="Markdown and AI-Aided Rapid Documentation Development"
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -49,7 +49,7 @@ const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about a
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Markdown & AI-Aided Rapid Documentation Development",
+          alt: "Markdown and AI-Aided Rapid Documentation Development",
         },
       }}
     />
