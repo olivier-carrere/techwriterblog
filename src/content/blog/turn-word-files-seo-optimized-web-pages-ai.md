@@ -92,6 +92,8 @@ The next steps include:
 - **Populating pages with AI-indexed images** to create a richer browsing experience.
 - Evaluating **sustainability practices** to further minimize the environmental impact of large-scale AI processing.
 
+While the Python script querying GPT-4o was carefully **tuned to minimize hallucinations**, there is no way to guarantee complete accuracy. To ensure quality, the outputs are being **slowly reviewed and compared** by members of the non-profit. Future improvements could include leveraging **LangChain** or similar frameworks to have a **local AI process the large volume of text**, split it into manageable chunks, and **automatically compare input and output** to flag discrepancies, further reducing manual verification effort.
+
 With a bit of Python, a lot of Markdown, and the power of AI, what began as static Word files has become a **dynamic web archive—accessible, searchable, and preserved for the future.**
 
 The conferences will start being published daily on the non-profit’s website to maximize Google reach while avoiding overwhelming the site with too much content at once. This approach ensures steady visibility, improved SEO, and gradual access for readers.
