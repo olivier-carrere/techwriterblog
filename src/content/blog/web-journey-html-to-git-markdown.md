@@ -18,6 +18,8 @@ My journey with the web spans over two decades, reflecting the evolution of publ
 
 Back in the late 20th century, my company tasked me with creating their first website. I learned HTML from scratch and wrote pages directly in **Windows Notepad**. Before moving to CMS-based approaches, I experimented with **HTML generators such as Dreamweaver**. While these tools allowed for visual editing, I quickly found them **clumsy and difficult to use for tracking changes**, especially when multiple versions or edits were involved.
 
+![Web design sketch](/images/blog/web-journey-markdown-workflow-large.webp)
+
 The site was eventually published in a **frames-based version**, a common approach at the time despite usability limitations. Knowing the nitty-gritty details of **HTML and HTTP requests** laid the foundation for making informed technical decisions later — including using modern AI-assisted tools wisely to maximize performance and efficiency.
 
 ## Enter CMS: SPIP and WordPress
@@ -31,8 +33,6 @@ In professional settings, I shifted from general web pages to **structured conte
 ## Static site generators and lightweight markup languages
 
 At another company, I published documentation websites using **Python Sphinx**, generating static HTML from **reStructuredText** sources.
-
-![Web design sketch](/images/blog/web-journey-markdown-workflow-large.webp)
 
 Currently, at **Unity**, I use **Markdown**, edited either in **Visual Studio Code** or **Emacs**, which is then rendered into HTML pages. Moving away from CMSes, using **version control systems such as Subversion and later Git** was critical for managing changes, enabling collaboration, and maintaining a reliable history of content. This workflow emphasizes simplicity, version control, and maintainability while giving full control over the final output.
 
