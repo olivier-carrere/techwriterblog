@@ -12,8 +12,6 @@ author: "Olivier Carrère"
 tags: ["HTML", "WordPress", "DITA", "Markdown", "Sphinx", "Static Sites", "Docs-as-Code", "Git", "Content Management"]
 ---
 
-# A web journey: A technical retrospective
-
 My journey with the web spans over two decades, reflecting the evolution of publishing technologies and workflows. Here’s a technical look back at the tools, formats, and lessons learned.
 
 ## Early days: HTML in Notepad and generators
