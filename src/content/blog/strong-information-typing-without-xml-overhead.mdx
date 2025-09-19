@@ -13,6 +13,7 @@ tags: ["DITA", "Markdown", "Information Typing", "Content Model", "Docs-as-Code"
 ---
 
 import ToolsList from '../../components/ToolsList.astro'
+import ToolsTable from '../../components/ToolsTable.astro'
 
 If you’ve spent years working daily with the DITA XML platform, you know that DITA is more than a markup language. It’s a way of thinking about information design. Writing tasks, concepts, and references in DITA teaches you to break down content into consistent building blocks, which makes documentation easier to navigate, maintain, and reuse.
 
@@ -106,27 +107,25 @@ The structure shows it’s an explanatory page, not a step-by-step guide.
 
 References benefit from structured tables and lists.
 
-Let's consider this edited [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html):
+Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) example:
 
 ```xml
-<reference id="requiredTools">
-  <title>Tools required to maintain a big machine</title>
+<reference id="oil-types">
+  <title>Oil types</title>
+  <shortdesc>You will find below the recommended oil types.</shortdesc>
   <refbody>
     <section>
-      <title>Small tools</title>
+      <title>Primary oil</title>
       <ul>
-        <li>Hard hat</li>
-        <li>Hammer</li>
-        <li>Nail</li>
-        <li>Metal polish</li>
+        <li>Brand: A1X</li>
+        <li>Use: One-cylinder engines</li>
       </ul>
     </section>
     <section>
-      <title>Expensive tools</title>
+      <title>Secondary oil</title>
       <ul>
-        <li>Drill</li>
-        <li>Welding machine</li>
-        <li>Torque wrench</li>
+        <li>Brand: B2Z</li>
+        <li>Use: Two-cylinder engines</li>
       </ul>
     </section>
   </refbody>
@@ -136,16 +135,14 @@ Let's consider this edited [OASIS example](https://docs.oasis-open.org/dita/v1.2
 Markdown supports tables and lists:
 
 ```markdown
-# Tools required to maintain a big machine
-## Small tools
-* Hard hat
-* Hammer
-* Nail
-* Metal polish
-## Expensive tools
-* Drill
-* Welding machine
-* Torque wrench
+# Oil types
+You will find below the recommended oil types.
+- **Primary oil**
+  - Brand: A1X
+  - Use: One-cylinder engines
+- **Secondary oil**
+  - Brand: B2Z
+  - Use: Two-cylinder engines
 ```
 
 This mirrors a DITA reference topic: concise and easy to scan.
@@ -155,43 +152,43 @@ This mirrors a DITA reference topic: concise and easy to scan.
 Switching from Markdown tables to YAML makes your docs site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
 
 ```yml
-tools:
-  Small tools:
-    - Hard hat
-    - Hammer
-    - Nail
-    - Metal polish
-  Expensive tools:
-    - Drill
-    - Welding machine
-    - Torque wrench
+id: oil-types
+title: Oil types
+shortdesc: You will find below the recommended oil types.
+properties:
+  headers:
+    type: Oil type
+    value: Oil brand
+    description: Appropriate use
+  rows:
+    - type: Primary oil
+      value: A1X
+      description: One-cylinder engines
+    - type: Secondary oil
+      value: B2Z
+      description: Two-cylinder engines
 ```
 
 You can then create the following **src/components/ToolsList.astro** file:
 
 ```javascript
 ---
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
-
-const yamlPath = path.resolve('./src/data/tools.yaml');
-const fileContents = fs.readFileSync(yamlPath, 'utf8');
-const data = yaml.load(fileContents);
-const tools = data.tools;
+import data from "../data/oil-types.yaml";
+const rows = data.properties.rows;
 ---
-
-<h3>Tools required to maintain a big machine</h3>
-{Object.entries(tools).map(([category, items]) => (
-  <>
-    <h4>{category}</h4>
-    <ul>
-      {items.map(item => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  </>
-))}
+<h3>{data.title}</h3>
+<p>{data.shortdesc}</p>
+<ul>
+  {rows.map(row => (
+    <li>
+      <strong>{row.type}</strong>
+      <ul>
+        <li>Brand: {row.value}</li>
+        <li>Use: {row.description}</li>
+      </ul>
+    </li>
+  ))}
+</ul>
 ```
 
 Insert the following snippet into your **.mdx** file:
@@ -204,6 +201,41 @@ import ToolsList from '../../components/ToolsList.astro'
 Now, your YAML file content automatically renders as follows:
 
 <ToolsList />
+
+Should you wish to display the information in a table, refactor the code as follows:
+
+```javascript
+---
+import data from "../data/oil-.yaml";
+const headers = data.properties.headers;
+const rows = data.properties.rows;
+---
+<h3 style="color: #2c3e50;">{data.title}</h3>
+<p>{data.shortdesc}</p>
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead style="background-color: #3498db; color: white;">
+    <tr>
+      <th style="padding: 8px; border: 1px solid #ddd;">{headers.type}</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">{headers.value}</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">{headers.description}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((row, index) => (
+      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.type}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.value}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.description}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+```
+
+Your YAML file content automatically renders as follows:
+
+<ToolsTable />
 
 ## Why this matters
 

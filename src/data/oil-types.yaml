@@ -1,0 +1,15 @@
+id: oil-types
+title: Oil types
+shortdesc: You will find below the recommended oil types.
+properties:
+  headers:
+    type: Oil type
+    value: Oil brand
+    description: Appropriate use
+  rows:
+    - type: Primary oil
+      value: A1X
+      description: One-cylinder engines
+    - type: Secondary oil
+      value: B2Z
+      description: Two-cylinder engines

@@ -1,18 +1,19 @@
 ---
-import data from "../data/tools.yaml";
-
-const tools = data.tools;
+import data from "../data/oil-types.yaml"; // your YAML file
+const rows = data.properties.rows;
 ---
 
-<h3>Tools required to maintain a big machine</h3>
+<h3>{data.title}</h3>
+<p>{data.shortdesc}</p>
 
-{Object.entries(tools).map(([category, items]) => (
-  <>
-    <h4>{category}</h4>
-    <ul>
-      {items.map(item => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  </>
-))}
+<ul>
+  {rows.map(row => (
+    <li>
+      <strong>{row.type}</strong>
+      <ul>
+        <li>Brand: {row.value}</li>
+        <li>Use: {row.description}</li>
+      </ul>
+    </li>
+  ))}
+</ul>
