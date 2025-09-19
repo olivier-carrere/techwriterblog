@@ -104,23 +104,26 @@ The structure shows it’s an explanatory page, not a step-by-step guide.
 
 References benefit from structured tables and lists.
 
-The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/concept.html) is as follows:
+The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) is as follows:
 
 ```xml
-<reference id="refexample">
-  <title>A reference topic</title>
+<reference id="requiredTools">
+  <title>Tools required to maintain a big machine</title>
   <refbody>
-    <refsyn>Describe command or api syntax here, possibly
-using synph or syntax elements markup for explicit 
-definition of syntax or prototype construction.</refsyn>
-    <section><title>Some section title</title></section>
-    <properties>
-      <property>
-        <proptype>type</proptype>
-        <propvalue>value</propvalue>
-        <propdesc>description</propdesc>
-      </property>
-    </properties>
+    <section>
+      <title>Small tools</title>
+      <ul>
+        <li>Hard hat</li>
+        <li>Hammer</li>
+        <li>Nail</li>
+        <li>Metal polish</li>
+        <!-- .... -->
+      </ul>
+    </section>
+    <section>
+      <title>Expensive tools</title>
+      ...
+    </section>
   </refbody>
 </reference>
 ```
@@ -128,24 +131,22 @@ definition of syntax or prototype construction.</refsyn>
 Markdown supports tables and lists:
 
 ```markdown
-# A reference topic
+# Tools required to maintain a big machine
 
-### Syntax
+## Small tools
 
-Describe command or API syntax here, possibly using `synph` or syntax
-elements markup for explicit definition of syntax or prototype
-construction.
+* Hard hat
+* Hammer
+* Nail
+* Metal polish
+* …
 
-### Some Section Title
+## Expensive tools
 
-### Properties
-
-| Type | Value | Description |
-|------|-------|-------------|
-| type | value | description |
+* …
 ```
 
-This mirrors a DITA reference topic: concise, tabular, and easy to scan.
+This mirrors a DITA reference topic: concise and easy to scan.
 
 ## YAML: Ideal for scalable and maintainable reference pages
 
