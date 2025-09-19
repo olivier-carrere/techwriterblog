@@ -40,7 +40,8 @@ DITA task topics have strict rules: short context, prerequisites, ordered steps,
 <context>Once you have set up SQLJ, you need to create a new SQLJ file.</context>
 <steps>
 <step>
- <cmd>Select <menucascade><uicontrol>File</uicontrol><uicontrol>New</uicontrol></menucascade>.</cmd>
+ <cmd>Select <menucascade><uicontrol>File</uicontrol>
+ <uicontrol>New</uicontrol></menucascade>.</cmd>
  <info>New files are created with default values based on a standard template.</info>
 </step>
 </steps>
@@ -87,7 +88,9 @@ In Markdown, you can still signal that you’re writing a concept by structuring
 ```markdown
 # Introduction to Bird Calling
 
-If you wish to attract more birds to your Acme Bird Feeder, learn the art of bird calling. Bird calling is an efficient way to alert more birds to the presence of your bird feeder.
+If you wish to attract more birds to your Acme Bird Feeder, learn the art of
+bird calling. Bird calling is an efficient way to alert more birds to the
+presence of your bird feeder.
 
 Bird calling requires learning:
 
