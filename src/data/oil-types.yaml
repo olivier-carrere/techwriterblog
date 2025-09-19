@@ -3,9 +3,9 @@ title: Oil types
 shortdesc: You will find below the recommended oil types.
 properties:
   headers:
-    type: Oil type
-    value: Oil brand
-    description: Appropriate use
+    type: Type
+    value: Brand
+    description: Use
   rows:
     - type: Primary oil
       value: A1X
