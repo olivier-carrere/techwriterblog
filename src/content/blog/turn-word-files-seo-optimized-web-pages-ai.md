@@ -41,8 +41,8 @@ To optimize for browsing and search, we asked GPT-4o to analyze each section and
 
 - **Extract keywords** for thematic browsing and SEO.
 - **Generate frontmatter** for Astro, including:
-  - `title` (Google title)
-  - `description` (Google SEO description)
+  - **title** (Google title)
+  - **description** (Google SEO description)
 - **Assign dates** by parsing the human-readable dates embedded in the original file titles.
 - **Suggest intermediary titles** to improve readability and flow.
 
@@ -51,7 +51,7 @@ To optimize for browsing and search, we asked GPT-4o to analyze each section and
 Automation at scale required care. The process looked like this:
 
 1. **Iteratively ran the script** on all Markdown files in a directory.
-2. **Reviewed changes** with `git diff` to verify metadata and titles.
+2. **Reviewed changes** with **git diff** to verify metadata and titles.
 3. **Stopped the script and tuned the GPT prompt** whenever adjustments were needed.
 4. Once results were solid, **reran the process on all 1,500 files** in batch mode.
 

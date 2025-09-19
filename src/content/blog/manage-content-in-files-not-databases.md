@@ -16,7 +16,7 @@ Managing site content in plain files (Markdown, HTML, etc.) is an approach that 
 
 ## The Unix principle — everything is a file
 
-When content lives as files, you treat each article, page or asset as a first-class file in a folder tree. Filenames often act as slugs (the URL path). If you need a different URL, you can override it with a `slug:` field in the frontmatter. That simple mapping keeps things explicit and easy to reason about.
+When content lives as files, you treat each article, page or asset as a first-class file in a folder tree. Filenames often act as slugs (the URL path). If you need a different URL, you can override it with a **slug:** field in the frontmatter. That simple mapping keeps things explicit and easy to reason about.
 
 Example frontmatter + filename:
 
@@ -31,13 +31,13 @@ tags: [static-site, git, unix]
 Your article body...
 ```
 
-File: `content/posts/files-vs-database.md`
+File: **content/posts/files-vs-database.md**
 
 ## Productivity & tooling: use the tools you already know
 
 Because content is files, you can use standard, battle-tested tools:
 
-* Unix/GNU tools: `sed`, `awk`, `grep`, regular expressions — for fast batch edits and transformations.
+* Unix/GNU tools: **sed**, **awk**, **grep**, regular expressions — for fast batch edits and transformations.
 * Scripting: Python (or Node, Ruby, etc.) for more complex automation (generate indexes, convert formats, etc.).
 * Any editor: vim, Emacs, VS Code, Notepad — pick what you love and you’re productive immediately.
 
@@ -49,8 +49,8 @@ These tools let you do bulk refactors, search-and-replace, or migrations in seco
 
 Storing content in files means it sits naturally in Git:
 
-* See exactly what changed with `git diff`.
-* Revert a specific change even deep in history with `git checkout <commit> -- path/to/file`.
+* See exactly what changed with **git diff**.
+* Revert a specific change even deep in history with **git checkout <commit> -- path/to/file**.
 * Work in branches, open PRs, review diffs, merge — exactly the developer workflow you trust.
   These visibility and workflow features are either painful or impossible in many popular CMSes (WordPress, Drupal) where the “published” state is buried behind admin UIs and database rows.
 
@@ -99,11 +99,11 @@ If your project needs those, a hybrid approach (files for the majority of conten
 ## Quick practical checklist to get started
 
 1. Keep each post/page as a Markdown file with YAML frontmatter.
-2. Use filenames as slugs; override with `slug:` when necessary.
+2. Use filenames as slugs; override with **slug:** when necessary.
 3. Put everything under Git and push to GitHub/GitLab.
 4. Configure a static site generator (Hugo, Jekyll, Eleventy, Next.js, etc.).
 5. Connect your repo to a CDN (Vercel/Netlify) for automatic builds on push.
-6. Use `grep`, `sed`, `awk` or small Python scripts for bulk edits.
-7. Review changes through PRs and `git diff` before deployment.
+6. Use **grep**, **sed**, **awk** or small Python scripts for bulk edits.
+7. Review changes through PRs and **git diff** before deployment.
 
 Managing content as files embraces simplicity, transparency and control. You gain powerful Unix tooling, Git-based workflows, better security against database-specific attacks, lower cost for small projects, and excellent performance when combined with CDNs — all reasons why files are often the more efficient choice over a database-driven CMS.
