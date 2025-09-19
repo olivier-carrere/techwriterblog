@@ -1,0 +1,22 @@
+---
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+
+const yamlPath = path.resolve('./src/data/tools.yaml');
+const fileContents = fs.readFileSync(yamlPath, 'utf8');
+const data = yaml.load(fileContents);
+const tools = data.tools;
+---
+
+<h3>Tools required to maintain a big machine</h3>
+{Object.entries(tools).map(([category, items]) => (
+  <>
+    <h4>{category}</h4>
+    <ul>
+      {items.map(item => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </>
+))}

@@ -12,6 +12,8 @@ author: "Olivier Carrère"
 tags: ["DITA", "Markdown", "Information Typing", "Content Model", "Docs-as-Code"]
 ---
 
+import ToolsList from '../../components/ToolsList.astro'
+
 If you’ve spent years working daily with the DITA XML platform, you know that DITA is more than a markup language. It’s a way of thinking about information design. Writing tasks, concepts, and references in DITA teaches you to break down content into consistent building blocks, which makes documentation easier to navigate, maintain, and reuse.
 
 ![XML overhead: A cargo ship](/images/blog/strong-information-typing-without-xml-overhead-large.webp)
@@ -104,7 +106,7 @@ The structure shows it’s an explanatory page, not a step-by-step guide.
 
 References benefit from structured tables and lists.
 
-The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) is as follows:
+Let's consider this edited [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html):
 
 ```xml
 <reference id="requiredTools">
@@ -117,12 +119,15 @@ The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langr
         <li>Hammer</li>
         <li>Nail</li>
         <li>Metal polish</li>
-        <!-- .... -->
       </ul>
     </section>
     <section>
       <title>Expensive tools</title>
-      ...
+      <ul>
+        <li>Drill</li>
+        <li>Welding machine</li>
+        <li>Torque wrench</li>
+      </ul>
     </section>
   </refbody>
 </reference>
@@ -131,19 +136,16 @@ The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langr
 Markdown supports tables and lists:
 
 ```markdown
-# Tools required to maintain a big machine
-
-## Small tools
-
+## Tools required to maintain a big machine
+### Small tools
 * Hard hat
 * Hammer
 * Nail
 * Metal polish
-* …
-
-## Expensive tools
-
-* …
+### Expensive tools
+* Drill
+* Welding machine
+* Torque wrench
 ```
 
 This mirrors a DITA reference topic: concise and easy to scan.
@@ -153,21 +155,55 @@ This mirrors a DITA reference topic: concise and easy to scan.
 Switching from Markdown tables to YAML makes your docs site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
 
 ```yml
-requiredTools:
-  title: "Tools required to maintain a big machine"
-  refbody:
-    sections:
-      - title: "Small tools"
-        items:
-          - "Hard hat"
-          - "Hammer"
-          - "Nail"
-          - "Metal polish"
-          # Additional small tools can be added here
-      - title: "Expensive tools"
-        items:
-          # List of expensive tools goes here
+tools:
+  Small tools:
+    - Hard hat
+    - Hammer
+    - Nail
+    - Metal polish
+  Expensive tools:
+    - Drill
+    - Welding machine
+    - Torque wrench
 ```
+
+You can then create the following `src/components/ToolsList.astro` file:
+
+```javascript
+---
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+
+const yamlPath = path.resolve('./src/data/tools.yaml');
+const fileContents = fs.readFileSync(yamlPath, 'utf8');
+const data = yaml.load(fileContents);
+const tools = data.tools;
+---
+
+<h3>Tools required to maintain a big machine</h3>
+{Object.entries(tools).map(([category, items]) => (
+  <>
+    <h4>{category}</h4>
+    <ul>
+      {items.map(item => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </>
+))}
+```
+
+Insert the following snippets into your **.mdx** file:
+
+```html
+import ToolsList from '../../components/ToolsList.astro'
+<ToolsList />
+```
+
+Now, your YAML file content can be automatically rendered as follows:
+
+<ToolsList />
 
 ## Why this matters
 
