@@ -150,7 +150,7 @@ This mirrors a DITA reference topic: concise and easy to scan.
 
 ## YAML: Ideal for scalable and maintainable reference pages
 
-Switching from Markdown tables to YAML makes your Astro site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
+Switching from Markdown tables to YAML makes your docs site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
 
 ```yml
 requiredTools:
