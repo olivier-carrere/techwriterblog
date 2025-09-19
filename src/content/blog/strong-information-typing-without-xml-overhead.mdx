@@ -151,92 +151,96 @@ This mirrors a DITA reference topic: concise and easy to scan.
 
 Switching from Markdown tables to YAML makes your docs site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
 
-Create the following **src/data/oil-types.yaml** file:
+1. **Create the YAML file**
+   Create a file at **src/data/oil-types.yaml** with the following content:
 
-```yml
-id: oil-types
-title: Oil types
-shortdesc: You will find below the recommended oil types.
-properties:
-  headers:
-    type: Oil type
-    value: Oil brand
-    description: Appropriate use
-  rows:
-    - type: Primary oil
-      value: A1X
-      description: One-cylinder engines
-    - type: Secondary oil
-      value: B2Z
-      description: Two-cylinder engines
-```
+   ```yaml
+   id: oil-types
+   title: Oil types
+   shortdesc: You will find below the recommended oil types.
+   properties:
+     headers:
+       type: Oil type
+       value: Oil brand
+       description: Appropriate use
+     rows:
+       - type: Primary oil
+         value: A1X
+         description: One-cylinder engines
+       - type: Secondary oil
+         value: B2Z
+         description: Two-cylinder engines
+   ```
 
-You can then create the following **src/components/ToolsList.astro** file:
+2. **Create the Astro component**
+   Create a file at **src/components/ToolsList.astro** with the following content:
 
-```javascript
----
-import data from "../data/oil-types.yaml";
-const rows = data.properties.rows;
----
-<h3>{data.title}</h3>
-<p>{data.shortdesc}</p>
-<ul>
-  {rows.map(row => (
-    <li>
-      <strong>{row.type}</strong>
-      <ul>
-        <li>Brand: {row.value}</li>
-        <li>Use: {row.description}</li>
-      </ul>
-    </li>
-  ))}
-</ul>
-```
+   ```javascript
+   ---
+   import data from "../data/oil-types.yaml";
+   const rows = data.properties.rows;
+   ---
+   <h3>{data.title}</h3>
+   <p>{data.shortdesc}</p>
+   <ul>
+     {rows.map(row => (
+       <li>
+         <strong>{row.type}</strong>
+         <ul>
+           <li>Brand: {row.value}</li>
+           <li>Use: {row.description}</li>
+         </ul>
+       </li>
+     ))}
+   </ul>
+   ```
 
-Insert the following snippet into your **.mdx** file:
+3. **Insert the component in your MDX file**
+   Add the following snippet to your **.mdx** file:
 
-```html
-import ToolsList from '../../components/ToolsList.astro'
-<ToolsList />
-```
+   ```html
+   import ToolsList from '../../components/ToolsList.astro'
+   <ToolsList />
+   ```
 
-Now, your YAML file content automatically renders as follows:
+   This renders your YAML content automatically as a list:
+   
+   <ToolsList />
 
-<ToolsList />
+4. **(Optional) Display the content in a table**
+   If you prefer a table format, modify **ToolsList.astro** as follows:
 
-Should you wish to display the information in a table, refactor the **ToolsList.astro** code as follows:
+   ```javascript
+   ---
+   import data from "../data/oil-types.yaml";
+   const headers = data.properties.headers;
+   const rows = data.properties.rows;
+   ---
+   <h3 style="color: #2c3e50;">{data.title}</h3>
+   <p>{data.shortdesc}</p>
+   <table style="border-collapse: collapse; width: 100%;">
+     <thead style="background-color: #3498db; color: white;">
+       <tr>
+         <th style="padding: 8px; border: 1px solid #ddd;">{headers.type}</th>
+         <th style="padding: 8px; border: 1px solid #ddd;">{headers.value}</th>
+         <th style="padding: 8px; border: 1px solid #ddd;">{headers.description}</th>
+       </tr>
+     </thead>
+     <tbody>
+       {rows.map((row, index) => (
+         <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
+           <td style="padding: 8px; border: 1px solid #ddd;">{row.type}</td>
+           <td style="padding: 8px; border: 1px solid #ddd;">{row.value}</td>
+           <td style="padding: 8px; border: 1px solid #ddd;">{row.description}</td>
+         </tr>
+       ))}
+     </tbody>
+   </table>
+   ```
 
-```javascript
----
-import data from "../data/oil-.yaml";
-const headers = data.properties.headers;
-const rows = data.properties.rows;
----
-<h3 style="color: #2c3e50;">{data.title}</h3>
-<p>{data.shortdesc}</p>
-<table style="border-collapse: collapse; width: 100%;">
-  <thead style="background-color: #3498db; color: white;">
-    <tr>
-      <th style="padding: 8px; border: 1px solid #ddd;">{headers.type}</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">{headers.value}</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">{headers.description}</th>
-    </tr>
-  </thead>
-  <tbody>
-    {rows.map((row, index) => (
-      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.type}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.value}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.description}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-```
+   Your YAML content now renders automatically as a styled table:
 
-Your YAML file content automatically renders as follows:
-
-<ToolsTable />
+   <ToolsTable />
 
 ## Why this matters
 
