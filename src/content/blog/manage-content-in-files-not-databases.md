@@ -41,6 +41,8 @@ Because content is files, you can use standard, battle-tested tools:
 * Scripting: Python (or Node, Ruby, etc.) for more complex automation (generate indexes, convert formats, etc.).
 * Any editor: vim, Emacs, VS Code, Notepad — pick what you love and you’re productive immediately.
 
+![Files: A series of bottles to illustrate that you can edit the content of files without necessarily opening them.](/images/blog/manage-content-in-files-not-databases-large.webp)
+
 These tools let you do bulk refactors, search-and-replace, or migrations in seconds — no complex admin UI needed.
 
 ## Version control with Git: track, revert, branch
