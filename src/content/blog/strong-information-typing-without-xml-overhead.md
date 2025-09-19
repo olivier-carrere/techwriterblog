@@ -29,63 +29,141 @@ DITA trains you to ask:
 
 Once you’ve internalized this mindset, it becomes natural to apply it even outside XML. Markdown pages, Git-based workflows, and static site generators all benefit when you keep these categories clear.
 
-## Implementing DITA types in Markdown
+## DITA-like task pages
 
-### Task Pages
+DITA task topics have strict rules: short context, prerequisites, ordered steps, results. The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/step.html) is as follows:
 
-DITA task topics have strict rules: short context, prerequisites, ordered steps, results. You can recreate this in Markdown easily:
+```xml
+<task id="sqlj">
+<title>Creating an SQLJ file</title>
+<taskbody>
+<context>Once you have set up SQLJ, you need to create a new SQLJ file.</context>
+<steps>
+<step>
+ <cmd>Select <menucascade><uicontrol>File</uicontrol><uicontrol>New</uicontrol></menucascade>.</cmd>
+ <info>New files are created with default values based on a standard template.</info>
+</step>
+</steps>
+</taskbody>
+</task>
+```
+
+You can recreate this in Markdown easily:
 
 ```markdown
-# How to Configure the API Client
+# Creating an SQLJ file
 
-## Prerequisites
-- Installed the API client
-- Generated an API key
+Once you have set up SQLJ, you need to create a new SQLJ file.
 
-## Steps
-1. Open the configuration file.
-2. Add your API key under `[auth]`.
-3. Save and restart the client.
+1. Select **File** > **New**
 
-## Result
-The client authenticates automatically with your API key.
+   New files are created with default values based on a standard template.
 ```
 
 This keeps the procedural content focused and predictable, just like in DITA.
 
-### Concept Pages
+## DITA-like concept pages
 
-Concepts explain “what” and “why” rather than “how.” In Markdown, you can still signal that you’re writing a concept by structuring around definition and explanation.
+Concepts explain “what” and “why” rather than “how.” The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/concept.html) is as follows:
+
+```xml
+<concept id="concept">
+ <title>Introduction to Bird Calling</title>
+ <shortdesc>If you wish to attract more birds to your Acme Bird Feeder,
+learn the art of bird calling. Bird calling is an efficient way
+to alert more birds to the presence of your bird feeder.</shortdesc>
+ <conbody>
+   <p>Bird calling requires learning:</p>
+   <ul>
+    <li>Popular and classical bird songs</li>
+    <li>How to whistle like a bird</li>
+   </ul>
+ </conbody>
+</concept>
+```
+
+In Markdown, you can still signal that you’re writing a concept by structuring around definition and explanation.
 
 ```markdown
-# Understanding API Rate Limits
+# Introduction to Bird Calling
 
-API rate limits control how many requests a client can make in a given timeframe.  
-They protect the server from overload and ensure fair access for all users.
+If you wish to attract more birds to your Acme Bird Feeder, learn the art of bird calling. Bird calling is an efficient way to alert more birds to the presence of your bird feeder.
 
-## Key Points
-- Rate limits vary per endpoint.
-- Exceeding limits results in error `429: Too Many Requests`.
-- You can check your remaining quota in the response headers.
+Bird calling requires learning:
+
+- Popular and classical bird songs
+- How to whistle like a bird
 ```
 
 The structure shows it’s an explanatory page, not a step-by-step guide.
 
-### Reference Pages
+## DITA-like reference pages
 
-References benefit from structured tables and lists. Markdown supports both:
+References benefit from structured tables and lists.
+
+The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/concept.html) is as follows:
+
+```xml
+<reference id="refexample">
+  <title>A reference topic</title>
+  <refbody>
+    <refsyn>Describe command or api syntax here, possibly
+using synph or syntax elements markup for explicit 
+definition of syntax or prototype construction.</refsyn>
+    <section><title>Some section title</title></section>
+    <properties>
+      <property>
+        <proptype>type</proptype>
+        <propvalue>value</propvalue>
+        <propdesc>description</propdesc>
+      </property>
+    </properties>
+  </refbody>
+</reference>
+```
+
+Markdown supports tables and lists:
 
 ```markdown
-# API Error Codes
+# A reference topic
 
-| Code | Meaning               | Resolution                       |
-|------|-----------------------|----------------------------------|
-| 401  | Unauthorized          | Check your API key.              |
-| 404  | Not Found             | Verify the endpoint URL.         |
-| 500  | Internal Server Error | Try again later or contact support. |
+### Syntax
+
+Describe command or API syntax here, possibly using `synph` or syntax
+elements markup for explicit definition of syntax or prototype
+construction.
+
+### Some Section Title
+
+### Properties
+
+| Type | Value | Description |
+|------|-------|-------------|
+| type | value | description |
 ```
 
 This mirrors a DITA reference topic: concise, tabular, and easy to scan.
+
+## YAML: Ideal for scalable and maintainable reference pages
+
+Switching from Markdown tables to YAML makes your Astro site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
+
+```yml
+requiredTools:
+  title: "Tools required to maintain a big machine"
+  refbody:
+    sections:
+      - title: "Small tools"
+        items:
+          - "Hard hat"
+          - "Hammer"
+          - "Nail"
+          - "Metal polish"
+          # Additional small tools can be added here
+      - title: "Expensive tools"
+        items:
+          # List of expensive tools goes here
+```
 
 ## Why this matters
 
