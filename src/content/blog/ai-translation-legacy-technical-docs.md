@@ -104,8 +104,7 @@ index 9592b89c..ea635253 100644
  
  3. Free up disk space:
 ```
-**Manually clean up a Markdown table by fixing misaligned rows**
-
+**Manually fix Markdown table rows by adding missing trailing pipe characters**
 
 ## Manual cleanup
 
