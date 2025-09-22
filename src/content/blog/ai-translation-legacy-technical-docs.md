@@ -6,7 +6,7 @@ image: {
     src: "/images/blog/ai-translation-legacy-technical-docs.webp",
     alt: "Illustration of AI-assisted translation of technical documentation"
 }
-publishDate: "2025-09-22 08:00"
+publishDate: "2025-09-22 01:00"
 category: "Blog"
 author: "Olivier Carrère"
 tags: [AI, Translation, Technical Writing, Markdown, DeepL, GPT-4o]
