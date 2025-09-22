@@ -216,6 +216,24 @@ Découpée en 11 sections.
 
 This lets me review GPT’s edits chunk by chunk, applying only the improvements that make sense while rejecting unnecessary changes.
 
+Once you’ve staged the hunks you want, save them in a commit with:
+
+```bash
+$ git commit -m "commit message"
+```
+
+Finally, you can discard all the rejected changes from your working tree with:
+
+```bash
+$ git reset --hard
+```
+
+Double-check that only the intended edits were saved:
+
+```bash
+$ git show
+```
+
 ```diff
 commit 2dcbd2acfdba58d26f626bf3864d1b3969b17421
 Author: Olivier Carrère <xxxxxx@xxxxx.xxx>
@@ -241,18 +259,6 @@ description: "With its modest resources, a Raspberry Pi 3 is all you need to cre
 +- Present a user scenario that's as simple as possible, sometimes at the expense of technical elegance.
 ```
 **Simplify wording, fix grammar, and clarify phrasing via IA**
-
-Once you’ve staged the hunks you want, save them in a commit with:
-
-```bash
-$ git commit -m "commit message"
-```
-
-Finally, you can discard all the rejected changes from your working tree with:
-
-```bash
-$ git reset --hard
-```
 
 ## Building the site and fixing media
 
