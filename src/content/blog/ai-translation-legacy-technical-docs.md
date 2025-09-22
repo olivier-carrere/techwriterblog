@@ -242,6 +242,18 @@ description: "With its modest resources, a Raspberry Pi 3 is all you need to cre
 ```
 **Simplify wording, fix grammar, and clarify phrasing via IA**
 
+Once you’ve staged the hunks you want, save them in a commit with:
+
+```bash
+git commit -m "commit message"
+```
+
+Finally, you can discard all the rejected changes from your working tree with:
+
+```bash
+git reset --hard
+```
+
 ## Building the site and fixing media
 
 Once the text is in good shape, I build the site locally to catch any remaining errors. Common fixes include:
