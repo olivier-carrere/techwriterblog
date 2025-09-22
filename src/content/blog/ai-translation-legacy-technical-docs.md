@@ -24,9 +24,9 @@ Like most efficient processes, it relies on iteration: a loop that combines diff
 
 The first step is to generate raw English translations of all French Markdown files. For this, I wrote a simple Python script that:
 
-* Scans the current directory for `.md` files.
+* Scans the current directory for **.md** files.
 * Sends the content to the [DeepL API](https://www.deepl.com/docs-api) for translation (French → English).
-* Saves the output as a new file with the suffix `-en.md`.
+* Saves the output as a new file with the suffix **-en.md**.
 
 ```python
 import os
@@ -103,7 +103,7 @@ index 9592b89c..ea635253 100644
 +    | Texlive       | Complete LaTeX environment for PDF blog generation.       |
  
  3. Free up disk space:
- ```
+```
 **Manually clean up a Markdown table by fixing misaligned rows**
 
 
@@ -185,7 +185,7 @@ description: "With its modest resources, a Raspberry Pi 3 is all you need to cre
 Once the text is in good shape, I build the site locally to catch any remaining errors. Common fixes include:
 
 * Adjusting translated image filenames.
-* Copying SVG diagrams from `fr/` into a new `en/` folder.
+* Copying SVG diagrams from **fr/** into a new **en/** folder.
 * Translating diagrams manually in **Inkscape** and updating file paths.
 
 ## Rinse and repeat
@@ -196,7 +196,7 @@ The process is iterative:
 2. Run the DeepL script.
 3. Clean up formatting.
 4. Run GPT proofreading.
-5. Select changes via `git add -p`.
+5. Select changes via **git add -p**.
 6. Rebuild and adjust assets.
 
 Rinse and repeat until the full documentation set is translated.
