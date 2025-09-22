@@ -116,7 +116,7 @@ Before moving to the next step, I manually fix structural issues in the translat
 
 This ensures that the files can be built into the website without errors.
 
-## Proofreading with GPT-4o
+## IA Proofreading with GPT-4o
 
 DeepL produces decent raw translations, but the style often needs polishing. To automate this, I created another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
 
@@ -260,7 +260,7 @@ description: "With its modest resources, a Raspberry Pi 3 is all you need to cre
 ```
 **Simplify wording, fix grammar, and clarify phrasing via IA**
 
-## Building the site and fixing media
+## Build the site and fix media
 
 Once the text is in good shape, I build the site locally to catch any remaining errors. Common fixes include:
 
