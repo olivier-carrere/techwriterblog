@@ -192,12 +192,9 @@ Once the text is in good shape, I build the site locally to catch any remaining 
 
 The process is iterative:
 
-1. Pick the next Markdown file.
-2. Run the DeepL script.
-3. Clean up formatting.
-4. Run GPT proofreading.
-5. Select changes via **git add -p**.
-6. Rebuild and adjust assets.
+1. Run the proofreading script on the next Markdown file.
+2. Select changes via **git add -p**.
+3. Rebuild and adjust assets.
 
 Rinse and repeat until the full documentation set is translated.
 
