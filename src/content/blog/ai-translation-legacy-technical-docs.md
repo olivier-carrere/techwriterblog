@@ -151,6 +151,8 @@ Instead of accepting every change blindly, I use:
 $ git add -p
 ```
 
+Use **git add -p** to review changes **hunk by hunk** and stage only what you want. For each chunk of the diff, Git shows the context and asks if you want to stage it (**y** = yes, **n** = no). You can split hunks into smaller pieces with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is perfect when a file contains unrelated edits—such as AI-generated suggestions—because it lets you accept improvements selectively while keeping control over your commit history.
+
 ```diff
 diff --git a/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md b/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md
 index d5b0c9b8..7a5632af 100644
