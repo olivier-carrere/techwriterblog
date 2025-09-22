@@ -22,6 +22,8 @@ Like most efficient processes, it relies on iteration: a loop that combines diff
 
 ## Automatic translation with DeepL
 
+<img src="/images/blog/DeepL_logo.svg" alt="Automatic translation with DeepL: DeepL logo" width="200">
+
 The first step is to generate raw English translations of all French Markdown files. For this, I wrote a simple Python script that:
 
 * Scans the current directory for **.md** files.
@@ -118,6 +120,8 @@ This ensures that the files can be built into the website without errors.
 
 ## IA Proofreading with GPT-4o
 
+<img src="/images/blog/ChatGPT-Logo.svg" alt="IA Proofreading with GPT-4o: GPT logo" width="100">
+
 DeepL produces decent raw translations, but the style often needs polishing. To automate this, I created another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
 
 ```python
@@ -144,6 +148,8 @@ def proofread_with_gpt(content):
 To stay in control, the script processes **one file at a time** and stops. This makes it easier to review and cherry-pick changes.
 
 ## Selective review with Git
+
+<img src="/images/blog/Git-logo.svg" alt="Selective review with Git: Git logo" width="200">
 
 Instead of accepting every change blindly, I use:
 
