@@ -66,20 +66,21 @@ $ git add -p
 Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
 ```diff
-diff --git a/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md b/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md
+diff --git a/communication-technique.md b/communication-technique.md
 index d5b0c9b8..7a5632af 100644
---- a/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md
-+++ b/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md
+--- a/communication-technique.md
++++ b/communication-technique.md
 @@ -1,31 +1,30 @@
- ---
--title: "From copywriting to technical communication"
-+title: "From technical writing to technical communication"
- description: "Technical communication is often reduced to technical writing. Technical writing is intended to provide product documentation, and is involved downstream of sales."
-+proofreading: IA
- ---
-+The goal of **technical communication** is to convert prospects into satisfied customers. The **technical writer** provides the market with the information needed to select, evaluate, and use a high-tech solution. Within the company, they serve as the interface between the R&D and marketing departments. Externally, they facilitate dialogue between the company and its various audiences.
--
--The goal of **technical communication** is to turn prospects into satisfied customers. The **technical writer** provides the market with the information it needs to select, evaluate and use a high-tech solution. Within the company, they are the interface between the R&D and marketing departments. Externally, they create dialogue between the company and its various audiences.
++The goal of **technical communication** is to turn prospects into satisfied
++customers. The **technical writer** provides the market with the information it
++needs to select, evaluate and use a high-tech solution. Within the company, they
++are the interface between the R&D and marketing departments. Externally, they
++create dialogue between the company and its various audiences.
+--The goal of **technical communication** is to turn prospects into satisfied
+-customers. The **technical writer** provides the market with the information it
+-needs to select, evaluate and use a high-tech solution. Within the company, they
+-are the interface between the R&D and marketing departments. Externally, they
+-create dialogue between the company and its various audiences.
 (1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
 ```
 
