@@ -14,6 +14,12 @@ tags: [AI, Translation, Technical Writing, Markdown, DeepL, GPT-4o]
 
 Translating large sets of legacy documentation is always a challenge. Professional human translation ensures quality, but it is time-consuming and costly—especially when dealing with dozens or even hundreds of Markdown files, diagrams, and embedded metadata.
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`graph LR
+  A[Source<br/>langage] --> B[DeepL<br/>version] --> C[GPT<br/>proofreading] --> D[Select changes<br/>individually]
+`} />
+
 For my [Redaction Technique legacy website](https://docs.redaction-technique.org/), I set up an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
 
 ![Plastic colorful springs illustrating iterative workflows](/images/blog/ai-translation-legacy-technical-docs-large.webp)
@@ -22,7 +28,12 @@ Like most efficient processes, it relies on iteration: a loop that combines diff
 
 ## Automatic translation with DeepL
 
-<img src="/images/blog/DeepL_logo.svg" alt="Automatic translation with DeepL: DeepL logo" width="200">
+<img 
+  src="/images/blog/DeepL_logo.svg" 
+  alt="Automatic translation with DeepL: DeepL logo" 
+  width={200} 
+/>
+
 
 The first step is to generate raw English translations of all French Markdown files. To do this, write a simple Python script that:
 
@@ -44,18 +55,27 @@ This ensures the files build into the website without errors.
 
 ## AI Proofreading with GPT-4o
 
-<img src="/images/blog/ChatGPT-Logo.svg" alt="IA Proofreading with GPT-4o: GPT logo" width="100">
+<img 
+  src="/images/blog/ChatGPT-Logo.svg" 
+  alt="IA Proofreading with GPT-4o: GPT logo" 
+  width={100} 
+/>
 
 DeepL produces decent raw translations, but the style often needs polishing. To automate this, create another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
 
-<blockquote>You are an expert technical writing editor. The text is about technical writing, DITA, structured authoring. Fix inconsistencies, unprofessional style, and poor French-to-English translations. Keep Markdown formatting intact. Return only the corrected text, without explanations.
+<blockquote>
+You are an expert technical writing editor. The text is about technical writing, DITA, and structured authoring. Fix inconsistencies, unprofessional style, and poor French-to-English translations. Keep Markdown formatting intact. Return only the corrected text, without explanations.
 </blockquote>
 
 To stay in control, have the script process **one file at a time** and then stop. This makes it easier to review and cherry-pick changes.
 
 ## Selective review with Git
 
-<img src="/images/blog/Git-logo.svg" alt="Selective review with Git: Git logo" width="200">
+<img 
+  src="/images/blog/Git-logo.svg" 
+  alt="Selective review with Git: Git logo" 
+  width={200} 
+/>
 
 Review edits selectively with:
 
@@ -66,22 +86,22 @@ $ git add -p
 Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
 <div style="background-color:#2e2e2e; color:#ffffff; font-family: monospace; font-size: 0.75em; padding: 1em; white-space: pre-wrap; border-radius: 8px;">
-<span style="color:#4da6ff;">diff --git a/communication-technique.md b/communication-technique.md</span>
-index d5b0c9b8..7a5632af 100644
-<span style="color:#7fff7f;">+++ b/communication-technique.md</span>
-<span style="color:#ff7f7f;">--- a/communication-technique.md</span>
-<span style="color:#b266ff;">@@ -1,31 +1,30 @@</span>
-<span style="color:#7fff7f;">+The goal of technical communication is to <span style="color:#ffffff; background-color:#a0dca0;">convert</span> prospects into</span>
-<span style="color:#ff7f7f;">-The goal of technical communication is to <span style="color:#ffffff; background-color:#ff9999;">turn </span> prospects into</span>
-satisfied customers. The technical writer provides the market with
-<span style="color:#7fff7f;">+the information <span style="color:#ffffff; background-color:#a0dca0;">needed </span> to select, evaluate<span style="color:#ffffff; background-color:#a0dca0;">,</span> and use a high-tech</span>
-<span style="color:#ff7f7f;">-the information <span style="color:#ffffff; background-color:#ff9999;">it needs</span> to select, evaluate and use a high-tech</span>
-<span style="color:#7fff7f;">+solution. Within the company, they <span style="color:#ffffff; background-color:#a0dca0;">serve as</span> the interface between the R&D</span>
-<span style="color:#ff7f7f;">-solution. Within the company, they <span style="color:#ffffff; background-color:#ff9999;">are </span> the interface between the R&D</span>
-<span style="color:#7fff7f;">+and marketing departments. Externally, they <span style="color:#ffffff; background-color:#a0dca0;">facilitate</span> dialogue between</span>
-<span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create </span> dialogue between</span>
-the company and its various audiences.
-(1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]?
+  <span style="color:#4da6ff;">diff --git a/communication-technique.md b/communication-technique.md</span>
+  index d5b0c9b8..7a5632af 100644
+  <span style="color:#7fff7f;">+++ b/communication-technique.md</span>
+  <span style="color:#ff7f7f;">--- a/communication-technique.md</span>
+  <span style="color:#b266ff;">@@ -1,31 +1,30 @@</span>
+  <span style="color:#7fff7f;">+The goal of technical communication is to <span style="color:#ffffff; background-color:#a0dca0;">convert</span> prospects into</span>
+  <span style="color:#ff7f7f;">-The goal of technical communication is to <span style="color:#ffffff; background-color:#ff9999;">turn </span> prospects into</span>
+  satisfied customers. The technical writer provides the market with
+  <span style="color:#7fff7f;">+the information <span style="color:#ffffff; background-color:#a0dca0;">needed </span> to select, evaluate<span style="color:#ffffff; background-color:#a0dca0;">,</span> and use a high-tech</span>
+  <span style="color:#ff7f7f;">-the information <span style="color:#ffffff; background-color:#ff9999;">it needs</span> to select, evaluate and use a high-tech</span>
+  <span style="color:#7fff7f;">+solution. Within the company, they <span style="color:#ffffff; background-color:#a0dca0;">serve as</span> the interface between the R&D</span>
+  <span style="color:#ff7f7f;">-solution. Within the company, they <span style="color:#ffffff; background-color:#ff9999;">are </span> the interface between the R&D</span>
+  <span style="color:#7fff7f;">+and marketing departments. Externally, they <span style="color:#ffffff; background-color:#a0dca0;">facilitate</span> dialogue between</span>
+  <span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create </span> dialogue between</span>
+  the company and its various audiences.
+  (1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]?
 </div>
 
 Stage the changes you want, commit them with:
