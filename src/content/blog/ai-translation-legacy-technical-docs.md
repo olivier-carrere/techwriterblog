@@ -14,7 +14,7 @@ tags: [AI, Translation, Technical Writing, Markdown, DeepL, GPT-4o]
 
 Translating large sets of legacy documentation is always a challenge. Professional human translation ensures quality, but it is time-consuming and costly—especially when dealing with dozens or even hundreds of Markdown files, diagrams, and embedded metadata.
 
-For your [Redaction Technique legacy website](https://docs.redaction-technique.org/), you can set up an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
+For my [Redaction Technique legacy website](https://docs.redaction-technique.org/), I set up an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
 
 ![Plastic colorful springs illustrating iterative workflows](/images/blog/ai-translation-legacy-technical-docs-large.webp)
 
