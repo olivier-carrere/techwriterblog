@@ -30,45 +30,6 @@ The first step is to generate raw English translations of all French Markdown fi
 * Sends the content to the [DeepL API](https://www.deepl.com/docs-api) for translation (French → English).
 * Saves the output as a new file with the suffix **-en.md**.
 
-```python
-import os
-import requests
-
-DEEPL_API_KEY = "YOUR_DEEPL_API_KEY"
-DEEPL_API_URL = "https://api-free.deepl.com/v2/translate"
-
-def translate_text(text, source_lang="FR", target_lang="EN"):
-    response = requests.post(
-        DEEPL_API_URL,
-        data={
-            "auth_key": DEEPL_API_KEY,
-            "text": text,
-            "source_lang": source_lang,
-            "target_lang": target_lang
-        },
-    )
-    response.raise_for_status()
-    return response.json()["translations"][0]["text"]
-
-def translate_markdown_files():
-    for filename in os.listdir("."):
-        if filename.endswith(".md") and not filename.endswith("-en.md"):
-            print(f"Translating {filename}...")
-            with open(filename, "r", encoding="utf-8") as f:
-                content = f.read()
-
-            translated = translate_text(content)
-            new_filename = filename[:-3] + "-en.md"
-
-            with open(new_filename, "w", encoding="utf-8") as f:
-                f.write(translated)
-
-            print(f"Created {new_filename}")
-
-if __name__ == "__main__":
-    translate_markdown_files()
-```
-
 This produces usable English content quickly, but the results often contain **broken Markdown tables**, **mismatched frontmatter**, or literal translations that sound clumsy.
 
 
