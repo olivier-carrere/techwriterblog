@@ -134,38 +134,6 @@ Finally, you can discard all the rejected changes from your working tree with:
 $ git reset --hard
 ```
 
-Double-check that only the intended edits were saved:
-
-```bash
-$ git show
-```
-
-```diff
-commit 2dcbd2acfdba58d26f626bf3864d1b3969b17421
-Author: Olivier Carrère <xxxxxx@xxxxx.xxx>
-Date:   Sun Sep 21 07:26:27 2025 +0200
-   Proofread Deepl-translated content with GPT-4o
---- a/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md
-+++ b/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md
-@@ -1,22 +1,22 @@
----
-title: "The Raspberry Pi 3 as a documentation platform"
-description: "With its modest resources, a Raspberry Pi 3 is all you need to create, manage and generate documentation in PDF, HTML or EPUB format."
-+proofreading: IA
----
--
--Do you need an outpouring of power to generate professional documentation? With its single gigabyte of RAM and smartphone-like processor, the Raspberry Pi 3 seems to be positioned as a good office workstation from the 2000s... In practice, however, it turns out that a CPU costing around 40 euros is more than enough to create, manage and generate documentation in PDF, HTML or other formats.
-+Do you need a lot of power to generate professional documentation? With its single gigabyte of RAM and smartphone-like processor, the Raspberry Pi 3 seems fit for an early 2000s office workstation. In practice, however, a CPU costing around 40 euros is more than enough to create, manage, and generate documentation in PDF, HTML, or other formats.
-:::note
--The aims of this post are to:
-+This post aims to:
--- Present a <abbr title="Proof of Concept, demonstration of feasibility">POC</abbr> and use minimal resources to create, manage and publish professional documentation. Most operations therefore take place in text mode, under Linux. While the solutions presented here also work in graphical mode under Windows, they may not be available under Windows 10 IoT, intended for the Raspberry Pi 3.
--- Presenting a user scenario that's as simple as possible, sometimes to the detriment of technical elegance.
-+- Present a <abbr title="Proof of Concept, demonstration of feasibility">POC</abbr> and use minimal resources to create, manage, and publish professional documentation. Most operations occur in text mode under Linux. While these solutions work in graphical mode under Windows, they may not be available on Windows 10 IoT, intended for the Raspberry Pi 3.
-+- Present a user scenario that's as simple as possible, sometimes at the expense of technical elegance.
-```
-**Simplify wording, fix grammar, and clarify phrasing via IA**
-
 ## Build the site and fix media
 
 Once the text is in good shape, I build the site locally to catch any remaining errors. Common fixes include:
