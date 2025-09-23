@@ -14,17 +14,17 @@ tags: [AI, Translation, Technical Writing, Markdown, DeepL, GPT-4o]
 
 Translating large sets of legacy documentation is always a challenge. Professional human translation ensures quality, but it is time-consuming and costly—especially when dealing with dozens or even hundreds of Markdown files, diagrams, and embedded metadata.
 
-For my [Redaction Technique legacy website](https://docs.redaction-technique.org/), I developed an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
+For your [Redaction Technique legacy website](https://docs.redaction-technique.org/), you can set up an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
 
 ![Plastic colorful springs illustrating iterative workflows](/images/blog/ai-translation-legacy-technical-docs-large.webp)
 
-Like most efficient processes, it relies on iteration: a loop that combines different AI tools to enable steady, incremental publishing. Human intervention remains critical at every stage—guiding the process, correcting errors, and keeping the results on track. The final step is a thorough human correction, which can sometimes be deferred for legacy or non-critical content until analytics confirm that the material is worth the extra investment.
+Like most efficient processes, it relies on iteration: a loop that combines different AI tools to enable steady, incremental publishing. Human intervention remains critical at every stage—guiding the process, correcting errors, and keeping the results on track. The final step is a thorough human correction, which you can sometimes defer for legacy or non-critical content until analytics confirm that the material is worth the extra investment.
 
 ## Automatic translation with DeepL
 
 <img src="/images/blog/DeepL_logo.svg" alt="Automatic translation with DeepL: DeepL logo" width="200">
 
-The first step is to generate raw English translations of all French Markdown files. For this, I wrote a simple Python script that:
+The first step is to generate raw English translations of all French Markdown files. To do this, write a simple Python script that:
 
 * Scans the current directory for **.md** files.
 * Sends the content to the [DeepL API](https://www.deepl.com/docs-api) for translation (French → English).
@@ -34,36 +34,36 @@ This produces usable English content quickly, but the results often contain **br
 
 ## Manual cleanup
 
-Before moving to the next step, I manually fix structural issues in the translated Markdown:
+Before moving on, fix structural issues in the translated Markdown:
 
 * Broken tables.
 * Incorrect Astro frontmatter.
 * Small formatting quirks.
 
-This ensures that the files can be built into the website without errors.
+This ensures the files build into the website without errors.
 
-## IA Proofreading with GPT-4o
+## AI Proofreading with GPT-4o
 
 <img src="/images/blog/ChatGPT-Logo.svg" alt="IA Proofreading with GPT-4o: GPT logo" width="100">
 
-DeepL produces decent raw translations, but the style often needs polishing. To automate this, I created another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
+DeepL produces decent raw translations, but the style often needs polishing. To automate this, create another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
 
 <blockquote>You are an expert technical writing editor. The text is about technical writing, DITA, structured authoring. Fix inconsistencies, unprofessional style, and poor French-to-English translations. Keep Markdown formatting intact. Return only the corrected text, without explanations.
 </blockquote>
 
-To stay in control, the script processes **one file at a time** and stops. This makes it easier to review and cherry-pick changes.
+To stay in control, have the script process **one file at a time** and then stop. This makes it easier to review and cherry-pick changes.
 
 ## Selective review with Git
 
 <img src="/images/blog/Git-logo.svg" alt="Selective review with Git: Git logo" width="200">
 
-Instead of accepting every change blindly, I use:
+Review edits selectively with:
 
 ```bash
 $ git add -p
 ```
 
-Use **git add -p** to review changes **hunk by hunk** and stage only what you want. For each chunk of the diff, Git shows the context and asks if you want to stage it (**y** = yes, **n** = no). You can split hunks into smaller pieces with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is perfect when a file contains unrelated edits—such as AI-generated suggestions—because it lets you accept improvements selectively while keeping control over your commit history.
+Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
 ```diff
 diff --git a/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md b/src/content/docs/en/costs/de-la-redaction-a-la-communication-technique.md
@@ -80,18 +80,16 @@ index d5b0c9b8..7a5632af 100644
 +The goal of **technical communication** is to convert prospects into satisfied customers. The **technical writer** provides the market with the information needed to select, evaluate, and use a high-tech solution. Within the company, they serve as the interface between the R&D and marketing departments. Externally, they facilitate dialogue between the company and its various audiences.
 -
 -The goal of **technical communication** is to turn prospects into satisfied customers. The **technical writer** provides the market with the information it needs to select, evaluate and use a high-tech solution. Within the company, they are the interface between the R&D and marketing departments. Externally, they create dialogue between the company and its various audiences.
-(1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
+(1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
 ```
 
-This lets me review GPT’s edits chunk by chunk, applying only the improvements that make sense while rejecting unnecessary changes.
-
-Once you’ve staged the hunks you want, save them in a commit with:
+Stage the changes you want, commit them with:
 
 ```bash
 $ git commit -m "commit message"
 ```
 
-Finally, you can discard all the rejected changes from your working tree with:
+Then discard the rest with:
 
 ```bash
 $ git reset --hard
@@ -99,7 +97,7 @@ $ git reset --hard
 
 ## Build the site and fix media
 
-Once the text is in good shape, I build the site locally to catch any remaining errors. Common fixes include:
+When the text is ready, build the site locally to catch any remaining errors. Common fixes include:
 
 * Adjusting translated image filenames.
 * Copying SVG diagrams from **fr/** into a new **en/** folder.
@@ -113,8 +111,8 @@ The process is iterative:
 2. Select changes via **git add -p**.
 3. Rebuild and adjust assets.
 
-Rinse and repeat until the full documentation set is translated.
+Repeat until the full documentation set is translated.
 
-This workflow isn’t a replacement for professional translation, but it’s **“good enough” for legacy content** where perfect nuance is less critical. For high-visibility or customer-facing material, I would still recommend a final round of **human proofreading**.
+This workflow isn’t a replacement for professional translation, but it’s **“good enough” for legacy content** where perfect nuance is less critical. For high-visibility or customer-facing material, plan on a final round of **human proofreading**.
 
-But with this pipeline, I was able to **translate and modernize a large corpus of technical documentation efficiently**—combining the strengths of DeepL, GPT, and a bit of manual oversight.
+With this pipeline, you can **translate and modernize a large corpus of technical documentation efficiently** - combining the strengths of DeepL, GPT, and a bit of manual oversight.
