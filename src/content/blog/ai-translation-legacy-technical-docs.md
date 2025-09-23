@@ -81,7 +81,7 @@ satisfied customers. The technical writer provides the market with
 <span style="color:#7fff7f;">+and marketing departments. Externally, they <span style="color:#ffffff; background-color:#a0dca0;">facilitate</span> dialogue between</span>
 <span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create </span> dialogue between</span>
 the company and its various audiences.
-(1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
+(1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]?
 </div>
 
 Stage the changes you want, commit them with:
