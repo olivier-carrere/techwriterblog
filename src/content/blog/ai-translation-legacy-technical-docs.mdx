@@ -83,7 +83,14 @@ Review edits selectively with:
 $ git add -p
 ```
 
-Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
+Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**.
+
+<Mermaid chart={`graph LR
+  A[Changes] --> B{git add -p}
+  B -->|y|C[Keep]
+  B -->|n| D[Discard]`} />
+
+This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
 <div style="background-color:#2e2e2e; color:#ffffff; font-family: monospace; font-size: 0.75em; padding: 1em; white-space: pre-wrap; border-radius: 8px;">
   <span style="color:#4da6ff;">diff --git a/communication-technique.md b/communication-technique.md</span>
