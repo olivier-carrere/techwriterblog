@@ -71,16 +71,18 @@ index d5b0c9b8..7a5632af 100644
 --- a/communication-technique.md
 +++ b/communication-technique.md
 @@ -1,31 +1,30 @@
-+The goal of **technical communication** is to turn prospects into satisfied
-+customers. The **technical writer** provides the market with the information it
-+needs to select, evaluate and use a high-tech solution. Within the company, they
-+are the interface between the R&D and marketing departments. Externally, they
-+create dialogue between the company and its various audiences.
---The goal of **technical communication** is to turn prospects into satisfied
--customers. The **technical writer** provides the market with the information it
--needs to select, evaluate and use a high-tech solution. Within the company, they
--are the interface between the R&D and marketing departments. Externally, they
--create dialogue between the company and its various audiences.
++The goal of **technical communication** is to convert prospects into
+satisfied customers. The **technical writer** provides the market with
++the information needed to select, evaluate, and use a high-tech
++solution. Within the company, they serve as the interface between the
++R&D and marketing departments. Externally, they facilitate dialogue
++between the company and its various audiences.
+-The goal of **technical communication** is to turn prospects into
+satisfied customers. The **technical writer** provides the market with
+-the information it needs to select, evaluate and use a high-tech
+-solution. Within the company, they are the interface between the R&D
+-and marketing departments. Externally, they create dialogue between
+-the company and its various audiences.
 (1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
 ```
 
