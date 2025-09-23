@@ -72,14 +72,14 @@ index d5b0c9b8..7a5632af 100644
 <span style="color:#ff7f7f;">--- a/communication-technique.md</span>
 <span style="color:#b266ff;">@@ -1,31 +1,30 @@</span>
 <span style="color:#7fff7f;">+The goal of technical communication is to <span style="color:#ffffff; background-color:#a0dca0;">convert</span> prospects into</span>
-<span style="color:#ff7f7f;">-The goal of technical communication is to <span style="color:#ffffff; background-color:#ff9999;">turn</span> prospects into</span>
+<span style="color:#ff7f7f;">-The goal of technical communication is to <span style="color:#ffffff; background-color:#ff9999;">turn </span> prospects into</span>
 satisfied customers. The technical writer provides the market with
-<span style="color:#7fff7f;">+the information <span style="color:#ffffff; background-color:#a0dca0;">needed</span> to select, evaluate<span style="color:#ffffff; background-color:#a0dca0;">,</span> and use a high-tech</span>
+<span style="color:#7fff7f;">+the information <span style="color:#ffffff; background-color:#a0dca0;">needed </span> to select, evaluate<span style="color:#ffffff; background-color:#a0dca0;">,</span> and use a high-tech</span>
 <span style="color:#ff7f7f;">-the information <span style="color:#ffffff; background-color:#ff9999;">it needs</span> to select, evaluate and use a high-tech</span>
 <span style="color:#7fff7f;">+solution. Within the company, they <span style="color:#ffffff; background-color:#a0dca0;">serve as</span> the interface between the R&D</span>
-<span style="color:#ff7f7f;">-solution. Within the company, <span style="color:#ffffff; background-color:#ff9999;">they are</span> the interface between the R&D</span>
+<span style="color:#ff7f7f;">-solution. Within the company, they <span style="color:#ffffff; background-color:#ff9999;">are </span> the interface between the R&D</span>
 <span style="color:#7fff7f;">+and marketing departments. Externally, they <span style="color:#ffffff; background-color:#a0dca0;">facilitate</span> dialogue between</span>
-<span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create</span> dialogue between</span>
+<span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create </span> dialogue between</span>
 the company and its various audiences.
 (1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
 </div>
