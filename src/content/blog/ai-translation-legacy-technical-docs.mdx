@@ -16,8 +16,24 @@ Translating large sets of legacy documentation is always a challenge. Profession
 
 import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`graph LR
-  A[Source<br/>langage] --> B[DeepL<br/>version] --> C[GPT<br/>proofreading] --> D[Select changes<br/>individually]
+<Mermaid chart={`
+graph LR
+  A[Source<br/>language] --> B[DeepL<br/>version] --> C[GPT<br/>proofreading] --> D[Select changes<br/>individually]
+
+  %% Define teal-themed styles
+  classDef source fill:#e0f7f9,stroke:#00838f,stroke-width:2px,color:#004d40,font-weight:bold,rx:8,ry:8;
+  classDef translation fill:#b2ebf2,stroke:#0097a7,stroke-width:2px,color:#004d40,font-weight:bold,rx:8,ry:8;
+  classDef proofreading fill:#80deea,stroke:#00acc1,stroke-width:2px,color:#00363a,font-weight:bold,rx:8,ry:8;
+  classDef review fill:#4dd0e1,stroke:#00bcd4,stroke-width:2px,color:#002f33,font-weight:bold,rx:8,ry:8;
+
+  %% Apply styles
+  class A source;
+  class B translation;
+  class C proofreading;
+  class D review;
+
+  %% Optional: style links (uniform teal)
+  linkStyle default stroke:#00838f,stroke-width:2px;
 `} />
 
 For my [Redaction Technique legacy website](https://docs.redaction-technique.org/), I set up an **AI-based iterative workflow** that automates much of the heavy lifting while still leaving space for human refinement.
@@ -85,10 +101,27 @@ $ git add -p
 
 Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**.
 
-<Mermaid chart={`graph LR
+<Mermaid chart={`
+graph LR
   A[Changes] --> B{git add -p}
-  B -->|y|C[Keep]
-  B -->|n| D[Discard]`} />
+  B -->|y| C[Keep]
+  B -->|n| D[Discard]
+
+  %% Define teal styles
+  classDef input fill:#e0f7f9,stroke:#00838f,stroke-width:2px,color:#004d40,font-weight:bold,rx:8,ry:8;
+  classDef decision fill:#b2ebf2,stroke:#0097a7,stroke-width:2px,color:#00363a,font-weight:bold,rx:8,ry:8;
+  classDef keep fill:#80deea,stroke:#00acc1,stroke-width:2px,color:#002f33,font-weight:bold,rx:8,ry:8;
+  classDef discard fill:#4dd0e1,stroke:#00bcd4,stroke-width:2px,color:#002f33,font-weight:bold,rx:8,ry:8;
+
+  %% Apply styles
+  class A input;
+  class B decision;
+  class C keep;
+  class D discard;
+
+  %% Style links in teal
+  linkStyle default stroke:#00838f,stroke-width:2px;
+`} />
 
 This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
