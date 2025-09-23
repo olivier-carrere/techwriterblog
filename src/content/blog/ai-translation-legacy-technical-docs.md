@@ -32,43 +32,6 @@ The first step is to generate raw English translations of all French Markdown fi
 
 This produces usable English content quickly, but the results often contain **broken Markdown tables**, **mismatched frontmatter**, or literal translations that sound clumsy.
 
-
-```diff
-commit 3fbbc6d22ae2b2b573df984189a557d65e641f51
-Author: Olivier Carrère <xxx@xxx.xxx>
-Date:   Sat Sep 20 18:32:27 2025 +0200
-
-    Fix tables
-
-diff --git a/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md b/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md
-index 9592b89c..ea635253 100644
---- a/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md
-+++ b/src/content/docs/en/veille/raspberry-pi-plateforme-documentation.md
-@@ -64,14 +64,14 @@ The aims of this post are to:
- 
-    The following software is installed:
- 
--    | Software | Description |
--    |----------------|----------------------------------------------------------|
--    | Calibre | Digital Book Manager.
--    | Emacs Integrated Development Environment.
--    | Gitk | Decentralized version control software history browser.
--    | Inkscape Vector drawing software.
--    | Python Sphinx | Documentation generator based on reStructuredText format.
--    | Texlive | Complete LaTeX environment for PDF blog generation.
-+    | Software      | Description                                               |
-+    |---------------|-----------------------------------------------------------|
-+    | Calibre       | Digital Book Manager.                                     |
-+    | Emacs         | Integrated Development Environment.                       |
-+    | Gitk          | Decentralized version control software history browser.   |
-+    | Inkscape      | Vector drawing software.                                  |
-+    | Python Sphinx | Documentation generator based on reStructuredText format. |
-+    | Texlive       | Complete LaTeX environment for PDF blog generation.       |
- 
- 3. Free up disk space:
-```
-**Manually fix Markdown table rows by adding missing trailing pipe characters**
-
 ## Manual cleanup
 
 Before moving to the next step, I manually fix structural issues in the translated Markdown:
