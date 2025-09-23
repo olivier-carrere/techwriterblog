@@ -65,26 +65,26 @@ $ git add -p
 
 Git shows each change **hunk by hunk** and lets you decide whether to stage it (**y** = yes, **n** = no). You can split hunks with **s**, edit them manually with **e**, or quit anytime with **q**. This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
 
-```diff
-diff --git a/communication-technique.md b/communication-technique.md
+<div style="background-color:#2e2e2e; color:#ffffff; font-family: monospace; font-size: 0.75em; padding: 1em; white-space: pre-wrap; border-radius: 8px;">
+<span style="color:#4da6ff;">diff --git a/communication-technique.md b/communication-technique.md</span>
 index d5b0c9b8..7a5632af 100644
---- a/communication-technique.md
-+++ b/communication-technique.md
-@@ -1,31 +1,30 @@
-+The goal of technical communication is to convert prospects into
+<span style="color:#ff7f7f;">--- a/communication-technique.md</span>
+<span style="color:#7fff7f;">+++ b/communication-technique.md</span>
+<span style="color:#b266ff;">@@ -1,31 +1,30 @@</span>
+<span style="color:#7fff7f;">+The goal of technical communication is to <span style="color:#ffffff; background-color:#a0dca0;">convert</span> prospects into</span>
 satisfied customers. The technical writer provides the market with
-+the information needed to select, evaluate, and use a high-tech
-+solution. Within the company, they serve as the interface between the
-+R&D and marketing departments. Externally, they facilitate dialogue
-+between the company and its various audiences.
--The goal of technical communication is to turn prospects into
+<span style="color:#7fff7f;">+the information <span style="color:#ffffff; background-color:#a0dca0;">needed</span> to select, evaluate<span style="color:#ffffff; background-color:#a0dca0;">,</span> and use a high-tech</span>
+<span style="color:#7fff7f;">+ solution. Within the company, they <span style="color:#ffffff; background-color:#a0dca0;">serve as</span> the interface between the R&D</span>
+<span style="color:#7fff7f;">+and marketing departments. Externally, they <span style="color:#ffffff; background-color:#a0dca0;">facilitate</span> dialogue between</span>
+the company and its various audiences.
+<span style="color:#ff7f7f;">-The goal of technical communication is to <span style="color:#ffffff; background-color:#ff9999;">turn</span> prospects into</span>
 satisfied customers. The technical writer provides the market with
--the information it needs to select, evaluate and use a high-tech
--solution. Within the company, they are the interface between the R&D
--and marketing departments. Externally, they create dialogue between
--the company and its various audiences.
+<span style="color:#ff7f7f;">-the information <span style="color:#ffffff; background-color:#ff9999;">it needs</span> to select, evaluate and use a high-tech</span>
+<span style="color:#ff7f7f;">-solution. Within the company, <span style="color:#ffffff; background-color:#ff9999;">they are</span> the interface between the R&D</span>
+<span style="color:#ff7f7f;">-and marketing departments. Externally, they <span style="color:#ffffff; background-color:#ff9999;">create</span> dialogue between</span>
+the company and its various audiences.
 (1/1) Indexer cette section [y,n,q,a,d,s,e,p,?] ?
-```
+</div>
 
 Stage the changes you want, commit them with:
 
