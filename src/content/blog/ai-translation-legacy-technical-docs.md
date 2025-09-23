@@ -115,4 +115,4 @@ Repeat until the full documentation set is translated.
 
 This workflow isn’t a replacement for professional translation, but it’s **“good enough” for legacy content** where perfect nuance is less critical. For high-visibility or customer-facing material, plan on a final round of **human proofreading**.
 
-With this pipeline, you can **translate and modernize a large corpus of technical documentation efficiently** - combining the strengths of DeepL, GPT, and a bit of manual oversight.
+With this pipeline, you can **translate and modernize a large corpus of technical documentation efficiently**—combining the strengths of DeepL, GPT, and a bit of manual oversight.
