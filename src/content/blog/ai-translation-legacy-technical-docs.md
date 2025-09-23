@@ -85,26 +85,8 @@ This ensures that the files can be built into the website without errors.
 
 DeepL produces decent raw translations, but the style often needs polishing. To automate this, I created another Python script that sends the translated file to **GPT-4o** with a strict editing prompt:
 
-```python
-def proofread_with_gpt(content):
- response = client.chat.completions.create(
- model="gpt-4o",
-   messages=[
-    {
-    "role": "system",
-    "content": (
-    "You are an expert technical writing editor. "
-    "The text is about technical writing, DITA, structured authoring. "
-    "Fix inconsistencies, unprofessional style, and poor French-to-English translations. "
-    "Keep Markdown formatting intact. "
-    "Return only the corrected text, without explanations."
-    ),
-    },
-    {"role": "user", "content": content},
-   ],
-)
- return response.choices[0].message.content.strip()
-```
+<blockquote>You are an expert technical writing editor. The text is about technical writing, DITA, structured authoring. Fix inconsistencies, unprofessional style, and poor French-to-English translations. Keep Markdown formatting intact. Return only the corrected text, without explanations.
+</blockquote>
 
 To stay in control, the script processes **one file at a time** and stops. This makes it easier to review and cherry-pick changes.
 
