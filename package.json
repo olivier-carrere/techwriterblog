@@ -30,6 +30,7 @@
     "mermaid-cli": "^0.2.4",
     "remark-mermaid-dataurl": "^3.0.1",
     "sharp": "^0.33.5",
+    "swagger-ui-dist": "^5.29.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
