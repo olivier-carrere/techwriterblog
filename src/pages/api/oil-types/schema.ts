@@ -1,15 +1,13 @@
 import type { APIRoute } from "astro";
-import yaml from "js-yaml";
 import oilTypes from "../../../data/oil-types.yaml";
 
-export const GET: APIRoute = async ({ request }) => {
-  // Base OpenAPI spec
+export const GET: APIRoute = async () => {
   const spec = {
     openapi: "3.0.3",
     info: {
       title: "Oil Types API",
       version: "1.0.0",
-      description: "API providing recommended oil types for engines."
+      description: "API providing recommended oil types for engines.",
     },
     paths: {
       "/api/oil-types": {
@@ -21,12 +19,12 @@ export const GET: APIRoute = async ({ request }) => {
               content: {
                 "application/json": {
                   schema: { type: "object" },
-                  example: oilTypes
-                }
-              }
-            }
-          }
-        }
+                  example: oilTypes,
+                },
+              },
+            },
+          },
+        },
       },
       "/api/oil-types/{index}": {
         get: {
@@ -36,8 +34,8 @@ export const GET: APIRoute = async ({ request }) => {
               name: "index",
               in: "path",
               required: true,
-              schema: { type: "integer", minimum: 0 }
-            }
+              schema: { type: "integer", minimum: 0 },
+            },
           ],
           responses: {
             "200": {
@@ -45,37 +43,27 @@ export const GET: APIRoute = async ({ request }) => {
               content: {
                 "application/json": {
                   schema: { type: "object" },
-                  example: oilTypes.properties.rows[0]
-                }
-              }
+                  example: oilTypes.properties.rows[0],
+                },
+              },
             },
             "404": {
               description: "Row not found",
               content: {
                 "application/json": {
                   schema: { type: "object" },
-                  example: { error: "Not found" }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                  example: { error: "Not found" },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   };
 
-  // Detect Accept header
-  const accept = request.headers.get("Accept") || "";
-  if (accept.includes("application/yaml") || accept.includes("text/yaml")) {
-    return new Response(yaml.dump(spec), {
-      status: 200,
-      headers: { "Content-Type": "application/x-yaml" }
-    });
-  }
-
-  // Default to JSON
   return new Response(JSON.stringify(spec, null, 2), {
     status: 200,
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json" },
   });
 };
