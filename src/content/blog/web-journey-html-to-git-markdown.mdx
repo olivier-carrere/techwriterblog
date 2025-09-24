@@ -26,6 +26,30 @@ The site was eventually published in a **frames-based version**, a common approa
 
 For personal projects, I used **[SPIP](https://www.spip.net/en_rubrique25.html)** to manage blog posts. Later, I built multiple sites — both personal and for non-profits — using **WordPress**. Its flexibility, plugin ecosystem, and ease of collaboration made it ideal for small teams or organizations with limited technical resources.
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+---
+config:
+  logLevel: 'debug'
+  theme: 'default'
+  themeVariables:
+    cScale0: '#df9277'        # main warm color
+    cScaleLabel0: '#ffffff'   # label text
+    cScale1: '#f6d1c5'        # lighter warm shade
+    cScaleLabel1: '#4a241a'   # text for lighter shade
+    cScale2: '#fbe9e4'        # pale warm shade
+    cScaleLabel2: '#5a2e23'   # text for pale shade
+---
+timeline
+    title Web Publishing Journey: From HTML to Git-based Markdown
+    1990s : HTML in Notepad / Dreamweaver
+    2000s : CMS SPIP / WordPress
+    2005 : Structured content DocBook / DITA
+    2010 : Static site generators Sphinx / reStructuredText
+    2020 : Modern workflows Astro + GitHub
+`} />
+
 ## Structured content: DocBook and DITA
 
 In professional settings, I shifted from general web pages to **structured content**. I first published **DocBook** content, then moved to **DITA**, using the **DITA-OT toolkit** to generate web output. Later, I used the **[Oxygen XML Editor](https://www.oxygenxml.com/)** to manage and publish structured content. Structured authoring separates content, presentation, and metadata, enabling more consistent, maintainable documentation.
