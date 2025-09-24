@@ -3,18 +3,30 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 
-// Generate a new path for every collection entry
+// Generate paths for all blog entries
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
   }));
 }
 
-// Get the entry directly from the prop on render
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+// Get the entry by slug from params
+const { slug } = Astro.params;
+const entries = await getCollection("blog");
+const entry = entries.find((e) => e.slug === slug);
+
+// If no entry found, throw 404
+if (!entry) {
+  throw new Error(`Blog entry not found for slug: ${slug}`);
+}
+
+// Render MDX content safely
+let Content = null;
+if (entry.render && typeof entry.render === "function") {
+  const rendered = await entry.render();
+  Content = rendered.Content;
+}
 ---
 
 <Layout title={entry.data.title}>
@@ -23,40 +35,37 @@ const { Content } = await entry.render();
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>
-      <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+      <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
         {entry.data.title}
       </h1>
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
-        <span class="text-gray-400">
-          {entry.data.author}
-        </span>
-        <span class="text-gray-400">•</span>
-        <time
-          class="text-gray-400"
-          datetime={entry.data.publishDate.toISOString()}>
-          {entry.data.publishDate.toDateString()}
-        </time>
+        {entry.data.author && <span class="text-gray-400">{entry.data.author}</span>}
+        {entry.data.author && <span class="text-gray-400">•</span>}
+        {entry.data.publishDate && (
+          <time class="text-gray-400" datetime={entry.data.publishDate.toISOString()}>
+            {entry.data.publishDate.toDateString()}
+          </time>
+        )}
         <span class="text-gray-400 hidden md:block">•</span>
         <div class="w-full md:w-auto flex flex-wrap gap-3">
-          {
-            entry.data.tags.map((tag) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
-            ))
-          }
+          {entry.data.tags?.map((tag) => (
+            <span class="text-sm text-gray-500">#{tag}</span>
+          ))}
         </div>
       </div>
     </div>
 
     <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
-      <Content />
+      {Content ? <Content /> : <p>Content not available.</p>}
     </div>
+
     <div class="text-center mt-8">
       <a
         href="/"
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
       >
+        ← Back to Blog
+      </a>
     </div>
   </Container>
 </Layout>
