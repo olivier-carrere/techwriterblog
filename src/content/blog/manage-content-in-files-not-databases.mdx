@@ -54,6 +54,50 @@ Storing content in files means it sits naturally in Git:
 * Work in branches, open PRs, review diffs, merge — exactly the developer workflow you trust.
   These visibility and workflow features are either painful or impossible in many popular CMSes (WordPress, Drupal) where the “published” state is buried behind admin UIs and database rows.
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+graph TD
+  %% Nodes
+  U1["Alice: VS Code"]
+  U2["Bob: Notepad++"]
+
+  F1["Local Repo (feature-branch)"]
+  F2["Local Repo (feature-branch)"]
+
+  ORIGIN["Remote Repo (GitHub)"]
+  PR["Pull Request"]
+  MAIN["Main Branch"]
+  PUBLISH["Publish"]
+
+  %% Flows
+  U1 --> F1
+  U2 --> F2
+
+  F1 -->|"push"| ORIGIN
+  F2 -->|"push"| ORIGIN
+
+  ORIGIN -->|"pull"| F1
+  ORIGIN -->|"pull"| F2
+
+  ORIGIN --> PR --> MAIN --> PUBLISH
+
+  %% Styling
+  classDef user fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+  classDef local fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef remote fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:12,ry:12;
+  classDef review fill:#f6d1c5,stroke:#b8573f,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+
+  class U1,U2 user;
+  class F1,F2 local;
+  class ORIGIN remote;
+  class PR review;
+  class MAIN remote;
+  class PUBLISH remote;
+
+  linkStyle default stroke:#df9277,stroke-width:2px;
+`} />
+
 ## Security: fewer attack surfaces
 
 No DB = no SQL injection. Plain files eliminate a class of vulnerabilities related to dynamic query building, mis-sanitized input, or poorly-configured database engines. There are still security considerations (XSS, server config, secret leakage), but the risk of a corrupted or malicious query is gone.
