@@ -17,20 +17,47 @@ Translating large sets of legacy documentation is always a challenge. Profession
 import Mermaid from '@/components/Mermaid.astro';
 
 <Mermaid chart={`
-graph LR
-  A[Source<br/>language] --> B[DeepL<br/>version] --> C[GPT<br/>proofreading] --> D[Select changes<br/>individually]
+graph TD
+  %% Nodes
+  SRC["Source (French Markdown)"]
+  DEEPL["DeepL Translation"]
+  GPT["GPT-4o Proofreading"]
+  MANUAL["Manual Cleanup / Frontmatter Fix"]
+  REVIEW["Selective Review with Git"]
+  KEEP["Keep Changes"]
+  DISCARD["Discard Changes"]
+  BUILD["Build & Fix Media"]
+  NEXT["Next File / Iterate"]
 
-  %% Define warm shades based on #df9277
+  %% Flows
+  SRC --> DEEPL --> GPT --> MANUAL --> REVIEW
+  REVIEW -->|y| KEEP
+  REVIEW -->|n| DISCARD
+  KEEP --> BUILD
+  DISCARD --> NEXT
+  BUILD --> NEXT
+
+  %% Styling
   classDef source fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
-  classDef translation fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
-  classDef proofreading fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+  classDef deepl fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef gpt fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+  classDef manual fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
   classDef review fill:#df9277,stroke:#b85b3f,stroke-width:2px,color:#fff,font-weight:bold,rx:8,ry:8;
+  classDef keep fill:#98C86B,stroke:#618044,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+  classDef discard fill:#df9277,stroke:#b85b3f,stroke-width:2px,color:#fff,font-weight:bold,rx:8,ry:8;
+  classDef build fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef next fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
 
-  %% Apply styles
-  class A source;
-  class B translation;
-  class C proofreading;
-  class D review;
+  %% Apply classes
+  class SRC source;
+  class DEEPL deepl;
+  class GPT gpt;
+  class MANUAL manual;
+  class REVIEW review;
+  class KEEP keep;
+  class DISCARD discard;
+  class BUILD build;
+  class NEXT next;
 
   %% Link styles
   linkStyle default stroke:#df9277,stroke-width:2px;
