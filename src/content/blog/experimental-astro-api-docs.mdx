@@ -1,130 +1,124 @@
 ---
 draft: false
-title: "Self-Documenting APIs with Astro – Experimental Setup"
-slug: "experimental-astro-api-docs"
-snippet: "Explore our brand-new, experimental approach to dynamic API documentation using Astro, Swagger UI, and OpenAPI."
-image: {
-  src: "/images/blog/astro-api-docs.webp",
+title: "Self-Documenting APIs with Astro – Live Swagger Docs"
+snippet: "Check out our live Swagger-powered documentation and learn how to query our experimental API that serves YAML-based engine oil data."
+image:
+  src: "/images/blog/experimental-astro-api-docs.webp"
   alt: "Astro API Documentation Illustration"
-}
-This is a **brand new, experimental setup** we’ve been working on to make our Astro API fully self-documenting and easier to explore for developers.
+publishDate: "2025-09-24"
+category: "Development"
+tags: ["astro", "api", "swagger", "openapi"]
+---
 
-## Dynamic OpenAPI Schema
+I’ve been experimenting with **self-documenting APIs in Astro**, and you can now **read the API documentation live** on Swagger at:
 
-Instead of maintaining a static `openapi.json` file, we refactored our `/api/oil-types/schema` endpoint to **generate the OpenAPI schema dynamically** from YAML data:
+<a
+  href="https://redaction-technique.org/docs"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-4 py-2 rounded-2xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+>
+  Swagger Docs
+</a>
 
-```ts
-import oilTypes from '../../../data/oil-types.yaml';
-import yaml from 'js-yaml';
 
-export const GET: APIRoute = async ({ request }) => {
-  const spec = {
-    openapi: "3.0.3",
-    info: {
-      title: "Oil Types API",
-      version: "1.0.0",
-      description: "API providing recommended oil types for engines."
-    },
-    paths: {
-      "/api/oil-types": {
-        get: {
-          summary: "Get all oil types",
-          responses: {
-            "200": {
-              description: "Full oil types data",
-              content: { "application/json": { schema: { type: "object" }, example: oilTypes } }
-            }
-          }
-        }
-      },
-      "/api/oil-types/{index}": {
-        get: {
-          summary: "Get single oil type",
-          parameters: [
-            { name: "index", in: "path", required: true, schema: { type: "integer", minimum: 0 } }
-          ],
-          responses: {
-            "200": {
-              description: "Single oil type row",
-              content: { "application/json": { schema: { type: "object" }, example: oilTypes.properties.rows[0] } }
-            },
-            "404": {
-              description: "Row not found",
-              content: { "application/json": { schema: { type: "object" }, example: { error: "Not found" } } }
-            }
-          }
-        }
-      }
-    }
-  };
+This Swagger UI is powered by a dynamic OpenAPI schema that describes the API for experimental engine oil types.
 
-  const accept = request.headers.get("Accept") || "";
-  if (accept.includes("application/yaml") || accept.includes("text/yaml")) {
-    return new Response(yaml.dump(spec), {
-      status: 200,
-      headers: { "Content-Type": "application/x-yaml" }
-    });
-  }
+## What the API Exposes
 
-  return new Response(JSON.stringify(spec, null, 2), {
-    status: 200,
-    headers: { "Content-Type": "application/json" }
-  });
-};
-````
+The API serves structured content generated from a simple YAML source file.  
+The endpoint is available at:
 
-The schema now includes:
+<a
+  href="http://redaction-technique.org/api/oil-types"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-4 py-2 rounded-2xl bg-green-600 text-white font-medium shadow hover:bg-green-700 transition"
+>
+  Oil Types API
+</a>
 
-* `/api/oil-types` – returns the full oil types dataset
-* `/api/oil-types/{index}` – returns a single row
 
-The endpoint respects the `Accept` header:
+The underlying YAML looks like this:
 
-* `application/json` → JSON (default)
-* `application/yaml` → YAML
-
-This ensures the API documentation is **always in sync** with the underlying data.
-
-## Swagger UI Integration
-
-We also added a `/docs` page that embeds **Swagger UI** directly in the site:
-
-* Interactive API explorer
-* Try-it-out buttons
-* Live fetching of the dynamic OpenAPI spec
-
-```html
-<script src="/swagger-ui/swagger-ui-bundle.js" is:inline></script>
-<script src="/swagger-ui/swagger-ui-standalone-preset.js" is:inline></script>
-
-<script is:inline>
-  window.onload = () => {
-    SwaggerUIBundle({
-      url: '/api/oil-types/schema', // points to your dynamic OpenAPI JSON
-      dom_id: '#swagger-ui',
-      presets: [
-        SwaggerUIBundle.presets.apis,
-        SwaggerUIStandalonePreset
-      ],
-      layout: 'StandaloneLayout'
-    });
-  };
-</script>
+```yaml
+id: oil-types
+title: Oil types
+shortdesc: You will find below the recommended oil types.
+properties:
+  headers:
+    type: Type
+    value: Brand
+    description: Use
+  rows:
+    - type: Primary oil
+      value: A1X
+      description: One-cylinder engines
+    - type: Secondary oil
+      value: B2Z
+      description: Two-cylinder engines
 ```
 
-> Using `is:inline` fixes the Vite bundling issues in Astro 5.x.
+This structure transforms into an OpenAPI schema so Swagger can present it interactively.
 
-## Benefits
+## How to Query the API
 
-1. **No static OpenAPI files** – everything is generated from your data.
-2. **Supports JSON and YAML** – works with Swagger, Postman, or Redoc.
-3. **Self-documenting** – docs always reflect the current API state.
-4. **Vercel-ready** – works with serverless Astro APIs without extra configuration.
+You can query the API directly with JavaScript or from your terminal.
 
-## Next Steps
+### Using fetch (JavaScript)
 
-* Add a navbar link or CTA to `/docs` for easier access.
-* Extend the OpenAPI schema with richer descriptions, examples, and tags.
-* Explore secure endpoints with authentication support in Swagger UI.
+```ts
+// Fetch all oil types
+fetch("http://redaction-technique.org/api/oil-types")
+  .then(res => res.json())
+  .then(data => {
+    console.log("All oil types:", data);
+  });
+```
 
-This setup is **experimental** and demonstrates how modern static-site frameworks like **Astro** can provide **dynamic, fully interactive API documentation** with minimal overhead.
+### Using cURL (terminal)
+
+```bash
+# Get all oil types
+curl http://redaction-technique.org/api/oil-types
+```
+
+## Example Responses
+
+Here’s what you’ll see when calling the API:
+
+### GET /api/oil-types
+
+```json
+{
+  "id": "oil-types",
+  "title": "Oil types",
+  "shortdesc": "You will find below the recommended oil types.",
+  "properties": {
+    "headers": {
+      "type": "Type",
+      "value": "Brand",
+      "description": "Use"
+    },
+    "rows": [
+      {
+        "type": "Primary oil",
+        "value": "A1X",
+        "description": "One-cylinder engines"
+      },
+      {
+        "type": "Secondary oil",
+        "value": "B2Z",
+        "description": "Two-cylinder engines"
+      }
+    ]
+  }
+}
+```
+
+## Why Swagger?
+
+Instead of relying on a static `openapi.json`, the schema is generated **dynamically from YAML**.
+This means that when the YAML file changes, the documentation at [https://redaction-technique.org/docs](https://redaction-technique.org/docs) **updates automatically**.
+
+This keeps API documentation **in sync with the actual API**, without extra maintenance work.
