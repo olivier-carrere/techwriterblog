@@ -52,6 +52,54 @@ DITA task topics have strict rules: short context, prerequisites, ordered steps,
 </task>
 ```
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+graph LR
+  %% Nodes
+  T[Task Topic]
+  T1[Title]
+  T2[Short Description]
+  T3[Prerequisites]
+  T4[Steps]
+  T5[Result / Output]
+  T6[Example / Notes]
+
+  %% Nested steps
+  S1[Step 1]
+  S1a[Sub-step 1a]
+  S1b[Sub-step 1b]
+  S2[Step 2]
+  S2a[Sub-step 2a]
+
+  %% Structure
+  T --> T1
+  T --> T2
+  T --> T3
+  T --> T4
+  T --> T5
+  T --> T6
+
+  T4 --> S1
+  T4 --> S2
+  S1 --> S1a
+  S1 --> S1b
+  S2 --> S2a
+
+  %% Styling
+  classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+  classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+
+  class T topic
+  class T1,T2,T3,T4,T5,T6 step
+  class S1,S1a,S1b,S2,S2a substep
+
+  linkStyle default stroke:#df9277,stroke-width:2px;
+`} />
+**Hierarchy of Elements in a DITA Task Topic (Steps, Sub-steps, and Metadata)**
+
+
 You can recreate this in Markdown easily:
 
 ```markdown
