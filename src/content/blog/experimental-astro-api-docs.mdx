@@ -116,6 +116,12 @@ Here’s what you’ll see when calling the API:
 }
 ```
 
+## Build-Time Usage with Astro
+
+As exemplified in [Strong Information Typing Without XML Overhead](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead), the **same YAML file powering the API** can also be **queried at build time via Astro**. This allows you to **populate tables, lists, or other components statically**, keeping pages fast and SEO-friendly.
+
+This **build-time approach** complements the dynamic API, letting you use the **same source of truth** for both interactive documentation and static content.
+
 ## Why Swagger?
 
 Instead of relying on a static **openapi.json**, the schema is generated **dynamically from YAML**.
