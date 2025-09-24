@@ -69,9 +69,11 @@ graph LR
   S1[Step 1]
   S1a[Command]
   S1b[Additional info]
+  S1c[Step result]
   S2[Step 2]
   S2a[Command]
   S2b[Additional info]
+  S2c[Step result]
 
   %% Structure
   T --> T1
@@ -85,8 +87,10 @@ graph LR
   T4 --> S2
   S1 --> S1a
   S1 --> S1b
+  S1 --> S1c
   S2 --> S2a
   S2 --> S2b
+  S2 --> S2c
 
   %% Styling
   classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
@@ -95,7 +99,7 @@ graph LR
 
   class T topic
   class T1,T2,T3,T4,T5,T6 step
-  class S1,S1a,S1b,S2,S2a,S2b substep
+  class S1,S1a,S1b,S1c,S2,S2a,S2b,S2c substep
 
   linkStyle default stroke:#df9277,stroke-width:2px;
 `} />
