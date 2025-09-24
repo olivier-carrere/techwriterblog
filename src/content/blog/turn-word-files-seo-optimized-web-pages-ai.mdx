@@ -17,6 +17,45 @@ A non-profit organization holds a unique archive: decades of conference transcri
 
 They were rich in content but poor in structure—long documents without proper titles, headings, or metadata. Making them available online, searchable, and SEO-friendly required a modern, scalable solution.
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+graph TD
+  %% Nodes
+  WORD["Legacy Word Files"]
+  PANDOC["Convert to Markdown with Pandoc"]
+  SPLIT["Split into Sections using Python Script"]
+  GPT_META["Generate Metadata and SEO with GPT-4o"]
+  REVIEW["Review Changes with git diff / Human Oversight"]
+  BUILD["Build and Publish Web Pages"]
+  ITERATE["Next File / Repeat Workflow"]
+
+  %% Flows
+  WORD --> PANDOC --> SPLIT --> GPT_META --> REVIEW
+  GPT_META --> BUILD --> ITERATE
+  REVIEW -->|Adjust script or GPT prompt| SPLIT
+
+  %% Styling
+  classDef source fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+  classDef conversion fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef ai fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+  classDef review fill:#df9277,stroke:#b85b3f,stroke-width:2px,color:#fff,font-weight:bold,rx:8,ry:8;
+  classDef build fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef iterate fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+
+  %% Apply classes
+  class WORD source;
+  class PANDOC,SPLIT conversion;
+  class GPT_META ai;
+  class REVIEW review;
+  class BUILD build;
+  class ITERATE iterate;
+
+  %% Link styles
+  linkStyle default stroke:#df9277,stroke-width:2px;
+`} />
+
+
 This post explains how we achieved that transformation with a mix of **Markdown, Pandoc, and GPT-powered automation**, at a total cost of about **$30**.
 
 ## Structuring legacy content
