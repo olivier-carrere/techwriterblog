@@ -1,0 +1,130 @@
+---
+draft: false
+title: "Self-Documenting APIs with Astro – Experimental Setup"
+slug: "experimental-astro-api-docs"
+snippet: "Explore our brand-new, experimental approach to dynamic API documentation using Astro, Swagger UI, and OpenAPI."
+image: {
+  src: "/images/blog/astro-api-docs.webp",
+  alt: "Astro API Documentation Illustration"
+}
+This is a **brand new, experimental setup** we’ve been working on to make our Astro API fully self-documenting and easier to explore for developers.
+
+## Dynamic OpenAPI Schema
+
+Instead of maintaining a static `openapi.json` file, we refactored our `/api/oil-types/schema` endpoint to **generate the OpenAPI schema dynamically** from YAML data:
+
+```ts
+import oilTypes from '../../../data/oil-types.yaml';
+import yaml from 'js-yaml';
+
+export const GET: APIRoute = async ({ request }) => {
+  const spec = {
+    openapi: "3.0.3",
+    info: {
+      title: "Oil Types API",
+      version: "1.0.0",
+      description: "API providing recommended oil types for engines."
+    },
+    paths: {
+      "/api/oil-types": {
+        get: {
+          summary: "Get all oil types",
+          responses: {
+            "200": {
+              description: "Full oil types data",
+              content: { "application/json": { schema: { type: "object" }, example: oilTypes } }
+            }
+          }
+        }
+      },
+      "/api/oil-types/{index}": {
+        get: {
+          summary: "Get single oil type",
+          parameters: [
+            { name: "index", in: "path", required: true, schema: { type: "integer", minimum: 0 } }
+          ],
+          responses: {
+            "200": {
+              description: "Single oil type row",
+              content: { "application/json": { schema: { type: "object" }, example: oilTypes.properties.rows[0] } }
+            },
+            "404": {
+              description: "Row not found",
+              content: { "application/json": { schema: { type: "object" }, example: { error: "Not found" } } }
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const accept = request.headers.get("Accept") || "";
+  if (accept.includes("application/yaml") || accept.includes("text/yaml")) {
+    return new Response(yaml.dump(spec), {
+      status: 200,
+      headers: { "Content-Type": "application/x-yaml" }
+    });
+  }
+
+  return new Response(JSON.stringify(spec, null, 2), {
+    status: 200,
+    headers: { "Content-Type": "application/json" }
+  });
+};
+````
+
+The schema now includes:
+
+* `/api/oil-types` – returns the full oil types dataset
+* `/api/oil-types/{index}` – returns a single row
+
+The endpoint respects the `Accept` header:
+
+* `application/json` → JSON (default)
+* `application/yaml` → YAML
+
+This ensures the API documentation is **always in sync** with the underlying data.
+
+## Swagger UI Integration
+
+We also added a `/docs` page that embeds **Swagger UI** directly in the site:
+
+* Interactive API explorer
+* Try-it-out buttons
+* Live fetching of the dynamic OpenAPI spec
+
+```html
+<script src="/swagger-ui/swagger-ui-bundle.js" is:inline></script>
+<script src="/swagger-ui/swagger-ui-standalone-preset.js" is:inline></script>
+
+<script is:inline>
+  window.onload = () => {
+    SwaggerUIBundle({
+      url: '/api/oil-types/schema', // points to your dynamic OpenAPI JSON
+      dom_id: '#swagger-ui',
+      presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+      ],
+      layout: 'StandaloneLayout'
+    });
+  };
+</script>
+```
+
+> Using `is:inline` fixes the Vite bundling issues in Astro 5.x.
+
+## Benefits
+
+1. **No static OpenAPI files** – everything is generated from your data.
+2. **Supports JSON and YAML** – works with Swagger, Postman, or Redoc.
+3. **Self-documenting** – docs always reflect the current API state.
+4. **Vercel-ready** – works with serverless Astro APIs without extra configuration.
+
+## Next Steps
+
+* Add a navbar link or CTA to `/docs` for easier access.
+* Extend the OpenAPI schema with richer descriptions, examples, and tags.
+* Explore secure endpoints with authentication support in Swagger UI.
+
+This setup is **experimental** and demonstrates how modern static-site frameworks like **Astro** can provide **dynamic, fully interactive API documentation** with minimal overhead.
