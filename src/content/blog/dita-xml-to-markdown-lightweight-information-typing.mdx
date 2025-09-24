@@ -22,6 +22,40 @@ Markdown is a **lightweight markup language**. Unlike XML, it’s human-readable
 
 Instead of relying on heavy XML toolchains, writers can leverage **open, freely available tools**—including static site generators like [**Astro**](https://astro.build/) and its [**Starlight**](https://starlight.astro.build/) theme. Structured documentation is now accessible to a wider audience: individual writers, small teams, open-source contributors, and enterprise documentation teams alike.
 
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+graph LR
+  %% Nodes
+  ASTRO["Astro"]
+  WRITE["Markdown<br/>Content"]
+  GITHUB["GitHub"]
+  CDN["Content<br/>Delivery<br/>Network"]
+  WEB["Web"]
+
+  %% Flows
+   GITHUB --> CDN --> ASTRO --> WEB
+   WRITE -->|Write| GITHUB
+   GITHUB -->|Review| WRITE
+
+  %% Styling
+  classDef astro fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+  classDef write fill:#df9277,stroke:#b85b3f,stroke-width:2px,color:#fff,font-weight:bold,rx:8,ry:8;
+  classDef github fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+
+  %% Apply classes
+  class STRUCTURE structure;
+  class CONVERSION conversion;
+  class ASTRO astro;
+  class WRITE write;
+  class GITHUB github;
+  class CDN github;
+  class WEB github;
+
+  %% Link styles
+  linkStyle default stroke:#df9277,stroke-width:2px;
+`} />
+
 This blog is a **work in progress**. Most [legacy content remains in French](https://docs.redaction-technique.org/), but **new content will primarily be in English**. Over time, older posts may be translated or curated to align with this new focus.
 
 The mission remains the same: providing practical insights to help technical communicators navigate the evolving landscape of documentation—now with an emphasis on **lightweight, open, and sustainable practices**.
