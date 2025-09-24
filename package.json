@@ -5,14 +5,15 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vercel": "^8.2.8",
     "@fontsource-variable/bricolage-grotesque": "^5.2.5",
     "@fontsource-variable/inter": "^5.2.5",
     "@iconify-json/bx": "^1.2.2",
@@ -26,9 +27,11 @@
     "astro-icon": "^1.1.5",
     "astro-navbar": "^2.3.9",
     "astro-seo": "^0.8.4",
+    "js-yaml": "^4.1.0",
     "mermaid-cli": "^0.2.4",
     "remark-mermaid-dataurl": "^3.0.1",
     "sharp": "^0.33.5",
+    "swagger-ui-dist": "^5.29.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
