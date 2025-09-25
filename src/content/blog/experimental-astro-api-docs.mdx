@@ -34,29 +34,28 @@ By exposing structured reference information through an API generated from YAML,
 
 ## One YAML File, Many Outputs
 
-The API serves [structured content generated from a YAML source file](https://redaction-technique.org/api/oil-types).  
+By keeping all reference information in **a single YAML file**, you gain a powerful distribution workflow.  
+From this one source of truth, the data can flow into **interactive Swagger documentation**, **SEO-friendly HTML pages**, or be accessed directly via **API calls**.  
 
-Here’s an example of the underlying YAML:
+The diagram below shows how the same YAML powers multiple outputs without duplication or extra maintenance:
 
-```yaml
-id: oil-types
-title: Oil types
-shortdesc: You will find below the recommended oil types.
-properties:
-  headers:
-    type: Type
-    value: Brand
-    description: Use
-  rows:
-    - type: Primary oil
-      value: A1X
-      description: One-cylinder engines
-    - type: Secondary oil
-      value: B2Z
-      description: Two-cylinder engines
-````
+import Mermaid from '@/components/Mermaid.astro';
 
-This single file transforms into an **OpenAPI schema**, making it possible for Swagger to display the content interactively—while the same data is also consumable in apps, docs, or build-time pipelines.
+<Mermaid chart={`
+graph TD
+    A["📄 YAML Source File"]:::topic --> B["📘 Swagger Docs<br/>(OpenAPI schema)"]:::step
+    A --> C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
+    A --> D["⚡ API Queries<br/>(fetch / curl)"]:::step
+
+    B -->|Interactive browsing| B1["🖥️ Swagger UI"]:::substep
+    C -->|SEO-friendly pages| C1["📑 Tables, Lists"]:::substep
+    D -->|Live API calls| D1["📦 JSON Responses"]:::substep
+    D -->|Consumed by clients| D2["📱 Mobile App"]:::substep
+
+    classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+    classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+    classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+`} />
 
 ## Querying the API in Practice
 
