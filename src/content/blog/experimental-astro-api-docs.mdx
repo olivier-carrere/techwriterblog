@@ -10,34 +10,13 @@ category: "Development"
 tags: ["astro", "api", "swagger", "openapi"]
 ---
 
-I’ve been experimenting with **self-documenting APIs in Astro**, and you can now **read the API documentation live** on Swagger at:
-
-<a
-  href="https://redaction-technique.org/docs"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block px-4 py-2 rounded-2xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
->
-  Swagger Docs
-</a>
-
+I’ve been experimenting with **self-documenting APIs in Astro**, and you can now [**read the API documentation live** on Swagger](https://redaction-technique.org/docs).
 
 This Swagger UI is powered by a dynamic OpenAPI schema that describes the API for experimental engine oil types.
 
 ## What the API Exposes
 
-The API serves structured content generated from a simple YAML source file.  
-The endpoint is available at:
-
-<a
-  href="https://redaction-technique.org/api/oil-types"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block px-4 py-2 rounded-2xl bg-green-600 text-white font-medium shadow hover:bg-green-700 transition"
->
-  Oil Types API
-</a>
-
+The API serves [structured content generated from a simple YAML source file](https://redaction-technique.org/api/oil-types).  
 
 The underlying YAML looks like this:
 
@@ -116,11 +95,11 @@ Here’s what you’ll see when calling the API:
 }
 ```
 
-## Build-Time Usage with Astro
-
-As exemplified in [Strong Information Typing Without XML Overhead](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead), the **same YAML file powering the API** can also be **queried at build time via Astro**. This allows you to **populate tables, lists, or other components statically**, keeping pages fast and SEO-friendly.
+<blockquote>
+As exemplified in [Strong Information Typing Without XML Overhead](../strong-information-typing-without-xml-overhead/), you can also query the same YAML file powering the API **at build time via Astro**. This allows you to **populate tables, lists, or other components statically**, keeping pages fast and SEO-friendly.
 
 This **build-time approach** complements the dynamic API, letting you use the **same source of truth** for both interactive documentation and static content.
+</blockquote>
 
 ## Why Swagger?
 
