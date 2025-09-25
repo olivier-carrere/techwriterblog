@@ -9,14 +9,9 @@
     'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* ----------------------------------------
+   Base layer: border color defaults
+---------------------------------------- */
 @layer base {
   *,
   ::after,
@@ -24,5 +19,55 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+/* ----------------------------------------
+   Components layer
+---------------------------------------- */
+@layer components {
+
+  /* -----------------------------
+     Typography: Blockquotes
+  ----------------------------- */
+  .prose blockquote {
+    font-style: normal !important;          /* remove italics */
+    font-weight: inherit !important;        /* match normal text */
+    font-size: inherit !important;          /* same as <p> */
+    line-height: inherit !important;        /* same as <p> */
+    background-color: #FFF4CD;   /* warm light background */
+    padding: 0.75rem 1rem;
+    border-left: 0.25rem solid #FFDE68; /* muted border */
+    border-radius: 0.375rem;
+  }
+
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:last-of-type::after {
+    content: none !important; /* remove quotes */
+  }
+
+  /* -----------------------------
+     Code blocks (Astro + Shiki/Prism output)
+  ----------------------------- */
+  .astro-code {
+experimental-astro-api-docs    background-color: theme('colors.gray.900'); /* github-dark background */
+    color: theme('colors.gray.200');           /* base text color */
+    overflow-x: auto;
+  }
+
+  /* Bash prompt ($) */
+  .astro-code[data-language="bash"] .line span:first-child {
+    color: theme('colors.lime.300') !important; /* green */
+  }
+
+  /* Bash commands (git, add, etc.) */
+  .astro-code[data-language="bash"] .line span:nth-child(2),
+  .astro-code[data-language="bash"] .line span:nth-child(3) {
+    color: theme('colors.amber.300') !important;   /* orange */
+  }
+
+  /* Bash flags/options (-p, -m, etc.) */
+  .astro-code[data-language="bash"] .line span:nth-child(4) {
+    color: theme('colors.lime.400') !important;    /* blue */
   }
 }
