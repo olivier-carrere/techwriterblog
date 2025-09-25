@@ -46,28 +46,4 @@
     content: none !important; /* remove quotes */
   }
 
-  /* -----------------------------
-     Code blocks (Astro + Shiki/Prism output)
-  ----------------------------- */
-  .astro-code {
-experimental-astro-api-docs    background-color: theme('colors.gray.900'); /* github-dark background */
-    color: theme('colors.gray.200');           /* base text color */
-    overflow-x: auto;
-  }
-
-  /* Bash prompt ($) */
-  .astro-code[data-language="bash"] .line span:first-child {
-    color: theme('colors.lime.300') !important; /* green */
-  }
-
-  /* Bash commands (git, add, etc.) */
-  .astro-code[data-language="bash"] .line span:nth-child(2),
-  .astro-code[data-language="bash"] .line span:nth-child(3) {
-    color: theme('colors.amber.300') !important;   /* orange */
-  }
-
-  /* Bash flags/options (-p, -m, etc.) */
-  .astro-code[data-language="bash"] .line span:nth-child(4) {
-    color: theme('colors.lime.400') !important;    /* blue */
-  }
 }
