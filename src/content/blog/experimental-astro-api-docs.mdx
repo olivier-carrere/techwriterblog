@@ -1,16 +1,16 @@
 ---
 draft: false
-title: "Self-Documenting APIs with Astro – Live Swagger Docs"
-snippet: "Check out our live Swagger-powered documentation and learn how to query our experimental API that serves YAML-based engine oil data."
+title: "Distribute API Reference from YAML Across Docs, Apps, and Swagger"
+snippet: "Learn how one YAML file can serve as a single source of truth for APIs, powering Swagger docs, HTML documentation, and even mobile apps."
 image:
   src: "/images/blog/experimental-astro-api-docs.webp"
   alt: "Astro API Documentation Illustration"
 publishDate: "2025-09-24"
 category: "Development"
-tags: ["astro", "api", "swagger", "openapi"]
+tags: ["astro", "api", "swagger", "openapi", "yaml", "documentation"]
 ---
 
-I’ve been experimenting with **self-documenting APIs in Astro**, and you can now [**read the API documentation live** on Swagger](https://redaction-technique.org/docs).
+I’ve been experimenting with **self-documenting APIs in Astro**, and you can now [**browse the live Swagger-powered documentation**](https://redaction-technique.org/docs).
 
 <iframe
   title="Redaction Technique Documentation"
@@ -21,13 +21,20 @@ I’ve been experimenting with **self-documenting APIs in Astro**, and you can n
   loading="lazy"
 ></iframe>
 
-This Swagger UI is powered by a dynamic OpenAPI schema that describes the API for experimental engine oil types.
+This Swagger UI is powered by a dynamic OpenAPI schema—but the real magic is that **everything comes from a single YAML file**.  
 
-## What the API Exposes
+By exposing structured reference information through an API generated from YAML, you can **reuse the same source of truth** across multiple contexts:  
 
-The API serves [structured content generated from a simple YAML source file](https://redaction-technique.org/api/oil-types).  
+- Swagger interactive documentation  
+- Static HTML doc pages  
+- Mobile and desktop applications  
+- Build-time Astro components for SEO-friendly rendering  
 
-The underlying YAML looks like this:
+## One YAML File, Many Outputs
+
+The API serves [structured content generated from a YAML source file](https://redaction-technique.org/api/oil-types).  
+
+Here’s an example of the underlying YAML:
 
 ```yaml
 id: oil-types
@@ -45,11 +52,11 @@ properties:
     - type: Secondary oil
       value: B2Z
       description: Two-cylinder engines
-```
+````
 
-This structure transforms into an OpenAPI schema so Swagger can present it interactively.
+This single file transforms into an **OpenAPI schema**, making it possible for Swagger to display the content interactively—while the same data is also consumable in apps, docs, or build-time pipelines.
 
-## How to Query the API
+## Querying the API in Practice
 
 You can query the API directly with JavaScript or from your terminal.
 
@@ -71,7 +78,7 @@ fetch("https://redaction-technique.org/api/oil-types")
 curl https://redaction-technique.org/api/oil-types
 ```
 
-## Example Responses
+## Example JSON Output
 
 Here’s what you’ll see when calling the API:
 
@@ -105,14 +112,18 @@ Here’s what you’ll see when calling the API:
 ```
 
 <blockquote>
-As exemplified in [Strong Information Typing Without XML Overhead](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead), you can also query the same YAML file powering the API **at build time via Astro**. This allows you to **populate tables, lists, or other components statically**, keeping pages fast and SEO-friendly.
-
-This **build-time approach** complements the dynamic API, letting you use the **same source of truth** for both interactive documentation and static content.
+As explained in [Strong Information Typing Without XML Overhead](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead), the same YAML file can also be consumed **at build time in Astro**.  
+This lets you generate **static tables, lists, or components**—keeping pages fast, SEO-friendly, and always consistent with the live API.
 </blockquote>
 
-## Why Swagger?
+## Why YAML as the Source of Truth?
 
-Instead of relying on a static **openapi.json**, the schema is generated **dynamically from YAML**.
-This means that when the YAML file changes, the documentation at [https://redaction-technique.org/docs](https://redaction-technique.org/docs) **updates automatically**.
+Instead of relying on a static `openapi.json`, the schema is generated **directly from YAML**.
 
-This keeps API documentation **in sync with the actual API**, without extra maintenance work.
+This approach ensures:
+
+* **One source of truth** across APIs, docs, and apps
+* **Automatic updates**—change the YAML, and all media refresh accordingly
+* **Lower maintenance costs** by avoiding duplicated schemas or outdated docs
+
+By centralizing reference information in YAML, you don’t just build an API—you build a **distribution engine for consistent, reusable documentation across every medium**.
