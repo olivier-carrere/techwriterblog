@@ -14,6 +14,9 @@ tags: ["DITA", "Markdown", "Information Typing", "Content Model", "Docs-as-Code"
 
 import ToolsList from '../../components/ToolsList.astro'
 import ToolsTable from '../../components/ToolsTable.astro'
+import yamlRaw from '../../data/oil-types.yaml?raw';
+import ToolsListContent from '../../components/ToolsList.astro?raw';
+import ToolsTableContent from '../../components/ToolsTable.astro?raw';
 
 If you’ve spent years working daily with the DITA XML platform, you know that DITA is more than a markup language. It’s a way of thinking about information design. Writing tasks, concepts, and references in DITA teaches you to break down content into consistent building blocks, which makes documentation easier to navigate, maintain, and reuse.
 
@@ -208,46 +211,21 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
 1. **Create the YAML file**
    Create a file at **src/data/oil-types.yaml** with the following content:
 
-   ```yaml
-   id: oil-types
-   title: Oil types
-   shortdesc: You will find below the recommended oil types.
-   properties:
-     headers:
-       type: Type
-       value: Brand
-       description: Use
-     rows:
-       - type: Primary oil
-         value: A1X
-         description: One-cylinder engines
-       - type: Secondary oil
-         value: B2Z
-         description: Two-cylinder engines
-   ```
+	<pre>
+	<code>
+	{yamlRaw}
+	</code>
+	</pre>
 
-2. **Create the Astro component**
+2. **Create the Astro component**. 
+
    Create a file at **src/components/ToolsList.astro** with the following content:
 
-   ```javascript
-   ---
-   import data from "../data/oil-types.yaml";
-   const rows = data.properties.rows;
-   ---
-   <h3>{data.title}</h3>
-   <p>{data.shortdesc}</p>
-   <ul>
-     {rows.map(row => (
-       <li>
-         <strong>{row.type}</strong>
-         <ul>
-           <li>Brand: {row.value}</li>
-           <li>Use: {row.description}</li>
-         </ul>
-       </li>
-     ))}
-   </ul>
-   ```
+	<pre>
+	<code>
+	{ToolsListContent}
+	</code>
+	</pre>
 
 3. **Insert the component in your MDX file**
    Add the following snippet to your **.mdx** file:
@@ -261,38 +239,19 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
    
    <ToolsList />
 
-4. **(Optional) Display the content in a table**
-   If you prefer a table format, modify **ToolsList.astro** as follows:
+4. **(Optional) Display the content in a table**.
 
-   ```javascript
-   ---
-   import data from "../data/oil-types.yaml";
-   const headers = data.properties.headers;
-   const rows = data.properties.rows;
-   ---
-   <h3 style="color: #2c3e50;">{data.title}</h3>
-   <p>{data.shortdesc}</p>
-   <table style="border-collapse: collapse; width: 100%;">
-     <thead style="background-color: #3498db; color: white;">
-       <tr>
-         <th style="padding: 8px; border: 1px solid #ddd;">{headers.type}</th>
-         <th style="padding: 8px; border: 1px solid #ddd;">{headers.value}</th>
-         <th style="padding: 8px; border: 1px solid #ddd;">{headers.description}</th>
-       </tr>
-     </thead>
-     <tbody>
-       {rows.map((row, index) => (
-         <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
-           <td style="padding: 8px; border: 1px solid #ddd;">{row.type}</td>
-           <td style="padding: 8px; border: 1px solid #ddd;">{row.value}</td>
-           <td style="padding: 8px; border: 1px solid #ddd;">{row.description}</td>
-         </tr>
-       ))}
-     </tbody>
-   </table>
-   ```
+	If you prefer a table format, modify **ToolsList.astro** as follows:
 
-   Your YAML content now renders automatically as a styled table:
+	<pre>
+	<code>
+	{ToolsTableContent}
+	</code>
+	</pre>
+
+
+
+   Your YAML content now renders automatically as a styled table.
 
    <ToolsTable />
 
