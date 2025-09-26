@@ -170,8 +170,11 @@ The structure shows it’s an explanatory page, not a step-by-step guide.
 
 References benefit from structured tables and lists.
 
-Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) example:
+Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) example.
 
+---
+<details>
+<summary><strong>DITA reference example</strong></summary>
 ```xml
 <reference id="oil-types">
   <title>Oil types</title>
@@ -198,6 +201,8 @@ Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/sp
   </refbody>
 </reference>
 ```
+</details>
+---
 
 Markdown supports tables and lists.
 
@@ -228,21 +233,31 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
 1. **Create the YAML file**
    Create a file at **src/data/oil-types.yaml** with the following content:
 
+	---
+	<details>
+	<summary><strong>oil-types.yaml</strong></summary>
 	<pre>
 	<code>
 	{yamlRaw}
 	</code>
 	</pre>
+	</details>
+	---
 
 2. **Create the Astro component**. 
 
    Create a file at **src/components/ToolsList.astro** with the following content:
 
+	---
+	<details>
+	<summary><strong>ToolsList.astro</strong></summary>
 	<pre>
 	<code>
 	{ToolsListContent}
 	</code>
 	</pre>
+	</details>
+	---
 
 3. **Insert the component in your MDX file**.
    Add the following snippet to your **.mdx** file:
