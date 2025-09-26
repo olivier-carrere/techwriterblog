@@ -198,9 +198,15 @@ Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/sp
 </reference>
 ```
 
-Markdown supports tables and lists:
+Markdown supports tables and lists.
 
-```markdown
+<blockquote>
+
+| Type          | Brand       | Usage                | Viscosity grade |
+|---------------|------------|--------------------|----------------|
+| Primary oil   | A1X        | One-cylinder engines | 0W-20          |
+| Secondary oil | B2Y        | Two-cylinder engines | 5W-30          |
+
 - Primary oil
   - Brand:
   - Usage: One-cylinder engines
@@ -209,7 +215,8 @@ Markdown supports tables and lists:
   - Brand:
   - Usage: Two-cylinder engines
   - Viscosity grade: 5W-30
-```
+</blockquote>
+
 
 This mirrors a DITA reference topic: concise and easy to scan.
 
@@ -244,9 +251,11 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
    <ToolsList />
    ```
 
-   This renders your YAML content automatically as a list:
+   This renders your YAML content automatically as a list.
 
-   <ToolsList />
+	<blockquote>
+	<ToolsList />
+	</blockquote>
 
 4. **(Optional) Display the content in a table**.
 
@@ -265,7 +274,9 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
 
    Your YAML content now renders automatically as a styled table.
 
-   <ToolsTable />
+	<blockquote>
+	<ToolsTable />
+	</blockquote>
 
 ## Why this matters
 
