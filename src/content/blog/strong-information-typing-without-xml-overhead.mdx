@@ -39,6 +39,9 @@ Once you’ve internalized this mindset, it becomes natural to apply it even out
 
 DITA task topics have strict rules: short context, prerequisites, ordered steps, results. The official [OASIS example](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/step.html) is as follows:
 
+---
+<details>
+  <summary><strong>DITA Task Example</strong></summary>
 ```xml
 <task id="sqlj">
 <title>Creating an SQLJ file</title>
@@ -54,6 +57,8 @@ DITA task topics have strict rules: short context, prerequisites, ordered steps,
 </taskbody>
 </task>
 ```
+</details>
+---
 
 import Mermaid from '@/components/Mermaid.astro';
 
@@ -227,7 +232,7 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
 	</code>
 	</pre>
 
-3. **Insert the component in your MDX file**
+3. **Insert the component in your MDX file**.
    Add the following snippet to your **.mdx** file:
 
    ```html
@@ -236,20 +241,23 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
    ```
 
    This renders your YAML content automatically as a list:
-   
+
    <ToolsList />
 
 4. **(Optional) Display the content in a table**.
 
-	If you prefer a table format, modify **ToolsList.astro** as follows:
+	If you prefer a table format, modify **ToolsList.astro** as follows.
 
+	---
+	<details>
+	<summary><strong>ToolsList.astro</strong></summary>
 	<pre>
 	<code>
 	{ToolsTableContent}
 	</code>
 	</pre>
-
-
+	</details>
+	---
 
    Your YAML content now renders automatically as a styled table.
 
