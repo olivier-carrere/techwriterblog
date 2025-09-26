@@ -1,0 +1,28 @@
+---
+import data from "../data/oil-types.yaml"; // assumes YAML plugin is configured
+const rows = data.properties.rows;
+---
+
+<h3 style="color: #2c3e50;">{data.title}</h3>
+<p>{data.shortdesc}</p>
+
+<table style="border-collapse: collapse; width: 100%;">
+  <thead style="background-color: #3498db; color: white;">
+    <tr>
+      <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Name</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Usage</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Viscosity grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((row, index) => (
+      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
+        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">{row.type}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.name}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.usage}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.viscosity_grade}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -14,6 +14,7 @@ tags: ["DITA", "Markdown", "Information Typing", "Content Model", "Docs-as-Code"
 
 import ToolsList from '../../components/ToolsList.astro'
 import ToolsTable from '../../components/ToolsTable.astro'
+import ToolsTableFourCols from '../../components/ToolsTableFourCols.astro';
 import yamlRaw from '../../data/oil-types.yaml?raw';
 import ToolsListContent from '../../components/ToolsList.astro?raw';
 import ToolsTableContent from '../../components/ToolsTable.astro?raw';
@@ -276,6 +277,12 @@ Switching from Markdown tables to YAML makes your docs site far more scalable an
 
 	<blockquote>
 	<ToolsTable />
+	</blockquote>
+
+   You can switch to a four-column table without editing the source file.
+
+	<blockquote>
+	<ToolsTableFourCols />
 	</blockquote>
 
 ## Why this matters
