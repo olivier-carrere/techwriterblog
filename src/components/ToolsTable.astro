@@ -21,23 +21,26 @@ const capitalize = (str) =>
       <th style="padding: 8px; border: 1px solid #ddd;">Details</th>
     </tr>
   </thead>
-  <tbody>
-    {rows.map((row, index) => {
-      const { name, ...details } = row;
-      return (
-        <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
-            {name}
-          </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
-            <ul style="margin: 0; padding-left: 20px;">
-              {Object.entries(details).map(([key, val]) => (
-                <li><strong>{capitalize(key)}:</strong> {val}</li>
-              ))}
-            </ul>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
+<tbody>
+  {rows.map((row, index) => {
+    const { name, ...details } = row;
+    return (
+      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
+        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+          {name}
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd;">
+          <ul style="margin: 0; padding-left: 20px;">
+            {Object.entries(details).map(([key, val]) => (
+              <li>
+                <strong>{capitalize(key)}:</strong>{" "}
+                {key === "price" ? `$${val}` : val}
+              </li>
+            ))}
+          </ul>
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
 </table>
