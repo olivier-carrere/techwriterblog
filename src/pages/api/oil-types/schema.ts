@@ -20,7 +20,41 @@ export const GET: APIRoute = async ({ request }) => {
               description: "Full oil types data",
               content: {
                 "application/json": {
-                  schema: { type: "object" },
+                  schema: {
+                    type: "object",
+                    properties: {
+                      id: { type: "string" },
+                      title: { type: "string" },
+                      shortdesc: { type: "string" },
+                      properties: {
+                        type: "object",
+                        properties: {
+                          headers: {
+                            type: "object",
+                            properties: {
+                              type: { type: "string" },
+                              name: { type: "string" },
+                              usage: { type: "string" }
+                            }
+                          },
+                          rows: {
+                            type: "array",
+                            items: {
+                              type: "object",
+                              properties: {
+                                type: { type: "string" },
+                                name: { type: "string" },
+                                price: { type: "number" },
+                                usage: { type: "string" },
+                                viscosity_grade: { type: "string" }
+                              },
+                              required: ["type", "name", "price", "usage", "viscosity_grade"]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   example: oilTypes
                 }
               }
@@ -44,7 +78,17 @@ export const GET: APIRoute = async ({ request }) => {
               description: "Single oil type row",
               content: {
                 "application/json": {
-                  schema: { type: "object" },
+                  schema: {
+                    type: "object",
+                    properties: {
+                      type: { type: "string" },
+                      name: { type: "string" },
+                      price: { type: "number" },
+                      usage: { type: "string" },
+                      viscosity_grade: { type: "string" }
+                    },
+                    required: ["type", "name", "price", "usage", "viscosity_grade"]
+                  },
                   example: oilTypes.properties.rows[0]
                 }
               }

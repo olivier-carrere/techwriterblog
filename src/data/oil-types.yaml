@@ -4,12 +4,16 @@ shortdesc: You will find below the recommended oil types.
 properties:
   headers:
     type: Type
-    value: Brand
-    description: Use
+    name: Brand
+    usage: Use
   rows:
     - type: Primary oil
-      value: A1X
-      description: One-cylinder engines
+      name: A1X
+      price: 15
+      usage: One-cylinder engines
+      viscosity_grade: 0W-20
     - type: Secondary oil
-      value: B2Z
-      description: Two-cylinder engines
+      name: B2Z
+      price: 17
+      usage: Two-cylinder engines
+      viscosity_grade: 5W-30
