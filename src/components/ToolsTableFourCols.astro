@@ -10,9 +10,10 @@ const rows = data.properties.rows;
   <thead style="background-color: #3498db; color: white;">
     <tr>
       <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Name</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Brand</th>
       <th style="padding: 8px; border: 1px solid #ddd;">Usage</th>
       <th style="padding: 8px; border: 1px solid #ddd;">Viscosity grade</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Price</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,7 @@ const rows = data.properties.rows;
         <td style="padding: 8px; border: 1px solid #ddd;">{row.name}</td>
         <td style="padding: 8px; border: 1px solid #ddd;">{row.usage}</td>
         <td style="padding: 8px; border: 1px solid #ddd;">{row.viscosity_grade}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{row.price}</td>
       </tr>
     ))}
   </tbody>
