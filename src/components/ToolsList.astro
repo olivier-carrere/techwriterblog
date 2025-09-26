@@ -1,47 +1,19 @@
 ---
 import data from "../data/oil-types.yaml"; // your YAML file
-
-type OilRow = {
-  type: string;
-  name: string;
-  cylinders: number;
-  viscosity_grade: string;
-  price: number;      // float
-};
-
-const rows = data.properties.rows as OilRow[];
-
-// Helper: convert small integers to English words
-const numberToWords = (num: number): string => {
-  const words: Record<number, string> = {
-    0: "Zero",
-    1: "One",
-    2: "Two",
-    3: "Three",
-    4: "Four",
-    5: "Five",
-    6: "Six",
-    7: "Seven",
-    8: "Eight",
-    9: "Nine",
-    10: "Ten",
-  };
-  return words[num] ?? num.toString(); // fallback for numbers >10
-};
+const rows = data.properties.rows;
 ---
 
 <h3>{data.title}</h3>
 <p>{data.shortdesc}</p>
 
 <ul>
-  {rows.map((row) => (
+  {rows.map(row => (
     <li>
       <strong>{row.type}</strong>
       <ul>
-        <li>Brand: {row.name}</li>
-        <li>Usage: {numberToWords(row.cylinders)}-cylinder engines</li>
+        <li>Brand: {row.value}</li>
+        <li>Usage: {row.usage}</li>
         <li>Viscosity grade: {row.viscosity_grade}</li>
-        <li>Price: ${row.price.toFixed(2)}</li>
       </ul>
     </li>
   ))}

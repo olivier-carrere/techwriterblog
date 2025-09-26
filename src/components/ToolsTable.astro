@@ -1,27 +1,10 @@
 ---
 import data from "../data/oil-types.yaml"; // assumes YAML plugin is configured
-
-// Define TypeScript types based on the YAML schema
-type OilRow = {
-  type: string;
-  name: string;
-  usage: string;
-  viscosity_grade: string;
-  price: number;       // float
-  cylinders: number;   // int
-};
-
-type Headers = {
-  type: string;
-  name: string;
-  usage: string;
-};
-
-const headers = data.properties.headers as Headers;
-const rows = data.properties.rows as OilRow[];
+const headers = data.properties.headers;
+const rows = data.properties.rows;
 
 // Capitalize helper
-const capitalize = (str: string) =>
+const capitalize = (str) =>
   str
     .replace(/_/g, " ")
     .toLowerCase()
@@ -38,33 +21,26 @@ const capitalize = (str: string) =>
       <th style="padding: 8px; border: 1px solid #ddd;">Details</th>
     </tr>
   </thead>
-
-  <tbody>
-    {rows.map((row, index) => {
-      const { name, ...details } = row;
-      return (
-        <tr
-          style={`background-color: ${
-            index % 2 === 0 ? "#ecf0f1" : "#ffffff"
-          };`}
-        >
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
-            {name}
-          </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
-            <ul style="margin: 0; padding-left: 20px;">
-              {Object.entries(details).map(([key, val]) => (
-                <li>
-                  <strong>{capitalize(key)}:</strong>{" "}
-                  {key === "price" && typeof val === "number"
-                    ? `$${val.toFixed(2)}`
-                    : val}
-                </li>
-              ))}
-            </ul>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
+<tbody>
+  {rows.map((row, index) => {
+    const { name, ...details } = row;
+    return (
+      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
+        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+          {name}
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd;">
+          <ul style="margin: 0; padding-left: 20px;">
+            {Object.entries(details).map(([key, val]) => (
+              <li>
+                <strong>{capitalize(key)}:</strong>{" "}
+                {key === "price" ? `$${val}` : val}
+              </li>
+            ))}
+          </ul>
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
 </table>

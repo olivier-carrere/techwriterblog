@@ -1,21 +1,19 @@
-id: !!str oil-types
-title: !!str Oil types
-shortdesc: !!str You will find below the recommended oil types.
-
+id: oil-types
+title: Oil types
+shortdesc: You will find below the recommended oil types.
 properties:
   headers:
-    type: !!str Type
-    name: !!str Brand
-    usage: !!str Use
-
+    type: Type
+    name: Brand
+    usage: Use
   rows:
-    - type: !!str Primary oil
-      name: !!str A1X
-      price: !!float 15.0
-      cylinders: !!int 1
-      viscosity_grade: !!str 0W-20
-    - type: !!str Secondary oil
-      name: !!str B2Z
-      price: !!float 17.0
-      cylinders: !!int 2
-      viscosity_grade: !!str 5W-30
+    - type: Primary oil
+      name: A1X
+      price: 15
+      usage: One-cylinder engines
+      viscosity_grade: 0W-20
+    - type: Secondary oil
+      name: B2Z
+      price: 17
+      usage: Two-cylinder engines
+      viscosity_grade: 5W-30
