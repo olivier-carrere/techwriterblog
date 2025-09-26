@@ -1,41 +1,32 @@
 ---
 draft: false
-title: "Distribute API Reference from YAML Across Docs, Apps, and Swagger"
-snippet: "Learn how one YAML file can serve as a single source of truth for APIs, powering Swagger docs, HTML documentation, and even mobile apps."
+title: "Distribute API Reference from YAML Across Docs, and Apps"
+snippet: "Learn how one YAML file can serve as a single source of truth for APIs, powering docs, HTML documentation, and even mobile apps."
 image:
   src: "/images/blog/experimental-astro-api-docs.webp"
   alt: "Astro API Documentation Illustration"
 publishDate: "2025-09-24"
 category: "Development"
-tags: ["astro", "api", "swagger", "openapi", "yaml", "documentation"]
+tags: ["astro", "api", "openapi", "yaml", "documentation"]
 ---
 
-I’ve been experimenting with **self-documenting APIs in Astro**, and you can now [**browse the live Swagger-powered documentation**](https://redaction-technique.org/docs).
+I’ve been experimenting with **self-documenting APIs in Astro**, and you can now [**browse the live API documentation**](https://redaction-technique.org/docs).
 
 ![Display the same information on a mobile app and on a web page from the same source.](/images/blog/experimental-astro-api-docs-large.webp)
 
-This Swagger UI is powered by a dynamic OpenAPI schema—but the real magic is that **everything comes from a single YAML file**.  
+The real magic is that **everything comes from a single YAML file**.
 
-By exposing structured reference information through an API generated from YAML, you can **reuse the same source of truth** across multiple contexts:  
+By exposing structured reference information through an API generated from YAML, you can **reuse the same source of truth** across multiple contexts:
 
-- Swagger interactive documentation  
-- Static HTML doc pages  
-- Mobile and desktop applications  
-- Build-time Astro components for SEO-friendly rendering  
-
-<iframe
-  title="Redaction Technique Documentation"
-  src="https://redaction-technique.org/docs"
-  width="100%"
-  height="500"
-  style={{ border: 'none' }}
-  loading="lazy"
-></iframe>
+* Interactive API documentation
+* Static HTML doc pages
+* Mobile and desktop applications
+* Build-time Astro components for SEO-friendly rendering
 
 ## One YAML File, Many Outputs
 
-By keeping all reference information in **a single YAML file**, you gain a powerful distribution workflow.  
-From this one source of truth, the data can flow into **interactive Swagger documentation**, **SEO-friendly HTML pages**, or be accessed directly via **API calls**.  
+By keeping all reference information in **a single YAML file**, you gain a powerful distribution workflow.
+From this one source of truth, the data can flow into **interactive API documentation**, **SEO-friendly HTML pages**, or be accessed directly via **API calls**.
 
 The diagram below shows how the same YAML powers multiple outputs without duplication or extra maintenance:
 
@@ -43,18 +34,17 @@ import Mermaid from '@/components/Mermaid.astro';
 
 <Mermaid chart={`
 graph TD
-    A["📄 YAML Source File"]:::topic --> B["📘 Swagger Docs<br/>(OpenAPI schema)"]:::step
-    A --> C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
-    A --> D["⚡ API Queries<br/>(fetch / curl)"]:::step
+A["📄 YAML Source File"]:::topic --> B["📘 API Docs<br/>(OpenAPI schema)"]:::step
+A --> C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
+A --> D["⚡ API Queries<br/>(fetch / curl)"]:::step
+B -->|Interactive browsing| B1["🖥️ Web UI"]:::substep
+C -->|SEO-friendly pages| C1["📑 Tables, Lists"]:::substep
+D -->|Live API calls| D1["📦 JSON Responses"]:::substep
+D -->|Consumed by clients| D2["📱 Mobile App"]:::substep
 
-    B -->|Interactive browsing| B1["🖥️ Swagger UI"]:::substep
-    C -->|SEO-friendly pages| C1["📑 Tables, Lists"]:::substep
-    D -->|Live API calls| D1["📦 JSON Responses"]:::substep
-    D -->|Consumed by clients| D2["📱 Mobile App"]:::substep
-
-    classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
-    classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
-    classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
 `} />
 
 ## Querying the API in Practice
@@ -114,7 +104,7 @@ Here’s what you’ll see when calling the API:
 
 ## Why YAML as the Source of Truth?
 
-Instead of relying on a static `openapi.json`, the schema is generated **directly from YAML**.
+Instead of relying on a static JSON schema, the API specification is generated **directly from YAML**.
 
 This approach ensures:
 
