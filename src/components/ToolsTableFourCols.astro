@@ -1,6 +1,35 @@
 ---
 import data from "../data/oil-types.yaml"; // assumes YAML plugin is configured
-const rows = data.properties.rows;
+
+// Define TypeScript types matching the YAML schema
+type OilRow = {
+  type: string;
+  name: string;
+  usage: string;
+  viscosity_grade: string;
+  price: number;       // price is float
+  cylinders: number;   // integer
+};
+
+const rows = data.properties.rows as OilRow[];
+
+// Helper: convert small integers to English words
+const numberToWords = (num: number): string => {
+  const words: Record<number, string> = {
+    0: "Zero",
+    1: "One",
+    2: "Two",
+    3: "Three",
+    4: "Four",
+    5: "Five",
+    6: "Six",
+    7: "Seven",
+    8: "Eight",
+    9: "Nine",
+    10: "Ten",
+  };
+  return words[num] ?? num.toString(); // fallback to number if outside map
+};
 ---
 
 <h3 style="color: #2c3e50;">{data.title}</h3>
@@ -11,19 +40,32 @@ const rows = data.properties.rows;
     <tr>
       <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
       <th style="padding: 8px; border: 1px solid #ddd;">Brand</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Usage</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Cylinders</th>
       <th style="padding: 8px; border: 1px solid #ddd;">Viscosity grade</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Price</th>
+      <th style="padding: 8px; border: 1px solid #ddd;">Price&nbsp;(USD)</th>
     </tr>
   </thead>
+
   <tbody>
     {rows.map((row, index) => (
-      <tr style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}>
-        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">{row.type}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.name}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.usage}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">{row.viscosity_grade}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${row.price}</td>
+      <tr
+        style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}
+      >
+        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+          {row.type}
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd;">
+          {row.name}
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd;">
+          {numberToWords(row.cylinders)}-cylinder engines
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd;">
+          {row.viscosity_grade}
+        </td>
+        <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+          ${row.price.toFixed(2)}
+        </td>
       </tr>
     ))}
   </tbody>
