@@ -31,40 +31,90 @@ const capitalize = (str: string) =>
 <h3 style="color: #2c3e50;">{data.title}</h3>
 <p>{data.shortdesc}</p>
 
-<table style="border-collapse: collapse; width: 100%;">
-  <thead style="background-color: #3498db; color: white;">
-    <tr>
-      <th style="padding: 8px; border: 1px solid #ddd;">{headers.name}</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Details</th>
-    </tr>
-  </thead>
+<div style="overflow-x: auto;">
+  <table style="border-collapse: collapse; width: 100%; min-width: 400px;">
+    <thead style="background-color: #3498db; color: white;">
+      <tr>
+        <th style="padding: 8px; border: 1px solid #ddd;">{headers.name}</th>
+        <th style="padding: 8px; border: 1px solid #ddd;">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row, index) => {
+        const { name, ...details } = row;
+        return (
+          <tr
+            style={`background-color: ${
+              index % 2 === 0 ? "#ecf0f1" : "#ffffff"
+            };`}
+          >
+            <td
+              style="padding: 8px; border: 1px solid #ddd; font-weight: bold;"
+              data-label={headers.name}
+            >
+              {name}
+            </td>
+            <td
+              style="padding: 8px; border: 1px solid #ddd;"
+              data-label="Details"
+            >
+              <ul style="margin: 0; padding-left: 20px;">
+                {Object.entries(details).map(([key, val]) => (
+                  <li>
+                    <strong>{capitalize(key)}:</strong>{" "}
+                    {key === "price" && typeof val === "number"
+                      ? `$${val.toFixed(2)}`
+                      : val}
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
 
-  <tbody>
-    {rows.map((row, index) => {
-      const { name, ...details } = row;
-      return (
-        <tr
-          style={`background-color: ${
-            index % 2 === 0 ? "#ecf0f1" : "#ffffff"
-          };`}
-        >
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
-            {name}
-          </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
-            <ul style="margin: 0; padding-left: 20px;">
-              {Object.entries(details).map(([key, val]) => (
-                <li>
-                  <strong>{capitalize(key)}:</strong>{" "}
-                  {key === "price" && typeof val === "number"
-                    ? `$${val.toFixed(2)}`
-                    : val}
-                </li>
-              ))}
-            </ul>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
-</table>
+<style>
+  @media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead tr {
+      display: none; /* hide headers on mobile */
+    }
+
+    tbody tr {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      flex: 1;
+    }
+
+    ul {
+      padding-left: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      padding: 2px 0;
+    }
+  }
+</style>

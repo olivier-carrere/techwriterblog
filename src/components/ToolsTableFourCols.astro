@@ -35,38 +35,71 @@ const numberToWords = (num: number): string => {
 <h3 style="color: #2c3e50;">{data.title}</h3>
 <p>{data.shortdesc}</p>
 
-<table style="border-collapse: collapse; width: 100%;">
-<thead style="background-color: #3498db;">
-  <tr>
-    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Type</th>
-    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Brand</th>
-    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Cylinders</th>
-    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Viscosity grade</th>
-    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Price</th>
-  </tr>
-</thead>
-
-  <tbody>
-    {rows.map((row, index) => (
-      <tr
-        style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}
-      >
-        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
-          {row.type}
-        </td>
-        <td style="padding: 8px; border: 1px solid #ddd;">
-          {row.name}
-        </td>
-        <td style="padding: 8px; border: 1px solid #ddd;">
-          {numberToWords(row.cylinders)}-cylinder engines
-        </td>
-        <td style="padding: 8px; border: 1px solid #ddd;">
-          {row.viscosity_grade}
-        </td>
-        <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
-          ${row.price.toFixed(2)}
-        </td>
+<div style="overflow-x: auto;">
+  <table style="border-collapse: collapse; width: 100%; min-width: 600px;">
+    <thead style="background-color: #3498db;">
+      <tr>
+        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Type</th>
+        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Brand</th>
+        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Cylinders</th>
+        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Viscosity grade</th>
+        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Price</th>
       </tr>
-    ))}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {rows.map((row, index) => (
+        <tr
+          style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}
+        >
+          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+            {row.type}
+          </td>
+          <td style="padding: 8px; border: 1px solid #ddd;">
+            {row.name}
+          </td>
+          <td style="padding: 8px; border: 1px solid #ddd;">
+            {numberToWords(row.cylinders)}-cylinder engines
+          </td>
+          <td style="padding: 8px; border: 1px solid #ddd;">
+            {row.viscosity_grade}
+          </td>
+          <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+            ${row.price.toFixed(2)}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  @media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead tr {
+      display: none; /* hide header */
+    }
+
+    tbody tr {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      flex: 1;
+    }
+  }
+</style>
