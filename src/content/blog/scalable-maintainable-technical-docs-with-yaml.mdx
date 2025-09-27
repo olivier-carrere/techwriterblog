@@ -155,6 +155,37 @@ Rendered in Markdown, it produces a clean table:
 | Primary oil   | A1X       | One-cylinder engines |
 | Secondary oil | B2Z       | Two-cylinder engines |
 
+### Benefits of YAML
+
+| Feature                                      | Details                                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Separation of Data and Presentation**      | Data can be reused in tables, lists, APIs, or UIs without touching formatting.       |
+| **Structured and Predictable**               | Consistent schema reduces human error and simplifies automation.                     |
+| **Easy to Extend**                           | Add new oils or metadata without redesigning the structure.                          |
+| **Supports Automation**                      | Scripts or static site generators can consume YAML directly.                         |
+| **Unique Identifiers**                       | Top-level `id` allows reliable referencing across documents.                         |
+| **Improved Readability and Maintainability** | Keys are self-explanatory, easier to understand than inline XML or Markdown tables.  |
+| **Scalable for Large Datasets**              | Works equally well for 5 or 500 rows; updates and validation remain straightforward. |
+
+---
+
+## Versatility
+
+One of the key advantages of using structured data formats like YAML is **versatility**. The same dataset can be rendered in multiple ways—lists, tables, or even more complex layouts—without changing the source file.
+
+For example, you can display your data as a **simple list**:
+
+<blockquote>
+<ToolsList />
+</blockquote>
+
+Or you can present it as a **styled two-column table**:
+
+<blockquote>
+<ToolsTable />
+</blockquote>
+
+If you need a richer display, you can even switch to a **five-column table**—all without editing the source YAML.
 
 import Mermaid from '@/components/Mermaid.astro';
 
@@ -190,38 +221,6 @@ flowchart TD
 
 `} />
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**
-
-### Benefits of YAML
-
-| Feature                                      | Details                                                                              |
-| -------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **Separation of Data and Presentation**      | Data can be reused in tables, lists, APIs, or UIs without touching formatting.       |
-| **Structured and Predictable**               | Consistent schema reduces human error and simplifies automation.                     |
-| **Easy to Extend**                           | Add new oils or metadata without redesigning the structure.                          |
-| **Supports Automation**                      | Scripts or static site generators can consume YAML directly.                         |
-| **Unique Identifiers**                       | Top-level `id` allows reliable referencing across documents.                         |
-| **Improved Readability and Maintainability** | Keys are self-explanatory, easier to understand than inline XML or Markdown tables.  |
-| **Scalable for Large Datasets**              | Works equally well for 5 or 500 rows; updates and validation remain straightforward. |
-
----
-
-## Versatility
-
-One of the key advantages of using structured data formats like YAML is **versatility**. The same dataset can be rendered in multiple ways—lists, tables, or even more complex layouts—without changing the source file.
-
-For example, you can display your data as a **simple list**:
-
-<blockquote>
-<ToolsList />
-</blockquote>
-
-Or you can present it as a **styled two-column table**:
-
-<blockquote>
-<ToolsTable />
-</blockquote>
-
-If you need a richer display, you can even switch to a **five-column table**—all without editing the source YAML:
 
 <blockquote>
 <ToolsTableFourCols />
