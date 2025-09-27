@@ -208,16 +208,23 @@ flowchart TD
     H --> H3[Cylinders]
     H --> H4[Viscosity grade]
     H --> H5[Price]
+    H1 --> J@{ shape: docs, label: "Primary oil"}
+    H2 --> K@{ shape: docs, label: "A1X"}
+    H3 --> L@{ shape: docs, label: "One-cylinder engines"}
+    H4 --> M@{ shape: docs, label: "0W-20"}
+    H5 --> N@{ shape: docs, label: "$15.00"}
 
     %% Styling
     class B topic;
     class F1,F2,F3,H step;
     class H1,H2,H3,H4,H5 substep;
+    class J,K,L,M,N documents;
 
     %% Class Definitions
     classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
     classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
-    classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+    classDef substep fill:#3498dc,stroke:#1f5a82,stroke-width:2px,color:#ffffff,font-weight:bold,rx:8,ry:8;
+    classDef documents fill:#ebf0f1,stroke:#4c4c4c,stroke-width:2px,color:#000000,font-weight:bold,rx:8,ry:8;
 
 `} />
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**

@@ -36,15 +36,15 @@ const numberToWords = (num: number): string => {
 <p>{data.shortdesc}</p>
 
 <table style="border-collapse: collapse; width: 100%;">
-  <thead style="background-color: #3498db; color: white;">
-    <tr>
-      <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Brand</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Cylinders</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Viscosity grade</th>
-      <th style="padding: 8px; border: 1px solid #ddd;">Price&nbsp;(USD)</th>
-    </tr>
-  </thead>
+<thead style="background-color: #3498db;">
+  <tr>
+    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Type</th>
+    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Brand</th>
+    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Cylinders</th>
+    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Viscosity grade</th>
+    <th style="padding: 8px; border: 1px solid #ddd; color: white;">Price</th>
+  </tr>
+</thead>
 
   <tbody>
     {rows.map((row, index) => (
