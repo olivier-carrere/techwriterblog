@@ -195,28 +195,49 @@ flowchart TD
     B[Import YAML data]
     
     %% Main steps
-    B --> F1[Insert title]
-    B --> F2[Insert short description]
-    B --> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
-
-    %% Loop over table rows
-    F3 --> H[For each YAML entry, create a table row]
-
+    B b1@--> F1[Insert title]
+    B b2@--> F2[Insert short description]
+    B b3@--> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
+	B d1@--> H
     %% Row details
-    H --> H1[Type]
-    H --> H2[Brand]
-    H --> H3[Cylinders]
-    H --> H4[Viscosity grade]
-    H --> H5[Price]
+    F3 c1@--> H1[Type]
+    F3 c2@--> H2[Brand]
+    F3 c3@--> H3[Cylinders]
+    F3 c4@--> H4[Viscosity grade]
+    F3 c5@--> H5[Price]
+
+    %% Row values (documents)
     H1 --> J@{ shape: docs, label: "Primary oil"}
     H2 --> K@{ shape: docs, label: "A1X"}
     H3 --> L@{ shape: docs, label: "One-cylinder engines"}
     H4 --> M@{ shape: docs, label: "0W-20"}
     H5 --> N@{ shape: docs, label: "$15.00"}
 
+    %% Loop box placed at very bottom
+    H[For each YAML entry, create a table row]
+    H h1@-.-> J
+    H h2@-.-> K
+    H h3@-.-> L
+    H h4@-.-> M
+    H h5@-.-> N
+	b1@{ animation: slow }
+	b2@{ animation: slow }
+	b3@{ animation: slow }
+	c1@{ animation: slow }
+	c2@{ animation: slow }
+	c3@{ animation: slow }
+	c4@{ animation: slow }
+	c5@{ animation: slow }
+	d1@{ animation: slow }
+	h1@{ animation: slow }
+	h2@{ animation: slow }
+	h3@{ animation: slow }
+	h4@{ animation: slow }
+	h5@{ animation: slow }
+
     %% Styling
     class B topic;
-    class F1,F2,F3,H step;
+    class F1,F2,F3, step;
     class H1,H2,H3,H4,H5 substep;
     class J,K,L,M,N documents;
 
@@ -225,7 +246,6 @@ flowchart TD
     classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
     classDef substep fill:#3498dc,stroke:#1f5a82,stroke-width:2px,color:#ffffff,font-weight:bold,rx:8,ry:8;
     classDef documents fill:#ebf0f1,stroke:#4c4c4c,stroke-width:2px,color:#000000,font-weight:bold,rx:8,ry:8;
-
 `} />
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**
 
