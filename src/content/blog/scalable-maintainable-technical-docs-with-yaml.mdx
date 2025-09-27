@@ -199,47 +199,61 @@ flowchart TD
     B b2@--> F2[Insert short description]
     B b3@--> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
 	B d1@--> H
-    %% Row details
-    F3 c1@--> H1[Type]
-    F3 c2@--> H2[Brand]
-    F3 c3@--> H3[Cylinders]
-    F3 c4@--> H4[Viscosity grade]
-    F3 c5@--> H5[Price]
 
-    %% Row values (documents)
-    H1 --> J@{ shape: docs, label: "Primary oil"}
-    H2 --> K@{ shape: docs, label: "A1X"}
-    H3 --> L@{ shape: docs, label: "One-cylinder engines"}
-    H4 --> M@{ shape: docs, label: "0W-20"}
-    H5 --> N@{ shape: docs, label: "$15.00"}
+    %% Row headers in one subgraph
+    subgraph RowHeaders["Table header"]
+      direction LR
+	  H1[Type]
+	  H2[Brand]
+	  H4[Viscosity grade]
+	  H5[Price]
+    end
+
+	  F3 c1@-.-> H1
+	  F3 c2@-.-> H2
+	  F3 c4@-.-> H4
+	  F3 c5@-.-> H5
+
+    %% Row values (documents) in one subgraph
+    subgraph RowValues["Table rows"]
+      direction LR
+      J@{ shape: docs, label: "Primary oil"} 
+      K@{ shape: docs, label: "A1X"}
+      M@{ shape: docs, label: "0W-20"}
+      N@{ shape: docs, label: "$15.00"}
+    end
+
+    %% Connections between headers and values
+    H1 --> J
+    H2 --> K
+    H4 --> M
+    H5 --> N
 
     %% Loop box placed at very bottom
     H[For each YAML entry, create a table row]
     H h1@-.-> J
     H h2@-.-> K
-    H h3@-.-> L
     H h4@-.-> M
     H h5@-.-> N
+
 	b1@{ animation: slow }
 	b2@{ animation: slow }
 	b3@{ animation: slow }
 	c1@{ animation: slow }
 	c2@{ animation: slow }
-	c3@{ animation: slow }
 	c4@{ animation: slow }
 	c5@{ animation: slow }
 	d1@{ animation: slow }
 	h1@{ animation: slow }
 	h2@{ animation: slow }
-	h3@{ animation: slow }
 	h4@{ animation: slow }
 	h5@{ animation: slow }
 
     %% Styling
     class B topic;
     class F1,F2,F3, step;
-    class H1,H2,H3,H4,H5 substep;
-    class J,K,L,M,N documents;
+    class H1,H2,H4,H5 substep;
+    class J,K,M,N documents;
 
     %% Class Definitions
     classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
