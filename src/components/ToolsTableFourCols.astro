@@ -1,34 +1,23 @@
 ---
-import data from "../data/oil-types.yaml"; // assumes YAML plugin is configured
+import data from "../data/oil-types.yaml";
 
-// Define TypeScript types matching the YAML schema
 type OilRow = {
   type: string;
   name: string;
   usage: string;
   viscosity_grade: string;
-  price: number;       // price is float
-  cylinders: number;   // integer
+  price: number;
+  cylinders: number;
 };
 
 const rows = data.properties.rows as OilRow[];
 
-// Helper: convert small integers to English words
 const numberToWords = (num: number): string => {
   const words: Record<number, string> = {
-    0: "Zero",
-    1: "One",
-    2: "Two",
-    3: "Three",
-    4: "Four",
-    5: "Five",
-    6: "Six",
-    7: "Seven",
-    8: "Eight",
-    9: "Nine",
-    10: "Ten",
+    0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten",
   };
-  return words[num] ?? num.toString(); // fallback to number if outside map
+  return words[num] ?? num.toString();
 };
 ---
 
@@ -47,23 +36,21 @@ const numberToWords = (num: number): string => {
       </tr>
     </thead>
     <tbody>
-      {rows.map((row, index) => (
-        <tr
-          style={`background-color: ${index % 2 === 0 ? "#ecf0f1" : "#ffffff"};`}
-        >
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
+      {rows.map((row) => (
+        <tr style="border: 1px solid #ddd;">
+          <td data-label="Type" style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
             {row.type}
           </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
+          <td data-label="Brand" style="padding: 8px; border: 1px solid #ddd;">
             {row.name}
           </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
+          <td data-label="Cylinders" style="padding: 8px; border: 1px solid #ddd;">
             {numberToWords(row.cylinders)}-cylinder engines
           </td>
-          <td style="padding: 8px; border: 1px solid #ddd;">
+          <td data-label="Viscosity grade" style="padding: 8px; border: 1px solid #ddd;">
             {row.viscosity_grade}
           </td>
-          <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+          <td data-label="Price" style="padding: 8px; border: 1px solid #ddd;">
             ${row.price.toFixed(2)}
           </td>
         </tr>
@@ -76,10 +63,11 @@ const numberToWords = (num: number): string => {
   @media screen and (max-width: 600px) {
     table, thead, tbody, th, td, tr {
       display: block;
+      width: 100%;
     }
 
     thead tr {
-      display: none; /* hide header */
+      display: none;
     }
 
     tbody tr {
@@ -89,9 +77,9 @@ const numberToWords = (num: number): string => {
     }
 
     td {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px;
+      display: block;
+      text-align: left;
+      padding: 8px 0;
       border: none;
       border-bottom: 1px solid #ddd;
     }
@@ -99,7 +87,8 @@ const numberToWords = (num: number): string => {
     td::before {
       content: attr(data-label);
       font-weight: bold;
-      flex: 1;
+      display: block;
+      margin-bottom: 4px;
     }
   }
 </style>
