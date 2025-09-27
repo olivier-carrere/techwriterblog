@@ -195,13 +195,13 @@ flowchart TD
     B[Import YAML data]
     
     %% Main steps
-    B --> F1[Insert title]
-    B --> F2[Insert short description]
-    B --> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
+    B --> F1[Title]
+    B --> F2[Short<br/>description]
+    B --> F3[Table<br/>header]
 	B d1@--> H
 
     %% Row values (documents) in one subgraph
-    subgraph RowValues["Table rows"]
+    subgraph RowValues[ ]
       direction LR
       J@{ shape: docs, label: "Primary<br/>oil"} 
       K@{ shape: docs, label: "A1X"}
@@ -219,7 +219,7 @@ flowchart TD
     H h5@-.-> N
 
     %% Row headers in one subgraph
-    subgraph RowHeaders["Table header"]
+    subgraph RowHeaders[ ]
       direction LR
 	  H1[Type]
 	  H2[Brand]
