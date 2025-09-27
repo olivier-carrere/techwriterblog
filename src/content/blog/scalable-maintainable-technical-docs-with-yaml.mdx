@@ -200,6 +200,22 @@ flowchart TD
     B b3@--> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
 	B d1@--> H
 
+    %% Row values (documents) in one subgraph
+    subgraph RowValues["Table rows"]
+      direction LR
+      J@{ shape: docs, label: "Primary oil"} 
+      K@{ shape: docs, label: "A1X"}
+      M@{ shape: docs, label: "0W-20"}
+      N@{ shape: docs, label: "$15.00"}
+    end
+
+    %% Loop box placed at very bottom
+    H[For each YAML entry, create a table row]
+    H h1@-.-> J
+    H h2@-.-> K
+    H h4@-.-> M
+    H h5@-.-> N
+
     %% Row headers in one subgraph
     subgraph RowHeaders["Table header"]
       direction LR
@@ -213,28 +229,6 @@ flowchart TD
 	  F3 c2@-.-> H2
 	  F3 c4@-.-> H4
 	  F3 c5@-.-> H5
-
-    %% Row values (documents) in one subgraph
-    subgraph RowValues["Table rows"]
-      direction LR
-      J@{ shape: docs, label: "Primary oil"} 
-      K@{ shape: docs, label: "A1X"}
-      M@{ shape: docs, label: "0W-20"}
-      N@{ shape: docs, label: "$15.00"}
-    end
-
-    %% Connections between headers and values
-    H1 --> J
-    H2 --> K
-    H4 --> M
-    H5 --> N
-
-    %% Loop box placed at very bottom
-    H[For each YAML entry, create a table row]
-    H h1@-.-> J
-    H h2@-.-> K
-    H h4@-.-> M
-    H h5@-.-> N
 
 	b1@{ animation: slow }
 	b2@{ animation: slow }
