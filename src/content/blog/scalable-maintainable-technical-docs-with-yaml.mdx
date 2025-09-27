@@ -155,7 +155,43 @@ Rendered in Markdown, it produces a clean table:
 | Primary oil   | A1X       | One-cylinder engines |
 | Secondary oil | B2Z       | Two-cylinder engines |
 
-**Benefits of YAML**:
+
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+flowchart TD
+    %% Nodes
+    B[Import YAML data]
+    
+    %% Main steps
+    B --> F1[Insert title]
+    B --> F2[Insert short description]
+    B --> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
+
+    %% Loop over table rows
+    F3 --> H[For each row, create a table row]
+
+    %% Row details
+    H --> H1[Type]
+    H --> H2[Brand]
+    H --> H3[Cylinders]
+    H --> H4[Viscosity grade]
+    H --> H5[Price formatted to 2 decimals]
+
+    %% Styling
+    class B topic;
+    class F1,F2,F3,H step;
+    class H1,H2,H3,H4,H5 substep;
+
+    %% Class Definitions
+    classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+    classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+    classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+
+`} />
+**Processing Oil Data: From YAML Import to Dynamic HTML Table**
+
+### Benefits of YAML
 
 | Feature                                      | Details                                                                              |
 | -------------------------------------------- | ------------------------------------------------------------------------------------ |
