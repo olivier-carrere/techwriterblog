@@ -205,6 +205,7 @@ flowchart TD
       direction LR
       J@{ shape: docs, label: "Primary oil"} 
       K@{ shape: docs, label: "A1X"}
+      L@{ shape: docs, label: "One-cylinder<br/>engines"}
       M@{ shape: docs, label: "0W-20"}
       N@{ shape: docs, label: "$15.00"}
     end
@@ -213,6 +214,7 @@ flowchart TD
     H[For each YAML entry, create a table row]
     H h1@-.-> J
     H h2@-.-> K
+    H h3@-.-> L
     H h4@-.-> M
     H h5@-.-> N
 
@@ -221,26 +223,29 @@ flowchart TD
       direction LR
 	  H1[Type]
 	  H2[Brand]
-	  H4[Viscosity grade]
+	  H3[Cylinders]
+	  H4[Viscosity<br/>grade]
 	  H5[Price]
     end
 
 	  F3 --> H1
 	  F3 --> H2
+	  F3 --> H3
 	  F3 --> H4
 	  F3 --> H5
 
 	d1@{ animation: slow }
 	h1@{ animation: slow }
 	h2@{ animation: slow }
+	h3@{ animation: slow }
 	h4@{ animation: slow }
 	h5@{ animation: slow }
 
     %% Styling
     class B topic;
     class F1,F2,F3, step;
-    class H1,H2,H4,H5 substep;
-    class J,K,M,N documents;
+    class H1,H2,H3,H4,H5 substep;
+    class J,K,L,M,N documents;
 
     %% Class Definitions
     classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
