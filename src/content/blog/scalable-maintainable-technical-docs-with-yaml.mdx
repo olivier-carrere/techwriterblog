@@ -192,7 +192,7 @@ import Mermaid from '@/components/Mermaid.astro';
 <Mermaid chart={`
 flowchart TD
     %% Nodes
-    B[Import YAML data]
+    B[YAML data]
     
     %% Main steps
     B --> F1[Title]
@@ -211,7 +211,7 @@ flowchart TD
     end
 
     %% Loop box placed at very bottom
-    H[For each YAML entry, create a table row]
+    H[One table row<br/>per YAML entry]
     H h1@-.-> J
     H h2@-.-> K
     H h3@-.-> L
