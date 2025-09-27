@@ -16,13 +16,22 @@ import ToolsTable from '../../components/ToolsTable.astro'
 import ToolsTableFourCols from '../../components/ToolsTableFourCols.astro';
 import yamlRaw from '../../data/oil-types.yaml?raw';
 
-Imagine you're an engine oil manufacturer, tasked with helping customers choose the right product for their engines. Each oil you produce has a specific purpose—some work best in one-cylinder engines, others in multi-cylinder setups. Factors like price, viscosity, and engine compatibility play a critical role in a customer’s decision. The table below provides a clear comparison of a few key oil types, highlighting their intended use, cost, and viscosity grade, making it easier to guide customers toward the perfect choice.
+Imagine you’re an engine oil manufacturer. Every day, customers ask you which oil is best for their engines. Some have one-cylinder engines, others have multi-cylinder setups. Price, viscosity, and compatibility all matter—but helping them make the right choice isn’t just about knowing your products. It’s about **how you store and present that information**.
 
-But here’s a bigger question: how should you store the information about your oils? In a Markdown table? A database? A DITA reference XML topic? Or some other system entirely?
+At first, it might seem simple. You could create a quick reference table:
 
-## DITA reference
+| Oil Type      | Brand | Use                  | Price | Viscosity Grade |
+| ------------- | ----- | -------------------- | ----- | --------------- |
+| Primary oil   | A1X   | One-cylinder engines | 15    | 0W-20           |
+| Secondary oil | B2Z   | Two-cylinder engines | 17    | 5W-30           |
 
-Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/spec/langref/reference.html) example.
+Looks neat, right? But as your product line grows, so does the complexity. Adding new oils, updating prices, or including extra metadata like cylinder count or warranty quickly turns into a maintenance nightmare.
+
+---
+
+### The XML temptation
+
+Some teams start with **DITA reference XML**, thinking structure solves the problem:
 
 ```xml
 <reference id="oil-types">
@@ -51,25 +60,25 @@ Let's consider this DITA [reference](https://docs.oasis-open.org/dita/v1.2/os/sp
 </reference>
 ```
 
-### Why Hardcoded XML Can Hurt Maintainability
+It seems neat at first. Each oil has a dedicated section. But the moment prices change, new products are added, or you want to track extra attributes, the XML becomes cumbersome.
 
-When documenting technical data like recommended oil types, it might be tempting to simply hardcode information directly in XML. While this works for small, static lists, it introduces several **maintainability pitfalls** that can grow into serious headaches over time. Let’s break down the main issues.
+| Issue                                      | Description                                                                                |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| **Hardcoded Values**                       | Every data point is embedded in XML. Updates require manual changes, which is error-prone. |
+| **Mixing Data and Presentation**           | `<ul>` and `<li>` combine field names and values, making automated processing difficult.   |
+| **Poor Scalability**                       | Adding oils or metadata requires repeating XML structures.                                 |
+| **Lack of Unique Identifiers**             | Sections are distinguished by titles only, risking breakage in workflows if names change.  |
+| **Limited Reusability**                    | Copying sections across documents increases the risk of inconsistencies.                   |
+| **Ambiguous Values**                       | `<li>Price: 15</li>` lacks units or currency.                                              |
+| **No Validation for Consistent Structure** | Missing fields reduce data quality over time.                                              |
 
-| Issue                                      | Description                                                                                                                                                          |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Hardcoded Values**                       | Every piece of data is directly embedded in the XML. Manual updates are required if prices or types change, which is error-prone and does not scale.                 |
-| **Mixing Data and Presentation**           | Using `<ul>` and `<li>` combines **field names** and **values** in a single line, making programmatic access difficult. Parsing text increases risk of errors.       |
-| **Poor Scalability**                       | Adding new oil types requires repeating `@<section>` and `<ul>` structures. Adding metadata like supplier or warranty requires manual updates, making XML cumbersome. |
-| **Lack of Unique Identifiers**             | Sections are distinguished only by `<title>`. Changes or duplicates in titles can break automated workflows.                                                         |
-| **Limited Reusability**                    | Copy-pasting sections across documents requires multiple edits for updates, increasing risk of inconsistencies.                                                      |
-| **Ambiguous Values**                       | Entries like `<li>Price: 15</li>` lack units or currency, which can cause confusion for automated systems.                                                           |
-| **No Validation for Consistent Structure** | Fields like brand, price, or viscosity can be accidentally omitted, reducing data quality over time.                                                                 |
+Hardcoded XML works for tiny lists—but it quickly becomes brittle as content grows.
 
-Hardcoding technical data in XML is fine for small, static lists, but as content grows, it becomes fragile, redundant, and difficult to manage. Better practices include separating data from presentation, using structured fields, and adding unique identifiers for programmatic access.
+---
 
-## Markdown Tables
+### Markdown tables: simple but limiting
 
-Here’s how you could implement the same information in a **Markdown table**:
+Markdown tables are easier to read:
 
 ```markdown
 | Oil Type      | Brand | Use                  | Price | Viscosity Grade |
@@ -78,235 +87,128 @@ Here’s how you could implement the same information in a **Markdown table**:
 | Secondary oil | B2Z   | Two-cylinder engines | 17    | 5W-30           |
 ```
 
-### The Hidden Maintainability Challenges of Markdown Tables
+They render nicely and are human-friendly—but they carry hidden maintainability problems:
 
-Markdown tables are a popular choice for presenting structured data like recommended oil types. They are easy to read and render nicely in documentation. However, beneath the simplicity, they introduce several **maintainability issues** that technical writers and documentation teams should be aware of.
+| Issue                          | Description                                                                         |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| **Hardcoded Data**             | Manual updates are required for any change, which is error-prone.                   |
+| **Lack of Semantic Structure** | Field names and values are not machine-readable, making automation difficult.       |
+| **Poor Scalability**           | Adding new oils or metadata requires editing the table structure.                   |
+| **No Unique Identifiers**      | Rows are identified only by “Oil Type,” making programmatic referencing unreliable. |
+| **Ambiguities**                | Values like `Price: 15` lack units, which can cause misinterpretation.              |
+| **Limited Reusability**        | Tables are hard to reuse across multiple documents, creating redundancy.            |
 
-| Issue                          | Description                                                                                                                                                                                             |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Hardcoded Data**             | Every value—brand, price, use, and viscosity—is hardcoded in the table. Manual updates are required if values change, which is time-consuming and error-prone in large documents.                       |
-| **Lack of Semantic Structure** | Markdown tables do not separate **field names** from **values** in a machine-readable way. Each row is just text, making automated processing, filtering, or transformation difficult.                  |
-| **Poor Scalability**           | Adding new oil types requires manually inserting new rows. Adding metadata fields like supplier or warranty requires editing the table structure, which can break formatting and cause inconsistencies. |
-| **No Unique Identifiers**      | Rows are distinguished only by the “Oil Type” column. If names change or are duplicated, there is no reliable way to reference or link entries programmatically.                                        |
-| **Ambiguities**                | Values like `Price: 15` lack units or currency. Markdown does not enforce clarity or consistency, increasing the risk of misinterpretation.                                                             |
-| **Limited Reusability**        | Tables are hard to reuse across multiple documents. Copying creates redundancy, and updates must be repeated wherever the table appears.                                                                |
+Markdown is fine for static pages—but as your documentation grows, you need a better approach.
 
-While Markdown tables are visually straightforward, they are not ideal for long-term maintainability when documenting structured technical data. Separating data from presentation and using more structured formats can save time and reduce errors as documentation grows.
+---
 
-## Databases
+### Databases: flexible but costly
 
-Querying the same information repeatedly from a database can have several disadvantages, both in terms of performance and maintainability.
+Databases offer structured storage and queries, but repeated queries can create performance issues:
 
-| Issue | Description |
-|-------|-------------|
-| **Performance Overhead** | Every query consumes database resources (CPU, memory, I/O). Repeated queries for the same data increase load, potentially slowing down the database and other applications. Can lead to longer response times, especially for complex queries or large datasets. |
-| **Increased Network Traffic** | Each query requires a round-trip between your application and the database. Multiple queries for the same data generate unnecessary network traffic, which can be a bottleneck in distributed systems. |
-| **Higher Costs** | For cloud-based databases, costs are often tied to usage (queries, data transfer, storage). Repeated queries for the same data can increase operational costs. |
-| **Data Consistency Issues** | If the underlying data changes between queries, repeated requests might return inconsistent results. This can be problematic for caching strategies or when calculations depend on stable snapshots. |
-| **Scalability Problems** | High query repetition can strain the database, making it harder to scale under heavy load. The more users or services that repeatedly query the same data, the more pressure on your system. |
-| **Redundant Computation** | Complex queries often require the database to recompute joins, aggregations, or indexes every time. This wastes computational resources if the results could otherwise be cached. |
-| **Increased Latency for Users** | Users experience slower response times when every action triggers a fresh database query. Especially noticeable in web apps or APIs that make multiple queries per page load. |
+| Issue                         | Description                                                      |
+| ----------------------------- | ---------------------------------------------------------------- |
+| **Performance Overhead**      | Each query consumes resources; repeated queries slow the system. |
+| **Increased Network Traffic** | Multiple queries generate unnecessary load.                      |
+| **Higher Costs**              | Cloud usage costs rise with frequent queries.                    |
+| **Data Consistency Issues**   | Data changes between queries can produce inconsistent results.   |
+| **Scalability Problems**      | Heavy query repetition strains the database.                     |
+| **Redundant Computation**     | Expensive operations are repeated unnecessarily.                 |
+| **Increased Latency**         | Users notice slower response times for each query.               |
 
-### Mitigation Strategies
+Mitigation strategies like **caching, batching, materialized views, and optimized indexing** help—but they add complexity.
 
-| Mitigation Strategy | Description |
-|--------------------|-------------|
-| **Caching** | Store frequently accessed data in memory (e.g., Redis, Memcached) to avoid repeated queries. |
-| **Batching** | Fetch all needed data in a single query instead of multiple small queries. |
-| **Materialized Views** | Precompute expensive queries and store results in the database. |
-| **Optimized Indexing** | Ensure queries use indexes efficiently to reduce execution time. |
+---
 
-## The Case for Switching to YAML
+### YAML: readable, structured, and scalable
 
-Switching to YAML makes your docs site far more scalable and maintainable. YAML’s structured, hierarchical format keeps data organized, easy to update, and ready for dynamic rendering—no more messy tables or broken formatting. It’s readable, comment-friendly, and built for automation, so your content grows with your site, not your headaches.
+This is where **YAML** shines. It’s human-readable, hierarchical, and structured, making it ideal for documentation that needs to scale.
 
-This renders your YAML content automatically as a list.
+```yaml
+id: oil-types
+title: Oil types
+shortdesc: Recommended oil types
+properties:
+  headers:
+    type: Type
+    value: Brand
+    usage: Use
+  rows:
+    - type: Primary oil
+      value: A1X
+      usage: One-cylinder engines
+    - type: Secondary oil
+      value: B2Z
+      usage: Two-cylinder engines
+```
+
+Rendered in Markdown, it produces a clean table:
+
+| Oil type      | Oil brand | Use                  |
+| ------------- | --------- | -------------------- |
+| Primary oil   | A1X       | One-cylinder engines |
+| Secondary oil | B2Z       | Two-cylinder engines |
+
+**Benefits of YAML**:
+
+| Feature                                      | Details                                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Separation of Data and Presentation**      | Data can be reused in tables, lists, APIs, or UIs without touching formatting.       |
+| **Structured and Predictable**               | Consistent schema reduces human error and simplifies automation.                     |
+| **Easy to Extend**                           | Add new oils or metadata without redesigning the structure.                          |
+| **Supports Automation**                      | Scripts or static site generators can consume YAML directly.                         |
+| **Unique Identifiers**                       | Top-level `id` allows reliable referencing across documents.                         |
+| **Improved Readability and Maintainability** | Keys are self-explanatory, easier to understand than inline XML or Markdown tables.  |
+| **Scalable for Large Datasets**              | Works equally well for 5 or 500 rows; updates and validation remain straightforward. |
+
+---
+
+## Versatility
+
+One of the key advantages of using structured data formats like YAML is **versatility**. The same dataset can be rendered in multiple ways—lists, tables, or even more complex layouts—without changing the source file.
+
+For example, you can display your data as a **simple list**:
 
 <blockquote>
 <ToolsList />
 </blockquote>
 
-Your YAML content now renders automatically as a styled table.
+Or you can present it as a **styled two-column table**:
 
 <blockquote>
 <ToolsTable />
 </blockquote>
 
-You can switch to a five-column table without editing the source file.
+If you need a richer display, you can even switch to a **five-column table**—all without editing the source YAML:
 
 <blockquote>
 <ToolsTableFourCols />
 </blockquote>
 
----
-
-### YAML structures
-
-YAML structures improve maintainability by providing clear structure, separation of content from display, scalability, automation support, and readability. It reduces human error, simplifies updates, and allows the data to be reused across multiple outputs effortlessly.
-
-| Feature                                      | Details                                                                                                                                                                                                                                                      |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Separation of Data from Presentation**     | The YAML defines **data independently** of how it will be displayed (table, list, or API). The `headers` define the columns, and `rows` define the content. This separation allows changing table rendering or styling without touching the underlying data. |
-| **Structured and Predictable Format**        | Each row follows a consistent schema: `type`, `value`, `description`. Ensures **uniformity** across entries and reduces human error. Tools or scripts can easily parse this structured format, unlike unstructured Markdown or plain XML lists.              |
-| **Easy to Extend**                           | Adding a new oil type or extra metadata (e.g., `price`, `viscosity`) is straightforward. No need to redesign tables or manually align columns.                                                                                                               |
-| **Supports Automation**                      | Structured data can be consumed by scripts, static site generators, or APIs. Tables, charts, or dropdowns can be **automatically generated**, and updates propagate instantly.                                                                               |
-| **Unique Identifiers for Easy Reference**    | Top-level `id: oil-types` allows unique referencing across documents or systems, making integration and cross-referencing **more reliable** than using row titles alone.                                                                                     |
-| **Improved Readability and Maintainability** | Human-readable keys (`type`, `value`, `description`) make it **easy for writers and developers to understand** the dataset. Clearer than unstructured tables or inline XML lists.                                                                            |
-| **Scalable for Large Datasets**              | Works for 5 rows or 500, scaling without increasing complexity. Each row is independent, making bulk updates or automated validation straightforward.                                                                                                        |
-
-### Managing a growing data table
-
-The **oil-types.yaml** file began as a **simple data table** for documentation. Over time, it became the single source of truth for:
-
-* Reusable product tables in DITA and Markdown docs
-* An OpenAPI endpoint serving JSON
-* Future integrations with client-side apps
-
-The first version was minimal, meant only for static rendering in docs:
-
-```yaml
-id: oil-types
-title: Oil types
-shortdesc: You will find below the recommended oil types.
-
-properties:
-  headers:
-    type: Oil type
-    value: Oil brand
-    description: Appropriate use
-  rows:
-    - type: Primary oil
-      value: A1X
-      description: One-cylinder engines
-    - type: Secondary oil
-      value: B2Z
-      description: Two-cylinder engines
-```
-
-Rendered in Markdown, it looked like a standard table:
-
-| Oil type      | Oil brand | Appropriate use      |
-| ------------- | --------- | -------------------- |
-| Primary oil   | A1X       | One-cylinder engines |
-| Secondary oil | B2Z       | Two-cylinder engines |
-
-At this stage, the YAML was little more than a **Markdown table in disguise**. That works fine for a static page, but Markdown tables quickly show their limits:
-
-* **Locked to one format**—fine for human readers, useless for APIs or apps
-* **Manual upkeep**—duplicate copies across docs risk inconsistency
-* **No typing or validation**—strings, numbers, and labels can drift unnoticed
-
-Even so, the YAML hinted at something more powerful: a **single source of truth**. Once enriched with structure and typing, the same file could generate:
-
-* Markdown tables for docs
-* OpenAPI endpoints serving JSON
-* SEO-friendly HTML components
-* Data feeds for apps
-
-### Standardizing labels
-
-To align with existing **DITA reference tables**, I unified the column names:
-
-```diff
--    type: Oil type
--    value: Oil brand
--    description: Appropriate use
-+    type: Type
-+    value: Brand
-+    description: Use
-```
-
-This small change simplified **content reuse** and avoided confusion across formats.
+This flexibility allows your documentation to adapt to different contexts—whether it’s a quick reference list for users, a detailed table for technical readers, or a complex component in a UI. By separating content from presentation, you can maintain a single source of truth while offering multiple ways to consume the data.
 
 ---
 
-### Adding new columns
+### Growing with your YAML
 
-Next, the table expanded to include **price** and **viscosity grade**—turning it into a richer product spec.
+Our **oil-types.yaml** started as a simple table but evolved into a **single source of truth**:
 
-```diff
-   rows:
-     - type: Primary oil
--      value: A1X
--      description: One-cylinder engines
-+      name: A1X
-+      price: 15
-+      usage: One-cylinder engines
-+      viscosity_grade: 0W-20
-```
-
----
-
-### Enforcing strong typing
-
-When serving YAML through an API, type safety became essential. I switched to explicit YAML tags:
-
-```diff
--id: oil-types
--title: Oil types
--shortdesc: You will find below the recommended oil types.
-+id: !!str oil-types
-+title: !!str Oil types
-+shortdesc: !!str You will find below the recommended oil types.
-
-   rows:
--    - type: Primary oil
--      name: A1X
--      price: 15
--      usage: One-cylinder engines
--      viscosity_grade: 0W-20
-+    - type: !!str Primary oil
-+      name: !!str A1X
-+      price: !!float 15.0
-+      cylinders: !!int 1
-+      viscosity_grade: !!str 0W-20
-```
-
-This ensured that values like **price** and **cylinders** were validated as numbers, not strings.
-
----
-
-### Centralizing the schema
-
-To avoid repeating type annotations, I introduced a **row_schema**:
-
-```diff
-   properties:
-     headers:
-       type: Type
-       name: Brand
-       usage: Use
-+
-+    row_schema:
-+      type: str
-+      name: str
-+      price: float
-+      cylinders: int
-+      viscosity_grade: str
-```
-
-Centralizing the schema kept the YAML **DRY** (Don’t Repeat Yourself) and enabled automated validation.
-
----
-
-## Looking ahead
-
-We now have a **single YAML source** that feeds:
-
-* DITA reference topics
+* Reusable DITA reference topics
 * OpenAPI JSON endpoints
-* Potential UI components
+* UI components for apps
 
-Next steps include:
+By enforcing **strong typing**—numbers for prices, integers for cylinder count—data stays consistent. A **central schema** ensures DRY (Don’t Repeat Yourself) principles and enables automated validation.
 
-* **Automated validation pipelines** in CI/CD
-* **Versioned schemas** for backward compatibility
-* **Interactive docs** that query YAML live
+---
 
-By treating documentation tables as **data with a schema**, technical writers can bridge the gap between human-friendly docs and developer-friendly APIs—keeping both consistent and easy to maintain.
+### The Takeaway
+
+Documentation isn’t just about listing data. It’s about **making it maintainable, scalable, and reusable**. Markdown tables or hardcoded XML may work for small static lists, but as content grows, YAML provides the best balance: **human-readable, structured, and flexible**.
+
+By treating your documentation as **data with a schema**, technical writers can bridge the gap between human-friendly docs and developer-friendly APIs—keeping both consistent and reducing errors.
 
 ---
 
 <blockquote>
-Learn more about gaining the [benefits of DITA XML without its complexity](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead). Using Markdown and modern docs-as-code workflows, technical writers can apply structured information typing—tasks, concepts, and references—through lightweight, open tools.
-</blockquote>
+Learn more about [getting the benefits of DITA XML without its complexity](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead). Modern docs-as-code workflows let technical writers structure information using lightweight, open tools—no XML headaches required.
+</blockquote>  
