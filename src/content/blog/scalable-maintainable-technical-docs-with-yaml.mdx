@@ -195,9 +195,9 @@ flowchart TD
     B[Import YAML data]
     
     %% Main steps
-    B b1@--> F1[Insert title]
-    B b2@--> F2[Insert short description]
-    B b3@--> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
+    B --> F1[Insert title]
+    B --> F2[Insert short description]
+    B --> F3[Create table with headers: Type, Brand, Cylinders, Viscosity grade, Price]
 	B d1@--> H
 
     %% Row values (documents) in one subgraph
@@ -225,18 +225,11 @@ flowchart TD
 	  H5[Price]
     end
 
-	  F3 c1@-.-> H1
-	  F3 c2@-.-> H2
-	  F3 c4@-.-> H4
-	  F3 c5@-.-> H5
+	  F3 --> H1
+	  F3 --> H2
+	  F3 --> H4
+	  F3 --> H5
 
-	b1@{ animation: slow }
-	b2@{ animation: slow }
-	b3@{ animation: slow }
-	c1@{ animation: slow }
-	c2@{ animation: slow }
-	c4@{ animation: slow }
-	c5@{ animation: slow }
 	d1@{ animation: slow }
 	h1@{ animation: slow }
 	h2@{ animation: slow }
