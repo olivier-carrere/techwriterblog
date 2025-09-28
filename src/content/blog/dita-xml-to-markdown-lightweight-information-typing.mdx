@@ -34,9 +34,15 @@ graph LR
   WEB["Web"]
 
   %% Flows
-   GITHUB --> CDN --> ASTRO --> WEB
-   WRITE -->|Write| GITHUB
-   GITHUB -->|Review| WRITE
+   GITHUB a1@--> CDN a2@--> ASTRO a3@--> WEB
+   WRITE a4@-->|Write| GITHUB
+   GITHUB a5@-->|Review| WRITE
+
+a1@{ animation: slow }
+a2@{ animation: slow }
+a3@{ animation: slow }
+a4@{ animation: slow }
+a5@{ animation: slow }
 
   %% Styling
   classDef astro fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;

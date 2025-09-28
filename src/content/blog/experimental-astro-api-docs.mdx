@@ -38,11 +38,15 @@ import Mermaid from '@/components/Mermaid.astro';
 graph TD
 A["📄 YAML Source File"]:::topic --> B["📘 API Docs<br/>(OpenAPI schema)"]:::step
 A --> C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
-A --> D["⚡ API Queries<br/>(fetch / curl)"]:::step
+A a1@--> D["⚡ API Queries<br/>(fetch / curl)"]:::step
 B -->|Interactive browsing| B1["🖥️ Web UI"]:::substep
 C -->|SEO-friendly pages| C1["📑 Tables, Lists"]:::substep
-D -->|Live API calls| D1["📦 JSON Responses"]:::substep
-D -->|Consumed by clients| D2["📱 Mobile App"]:::substep
+D a2@-->|Live API calls| D1["📦 JSON Responses"]:::substep
+D a3@-->|Consumed by clients| D2["📱 Mobile App"]:::substep
+
+a1@{ animation: slow }
+a2@{ animation: slow }
+a3@{ animation: slow }
 
 classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
 classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;

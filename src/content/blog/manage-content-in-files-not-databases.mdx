@@ -71,16 +71,23 @@ graph TD
   PUBLISH["Publish"]
 
   %% Flows
-  U1 --> F1
-  U2 --> F2
+  U1 u1@--> F1
+  U2 u2@--> F2
 
-  F1 -->|"push"| ORIGIN
-  F2 -->|"push"| ORIGIN
+  F1 f1@-->|"push"| ORIGIN
+  F2 f2@-->|"push"| ORIGIN
 
-  ORIGIN -->|"pull"| F1
-  ORIGIN -->|"pull"| F2
+  ORIGIN f3@-->|"pull"| F1
+  ORIGIN f4@-->|"pull"| F2
 
   ORIGIN --> PR --> MAIN --> PUBLISH
+  
+  f1@{ animation: slow }
+  f2@{ animation: slow }
+  f3@{ animation: slow }
+  f4@{ animation: slow }
+  u1@{ animation: slow }
+  u2@{ animation: slow }
 
   %% Styling
   classDef user fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;

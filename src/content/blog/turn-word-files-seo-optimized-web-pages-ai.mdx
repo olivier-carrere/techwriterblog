@@ -28,12 +28,18 @@ graph TD
   GPT_META["Generate Metadata and SEO with GPT-4o"]
   REVIEW["Review Changes with git diff / Human Oversight"]
   BUILD["Build and Publish Web Pages"]
-  ITERATE["Next File / Repeat Workflow"]
+
 
   %% Flows
-  WORD --> PANDOC --> SPLIT --> GPT_META --> REVIEW
+  WORD --> PANDOC --> SPLIT --> GPT_META a3@--> REVIEW
   GPT_META --> BUILD --> ITERATE
-  REVIEW -->|Adjust script or GPT prompt| SPLIT
+  REVIEW a2@-->|Adjust script or GPT prompt| GPT_META
+  ITERATE["Next File / Repeat Workflow"] a1@--> GPT_META
+
+a1@{ animation: slow }
+a2@{ animation: slow }
+a3@{ animation: slow }
+
 
   %% Styling
   classDef source fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
