@@ -19,40 +19,35 @@ const numberToWords = (num: number): string => {
   };
   return words[num] ?? num.toString();
 };
+
+// Create reverse mapping for sorting word numbers
+const wordsToNumber: Record<string, number> = Object.fromEntries(
+  Object.entries({
+    0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten",
+  }).map(([num, word]) => [word.toLowerCase(), Number(num)])
+);
 ---
 
-<h3 style="color: #2c3e50;">{data.title}</h3>
-<p>{data.shortdesc}</p>
-
 <div style="overflow-x: auto;">
-  <table style="border-collapse: collapse; width: 100%; min-width: 600px;">
-    <thead style="background-color: #3498db;">
+  <table id="oil-table" style="border-collapse: collapse; width: 100%; min-width: 600px;">
+    <thead style="background-color: #3498db; cursor: pointer;">
       <tr>
-        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Type</th>
-        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Brand</th>
-        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Cylinders</th>
-        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Viscosity grade</th>
-        <th style="padding: 8px; border: 1px solid #ddd; color: white;">Price</th>
+        <th data-key="type" data-type="text">Type <span class="arrow">▲▼</span></th>
+        <th data-key="name" data-type="text">Brand <span class="arrow">▲▼</span></th>
+        <th data-key="cylinders" data-type="cylinders">Cylinders <span class="arrow">▲▼</span></th>
+        <th data-key="viscosity_grade" data-type="text">Viscosity grade <span class="arrow">▲▼</span></th>
+        <th data-key="price" data-type="number">Price <span class="arrow">▲▼</span></th>
       </tr>
     </thead>
     <tbody>
       {rows.map((row) => (
-        <tr style="border: 1px solid #ddd;">
-          <td data-label="Type" style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">
-            {row.type}
-          </td>
-          <td data-label="Brand" style="padding: 8px; border: 1px solid #ddd;">
-            {row.name}
-          </td>
-          <td data-label="Cylinders" style="padding: 8px; border: 1px solid #ddd;">
-            {numberToWords(row.cylinders)}-cylinder engines
-          </td>
-          <td data-label="Viscosity grade" style="padding: 8px; border: 1px solid #ddd;">
-            {row.viscosity_grade}
-          </td>
-          <td data-label="Price" style="padding: 8px; border: 1px solid #ddd;">
-            ${row.price.toFixed(2)}
-          </td>
+        <tr>
+          <td>{row.type}</td>
+          <td>{row.name}</td>
+          <td>{numberToWords(row.cylinders)}-cylinder engines</td>
+          <td>{row.viscosity_grade}</td>
+          <td>${row.price.toFixed(2)}</td>
         </tr>
       ))}
     </tbody>
@@ -60,35 +55,67 @@ const numberToWords = (num: number): string => {
 </div>
 
 <style>
-  @media screen and (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-      width: 100%;
-    }
-
-    thead tr {
-      display: none;
-    }
-
-    tbody tr {
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-
-    td {
-      display: block;
-      text-align: left;
-      padding: 8px 0;
-      border: none;
-      border-bottom: 1px solid #ddd;
-    }
-
-    td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      display: block;
-      margin-bottom: 4px;
-    }
+  thead th {
+    user-select: none;
+    position: relative;
   }
+  .arrow { font-size: 0.8em; margin-left: 4px; opacity: 0.6; }
+  thead th.active { background-color: #2a80b9; }
+  thead th.active.asc .arrow { opacity: 1; color: yellow; }
+  thead th.active.desc .arrow { opacity: 1; color: yellow; transform: rotate(180deg); display: inline-block; }
 </style>
+
+<script>
+  const table = document.getElementById("oil-table");
+  const headers = table.querySelectorAll("th");
+  let sortConfig = { key: null, direction: "asc" };
+
+  // Reverse mapping for word numbers
+  const wordsToNumber = {
+    zero:0, one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9, ten:10
+  };
+
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => {
+      const key = header.dataset.key;
+      const type = header.dataset.type;
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+
+      let direction = "asc";
+      if (sortConfig.key === key && sortConfig.direction === "asc") {
+        direction = "desc";
+      }
+      sortConfig = { key, direction };
+
+      rows.sort((a, b) => {
+        let aValue = a.children[index].innerText.trim();
+        let bValue = b.children[index].innerText.trim();
+
+        if (type === "number") {
+          const numA = parseFloat(aValue.replace(/[^0-9.]/g, "")) || 0;
+          const numB = parseFloat(bValue.replace(/[^0-9.]/g, "")) || 0;
+          return direction === "asc" ? numA - numB : numB - numA;
+        }
+
+        if (type === "cylinders") {
+          const wordA = aValue.split("-")[0].toLowerCase();
+          const wordB = bValue.split("-")[0].toLowerCase();
+          const numA = wordsToNumber[wordA] || 0;
+          const numB = wordsToNumber[wordB] || 0;
+          return direction === "asc" ? numA - numB : numB - numA;
+        }
+
+        return direction === "asc"
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      });
+
+      tbody.innerHTML = "";
+      rows.forEach(row => tbody.appendChild(row));
+
+      headers.forEach(h => h.classList.remove("active", "asc", "desc"));
+      header.classList.add("active", direction);
+    });
+  });
+</script>
