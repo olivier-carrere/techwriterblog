@@ -32,13 +32,15 @@ graph TD
 
   %% Flows
   WORD --> PANDOC --> SPLIT --> GPT_META a3@--> REVIEW
-  GPT_META --> BUILD --> ITERATE
+  GPT_META a4@--> BUILD a5@--> ITERATE
   REVIEW a2@-->|Adjust script or GPT prompt| GPT_META
   ITERATE["Next File / Repeat Workflow"] a1@--> GPT_META
 
 a1@{ animation: slow }
 a2@{ animation: slow }
 a3@{ animation: slow }
+a4@{ animation: slow }
+a5@{ animation: slow }
 
 
   %% Styling
