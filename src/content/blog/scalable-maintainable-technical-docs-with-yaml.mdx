@@ -192,56 +192,68 @@ import Mermaid from '@/components/Mermaid.astro';
 <Mermaid chart={`
 flowchart LR
     %% Nodes
-    B[YAML data]
-    
-    %% Main steps
-    B --> F1[Title]
-    B --> F2[Short<br/>description]
-    B --> F3[Table<br/>header]
-	B d1@--> H
+    B["YAML data"]
+    F1["Title"]
+    F2["Short<br/>description"]
+    F3["Table<br/>header"]
+    H["One table row<br/>per YAML entry"]
 
     %% Row values (documents) in one subgraph
     subgraph RowValues[ ]
       direction LR
-      J@{ shape: docs, label: "Primary<br/>oil"} 
-      K@{ shape: docs, label: "A1X"}
-      L@{ shape: docs, label: "..."}
+      J["Primary<br/>oil"]
+      K["A1X"]
+      L["..."]
     end
-
-    %% Loop box placed at very bottom
-    H[One table row<br/>per YAML entry]
-    H h1@-.-> J
-    H h2@-.-> K
-    H h3@-.-> L
 
     %% Row headers in one subgraph
     subgraph RowHeaders[ ]
       direction LR
-	  H1[Type]
-	  H2[Brand]
-	  H3[...]
+      H1["Type"]
+      H2["Brand"]
+      H3["..."]
     end
 
-	  F3 --> H1
-	  F3 --> H2
-	  F3 --> H3
+    %% Flows with animated links
+    B a1@--> F1
+    B a2@--> F2
+    B a3@--> F3
+    B a4@--> H
 
-	d1@{ animation: fast }
-	h1@{ animation: slow }
-	h2@{ animation: slow }
-	h3@{ animation: slow }
+    H a5@-.-> J
+    H a6@-.-> K
+    H a7@-.-> L
+
+    F3 a8@--> H1
+    F3 a9@--> H2
+    F3 a10@--> H3
+
+    %% Animation speeds
+    a1@{ animation: slow }
+    a2@{ animation: slow }
+    a3@{ animation: slow }
+    a4@{ animation: fast }
+    a5@{ animation: slow }
+    a6@{ animation: slow }
+    a7@{ animation: slow }
+    a8@{ animation: slow }
+    a9@{ animation: slow }
+    a10@{ animation: slow }
 
     %% Styling
-    class B topic;
-    class F1,F2,F3, step;
-    class H1,H2,H3, substep;
-    class J,K,L, documents;
-
-    %% Class Definitions
     classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
     classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
     classDef substep fill:#3498dc,stroke:#1f5a82,stroke-width:2px,color:#ffffff,font-weight:bold,rx:8,ry:8;
     classDef documents fill:#ebf0f1,stroke:#4c4c4c,stroke-width:2px,color:#000000,font-weight:bold,rx:8,ry:8;
+
+    %% Apply classes
+    class B topic;
+    class F1,F2,F3 step;
+    class H1,H2,H3 substep;
+    class J,K,L documents;
+
+    %% Link styles
+    linkStyle default stroke:#d97d61,stroke-width:2px;
 `} />
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**
 

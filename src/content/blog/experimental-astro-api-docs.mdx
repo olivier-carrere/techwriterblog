@@ -36,21 +36,41 @@ import Mermaid from '@/components/Mermaid.astro';
 
 <Mermaid chart={`
 graph TD
-A["📄 YAML Source File"]:::topic --> B["📘 API Docs<br/>(OpenAPI schema)"]:::step
-A --> C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
-A a1@--> D["⚡ API Queries<br/>(fetch / curl)"]:::step
-B -->|Interactive browsing| B1["🖥️ Web UI"]:::substep
-C -->|SEO-friendly pages| C1["📑 Tables, Lists"]:::substep
-D a2@-->|Live API calls| D1["📦 JSON Responses"]:::substep
-D a3@-->|Consumed by clients| D2["📱 Mobile App"]:::substep
+    %% Nodes
+    A["📄 YAML Source File"]:::topic
+    B["📘 API Docs<br/>(OpenAPI schema)"]:::step
+    C["🌐 Static HTML Docs<br/>(Astro build-time)"]:::step
+    D["⚡ API Queries<br/>(fetch / curl)"]:::step
+    B1["🖥️ Web UI"]:::substep
+    C1["📑 Tables, Lists"]:::substep
+    D1["📦 JSON Responses"]:::substep
+    D2["📱 Mobile App"]:::substep
 
-a1@{ animation: slow }
-a2@{ animation: slow }
-a3@{ animation: slow }
+    %% Flows with animated links
+    A a1@--> B
+    A a2@--> C
+    A a3@--> D
+    B a4@-->|Interactive browsing| B1
+    C a5@-->|SEO-friendly pages| C1
+    D a6@-->|Live API calls| D1
+    D a7@-->|Consumed by clients| D2
 
-classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
-classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
-classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+    %% Animation speeds
+    a1@{ animation: slow }
+    a2@{ animation: slow }
+    a3@{ animation: fast }
+    a4@{ animation: slow }
+    a5@{ animation: slow }
+    a6@{ animation: slow }
+    a7@{ animation: slow }
+
+    %% Styling
+    classDef topic fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
+    classDef step fill:#f6d1c5,stroke:#d97d61,stroke-width:2px,color:#4a241a,font-weight:bold,rx:8,ry:8;
+    classDef substep fill:#efb9a6,stroke:#c96a52,stroke-width:2px,color:#3d1d15,font-weight:bold,rx:8,ry:8;
+
+    %% Link styles
+    linkStyle default stroke:#d97d61,stroke-width:2px;
 `} />
 
 ## Querying the API in Practice
