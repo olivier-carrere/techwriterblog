@@ -27,15 +27,21 @@ graph TD
   KEEP["Keep Changes"]
   DISCARD["Discard Changes"]
   BUILD["Build & Fix Media"]
-  NEXT["Next File / Iterate"]
 
   %% Flows
-  SRC --> DEEPL --> GPT --> MANUAL --> REVIEW
-  REVIEW -->|y| KEEP
+  SRC a1@--> DEEPL a2@--> GPT a3@--> MANUAL a4@--> REVIEW
+  REVIEW a5@-->|y| KEEP
   REVIEW -->|n| DISCARD
-  KEEP --> BUILD
-  DISCARD --> NEXT
-  BUILD --> NEXT
+  KEEP a6@--> BUILD
+  BUILD a7@--> |"Next File / Iterate"|SRC
+
+a1@{ animation: slow }
+a2@{ animation: slow }
+a3@{ animation: slow }
+a4@{ animation: slow }
+a5@{ animation: slow }
+a6@{ animation: slow }
+a7@{ animation: slow }
 
   %% Styling
   classDef source fill:#fbe9e4,stroke:#df9277,stroke-width:2px,color:#5a2e23,font-weight:bold,rx:8,ry:8;
