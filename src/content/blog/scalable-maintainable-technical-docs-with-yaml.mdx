@@ -277,11 +277,13 @@ By enforcing **strong typing**—numbers for prices, integers for cylinder count
 
 ---
 
-### The Takeaway
+## Why a structured source is better than embedded tables
 
-Documentation isn’t just about listing data. It’s about **making it maintainable, scalable, and reusable**. Markdown tables or hardcoded XML may work for small static lists, but as content grows, YAML provides the best balance: **human-readable, structured, and flexible**.
+Tables are a convenient way to present structured data in a familiar and scannable layout for users. However, generating user-facing tables directly from Markdown embedded in source files is not the most efficient approach.
 
-By treating your documentation as **data with a schema**, technical writers can bridge the gap between human-friendly docs and developer-friendly APIs—keeping both consistent and reducing errors.
+A stronger alternative is to **extract data at build time from a structured source**, such as a YAML single source of truth. This approach allows you to **render the same information in multiple ways**, each tailored to the target medium and the specific needs of your audience—whether that’s a Markdown table in documentation, a JSON payload for an API, or a dynamic HTML component in a UI.
+
+By decoupling data from presentation, you gain maintainability, consistency, and flexibility as your content grows.
 
 ---
 
