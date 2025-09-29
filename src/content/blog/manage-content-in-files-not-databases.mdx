@@ -105,6 +105,39 @@ graph TD
   linkStyle default stroke:#df9277,stroke-width:2px;
 `} />
 
+## Feature Branch Workflow for Documentation
+
+<Mermaid chart={`
+gitGraph
+   commit id:"doc feature C init" tag:"release 1.1"
+   commit id:"doc feature C update"
+   branch Alice
+   checkout Alice
+   commit id:"doc feature A draft"
+   commit id:"doc feature A review"
+   checkout main
+   commit id:"doc feature D init"
+   branch Bob
+   checkout Bob
+   commit id:"doc feature B draft"
+   commit id:"doc feature B review"
+   checkout main
+   merge Alice
+   commit id:"doc feature D update" tag:"release 1.2"
+   merge Bob
+   commit id:"doc feature E init"
+`} />
+
+This Git workflow illustrates a documentation development process using feature branches. The main branch tracks official releases, while contributors create separate branches for their own work.
+
+* Work on **feature C** begins on `main`, leading to release **1.1**.
+* **Alice** creates a branch to draft and review document A before merging it back into `main`.
+* **Bob** works in parallel on document B in his own branch, completing a draft and review cycle.
+* Meanwhile, additional updates to **feature D** are developed on `main`, culminating in release **1.2** after merging Alice’s work.
+* Finally, Bob’s branch is merged, and a new feature (**E**) is initialized.
+
+This workflow highlights parallel development, isolation of work in branches, and structured integration into `main` for tagged releases.
+
 ## Security: fewer attack surfaces
 
 No DB = no SQL injection. Plain files eliminate a class of vulnerabilities related to dynamic query building, mis-sanitized input, or poorly-configured database engines. There are still security considerations (XSS, server config, secret leakage), but the risk of a corrupted or malicious query is gone.
