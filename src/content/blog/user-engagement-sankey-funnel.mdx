@@ -1,0 +1,65 @@
+---
+draft: false
+title: "Understanding Your User Funnel with Sankey Diagrams"
+snippet: "Visualizing user engagement with Sankey diagrams helps you spot drop-offs, optimize flows, and improve retention."
+image: {
+    src: "/images/blog/user-funnel-sankey.webp",
+    alt: "Illustration of user engagement funnel visualized as a Sankey diagram"
+}
+publishDate: "2025-09-29 10:00"
+category: "Blog"
+author: "Olivier Carrère"
+tags: ["User Engagement", "Data Visualization", "UX", "Sankey Diagram", "Analytics"]
+---
+
+Tracking how users move through your app or website is critical for improving engagement. While tables of metrics are informative, visualizing flows often reveals patterns that numbers alone cannot. A Sankey diagram is a perfect tool for this.
+
+## Why use a Sankey diagram for user flows?
+
+Sankey diagrams represent flows between nodes, with arrow widths proportional to volume. This makes it easy to identify:
+
+- Where users drop off
+- Which steps retain the most engagement
+- Opportunities to improve onboarding or conversion
+
+Instead of sifting through spreadsheets, you can instantly see the bottlenecks in your user funnel.
+
+## Example: User Engagement Funnel
+
+Here’s a simple funnel showing how visitors interact with an app:
+
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+sankey
+Visitors,Homepage,100
+Homepage,Signup,60
+Homepage,Bounce,40
+Signup,Tutorial Completed,50
+Signup,Drop-off,10
+Tutorial Completed,Active Users,35
+Tutorial Completed,Churn,15
+`} />
+
+### Interpreting the diagram
+
+* **Visitors → Homepage**: All users land on the homepage.
+* **Homepage → Signup (60%) / Bounce (40%)**: Most users continue to sign up, but 40% leave immediately.
+* **Signup → Tutorial Completed (50%) / Drop-off (10%)**: Even after signing up, some users don’t finish the onboarding.
+* **Tutorial Completed → Active Users (35%) / Churn (15%)**: Completing the tutorial correlates strongly with retention.
+
+The color coding helps you instantly see positive flows (green) versus drop-offs (red), while neutral steps are in blue.
+
+## How this helps your product team
+
+By mapping user engagement visually:
+
+* You can prioritize improvements where the biggest drop-offs occur.
+* Stakeholders understand the user journey at a glance.
+* Decisions about tutorials, onboarding, or feature placement become data-driven.
+
+Sankey diagrams transform raw engagement metrics into actionable insights, helping you make smarter choices for retention and growth.
+
+## Conclusion
+
+Numbers tell a story, but visuals make it clear. Using Sankey diagrams for your user funnel helps you identify critical points in the user journey, communicate effectively with your team, and improve your product experience step by step.
