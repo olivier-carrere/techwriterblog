@@ -32,7 +32,7 @@ const capitalize = (str: string) =>
 <p>{data.shortdesc}</p>
 
 <div style="overflow-x: auto;">
-  <table style="border-collapse: collapse; width: 100%; min-width: 400px;">
+  <table class="responsive-table" style="border-collapse: collapse; width: 100%; min-width: 400px;">
     <thead style="background-color: #3498db; color: white;">
       <tr>
         <th style="padding: 8px; border: 1px solid #ddd;">{headers.name}</th>
@@ -58,16 +58,13 @@ const capitalize = (str: string) =>
               style="padding: 8px; border: 1px solid #ddd;"
               data-label="Details"
             >
-              <ul style="margin: 0; padding-left: 20px;">
-                {Object.entries(details).map(([key, val]) => (
-                  <li>
-                    <strong>{capitalize(key)}:</strong>{" "}
-                    {key === "price" && typeof val === "number"
-                      ? `$${val.toFixed(2)}`
-                      : val}
-                  </li>
-                ))}
-              </ul>
+              {Object.entries(details).map(([key, val]) => (
+                <div class="detail-item" data-label={capitalize(key)}>
+                  {key === "price" && typeof val === "number"
+                    ? `$${val.toFixed(2)}`
+                    : val}
+                </div>
+              ))}
             </td>
           </tr>
         );
@@ -77,44 +74,70 @@ const capitalize = (str: string) =>
 </div>
 
 <style>
+  /* Desktop defaults */
+  .responsive-table th, .responsive-table td {
+    text-align: left;
+  }
+
+  /* Mobile stacked card view */
   @media screen and (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
+    .responsive-table, 
+    .responsive-table thead, 
+    .responsive-table tbody, 
+    .responsive-table th, 
+    .responsive-table td, 
+    .responsive-table tr {
       display: block;
       width: 100%;
     }
 
-    thead tr {
+    .responsive-table thead {
       display: none; /* hide headers on mobile */
     }
 
-    tbody tr {
-      margin-bottom: 15px;
+    .responsive-table tr {
+      margin-bottom: 1rem;
       border: 1px solid #ddd;
+      border-radius: 8px;
       padding: 8px;
+      background: #f9f9f9;
     }
 
-    td {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px;
+    .responsive-table td {
+      display: block;
       border: none;
-      border-bottom: 1px solid #ddd;
+      padding: 6px 8px;
+      border-bottom: 1px solid #eee;
+      position: relative;
     }
 
-    td::before {
+    .responsive-table td:last-child {
+      border-bottom: none;
+    }
+
+    .responsive-table td::before {
       content: attr(data-label);
       font-weight: bold;
-      flex: 1;
+      display: block;
+      margin-bottom: 2px;
+      color: #333;
     }
 
-    ul {
-      padding-left: 0;
-      margin: 0;
+    /* Each detail item collapses into its own row */
+    .detail-item {
+      display: block;
+      padding: 6px 8px;
+      border-bottom: 1px solid #eee;
     }
 
-    li {
-      list-style: none;
-      padding: 2px 0;
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .detail-item::before {
+      content: attr(data-label) ": ";
+      font-weight: bold;
+      color: #333;
     }
   }
 </style>
