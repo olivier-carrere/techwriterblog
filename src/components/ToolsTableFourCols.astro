@@ -30,8 +30,8 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
 ---
 
 <div style="overflow-x: auto;">
-  <table id="oil-table" style="border-collapse: collapse; width: 100%; min-width: 600px;">
-    <thead style="background-color: #3498db; cursor: pointer;">
+  <table id="oil-table" class="responsive-table">
+    <thead>
       <tr>
         <th data-key="type" data-type="text">Type <span class="arrow">▲▼</span></th>
         <th data-key="name" data-type="text">Brand <span class="arrow">▲▼</span></th>
@@ -43,11 +43,11 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
     <tbody>
       {rows.map((row) => (
         <tr>
-          <td>{row.type}</td>
-          <td>{row.name}</td>
-          <td>{numberToWords(row.cylinders)}-cylinder engines</td>
-          <td>{row.viscosity_grade}</td>
-          <td>${row.price.toFixed(2)}</td>
+          <td data-label="Type">{row.type}</td>
+          <td data-label="Brand">{row.name}</td>
+          <td data-label="Cylinders">{numberToWords(row.cylinders)}-cylinder engines</td>
+          <td data-label="Viscosity grade">{row.viscosity_grade}</td>
+          <td data-label="Price">${row.price.toFixed(2)}</td>
         </tr>
       ))}
     </tbody>
@@ -58,11 +58,53 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
   thead th {
     user-select: none;
     position: relative;
+    background-color: #3498db;
+    cursor: pointer;
+    text-align: left;
+    padding: 8px;
+  }
+  tbody td {
+    padding: 8px;
+    border-top: 1px solid #ddd;
   }
   .arrow { font-size: 0.8em; margin-left: 4px; opacity: 0.6; }
   thead th.active { background-color: #2a80b9; }
   thead th.active.asc .arrow { opacity: 1; color: yellow; }
   thead th.active.desc .arrow { opacity: 1; color: yellow; transform: rotate(180deg); display: inline-block; }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    table.responsive-table thead {
+      display: none;
+    }
+    table.responsive-table,
+    table.responsive-table tbody,
+    table.responsive-table tr,
+    table.responsive-table td {
+      display: block;
+      width: 100%;
+    }
+    table.responsive-table tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 8px;
+      background: #f9f9f9;
+    }
+    table.responsive-table td {
+      text-align: left;
+      padding: 6px 8px;
+      border: none;
+      position: relative;
+    }
+    table.responsive-table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 2px;
+      color: #333;
+    }
+  }
 </style>
 
 <script>
@@ -70,9 +112,9 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
   const headers = table.querySelectorAll("th");
   let sortConfig = { key: null, direction: "asc" };
 
-  // Reverse mapping for word numbers
   const wordsToNumber = {
-    zero:0, one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9, ten:10
+    zero:0, one:1, two:2, three:3, four:4, five:5,
+    six:6, seven:7, eight:8, nine:9, ten:10
   };
 
   headers.forEach((header, index) => {
