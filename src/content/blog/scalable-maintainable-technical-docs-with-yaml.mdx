@@ -291,7 +291,9 @@ index 61dadd8..0f70057 100644
 <blockquote>
 💡 **Tip: Mitigate the issue with third-party tools**
 
-It’s true that tools like GitHub Desktop can help mitigate the issue and make the diff more human-readable. But under the hood, Git still considers that whole lines have changed, which makes it more difficult to handle the commit as a set of limited, self-contained changes.
+To partially improve the readability of table diffs, you can use tools like **GitHub Desktop** or **git diff --word-diff**, or define a custom diff driver in **.gitattributes**.
+
+These approaches make diffs more palatable to human readers, but under the hood, Git still considers entire lines as changed.
 
 ![GitHub Desktop screenshot showing a more human-readable diff, even though Git internally still sees full-line changes.](/images/blog/githubdesktop.png)
 </blockquote>
