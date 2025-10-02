@@ -267,7 +267,92 @@ This flexibility allows your documentation to adapt to different contexts—whet
 
 ## Easier diffs and cleaner version control
 
-One hidden drawback of Markdown tables is how poorly they behave in version control. If you remove or reorder a column, Git compares the file line by line—producing a messy, unreadable diff where every row appears changed. By contrast, when tables are generated from a YAML source, all you need to do is remove the corresponding key-value pairs in the YAML file. That change is perfectly legible in a Git diff. An even better approach is to edit the **script that generates the table**: often just a few lines of code, producing a simple, human-readable change that’s easier to review, merge, and revert.
+One hidden drawback of Markdown tables is how poorly they behave in version control. If you remove or reorder a column, Git compares the file line by line—producing a messy, unreadable diff where every row appears changed.
+
+```diff
+diff --git a/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx b/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx
+index 61dadd8..0f70057 100644
+--- a/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx
++++ b/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx
+@@ -26,10 +26,10 @@ Imagine you’re an engine oil manufacturer. Every day, customers ask you which
+
+ At first, it might seem simple. You could create a quick reference table:
+
+-| Oil Type      | Brand | Use                  | Price | Viscosity Grade |
+-| ------------- | ----- | -------------------- | ----- | --------------- |
+-| Primary oil   | A1X   | One-cylinder engines | 15    | 0W-20           |
+-| Secondary oil | B2Z   | Two-cylinder engines | 17    | 5W-30           |
++| Oil Type      | Use                  | Price | Viscosity Grade |
++|---------------|----------------------|-------|-----------------|
++| Primary oil   | One-cylinder engines | 15    | 0W-20           |
++| Secondary oil | Two-cylinder engines | 17    | 5W-30           |
+```
+
+By contrast, when tables are generated from a YAML source, all you need to do is remove the corresponding key-value pairs in the YAML file.
+
+```diff
+diff --git a/src/data/oil-types.yaml b/src/data/oil-types.yaml
+index 11eef57..87c04df 100644
+--- a/src/data/oil-types.yaml
++++ b/src/data/oil-types.yaml
+@@ -5,24 +5,20 @@ shortdesc: You will find below the recommended oil types.
+ properties:
+   headers:
+     type: Type
+-    name: Brand
+     usage: Use
+   row_schema:
+     type: str
+-    name: str
+     price: float
+     cylinders: int
+     viscosity_grade: str
+   rows:
+     - type: Primary oil
+-      name: A1X
+       price: 15.0
+       cylinders: 1
+       viscosity_grade: 0W-20
+     - type: Secondary oil
+-      name: B2Z
+       price: 17.0
+       cylinders: 2
+       viscosity_grade: 5W-30
+```
+
+That change is perfectly legible in a Git diff.
+
+An even better approach is to edit the **script that generates the table**: often just a few lines of code, producing a simple, human-readable change that’s easier to review, merge, and revert.
+
+```diff
+diff --git a/src/components/table.astro b/src/components/table.astro
+index c05af99..d594203 100644
+--- a/src/components/table.astro
++++ b/src/components/table.astro
+@@ -3,7 +3,6 @@ import data from "../data/oil-types.yaml";
+ type OilRow = {
+   type: string;
+-  name: string;
+   usage: string;
+   viscosity_grade: string;
+   price: number;
+@@ -34,7 +33,6 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
+     <thead>
+       <tr>
+         <th data-key="type" data-type="text">Type <span class="arrow">▲▼</span></th>
+-        <th data-key="name" data-type="text">Brand <span class="arrow">▲▼</span></th>
+         <th data-key="cylinders" data-type="cylinders">Cylinders <span class="arrow">▲▼</span></th>
+         <th data-key="viscosity_grade" data-type="text">Viscosity grade <span class="arrow">▲▼</span></th>
+         <th data-key="price" data-type="number">Price <span class="arrow">▲▼</span></th>
+@@ -44,7 +42,6 @@ const wordsToNumber: Record<string, number> = Object.fromEntries(
+       {rows.map((row) => (
+         <tr>
+           <td data-label="Type">{row.type}</td>
+-          <td data-label="Brand">{row.name}</td>
+           <td data-label="Cylinders">{numberToWords(row.cylinders)}-cylinder engines</td>
+           <td data-label="Viscosity grade">{row.viscosity_grade}</td>
+           <td data-label="Price">${row.price.toFixed(2)}</td>
+```
 
 ---
 
