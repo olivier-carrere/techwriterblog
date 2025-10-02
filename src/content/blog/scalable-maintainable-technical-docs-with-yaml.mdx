@@ -288,6 +288,12 @@ index 61dadd8..0f70057 100644
 +| Secondary oil | Two-cylinder engines | 17    | 5W-30           |
 ```
 
+<blockquote>
+It’s true that tools like GitHub Desktop can help mitigate the issue and make the diff more human-readable. But internally, Git still considers that whole lines have changed, which makes it more difficult to handle the commit as a set of limited, self-contained changes.
+
+![GitHub Desktop screenshot showing a more human-readable diff, even though Git internally still sees full-line changes.](/images/blog/githubdesktop.png)
+</blockquote>
+
 By contrast, when tables are generated from a YAML source, all you need to do is remove the corresponding key-value pairs in the YAML file.
 
 ```diff
