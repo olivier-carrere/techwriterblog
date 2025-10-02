@@ -265,6 +265,12 @@ This flexibility allows your documentation to adapt to different contexts—whet
 
 ---
 
+## Easier diffs and cleaner version control
+
+One hidden drawback of Markdown tables is how poorly they behave in version control. If you remove or reorder a column, Git compares the file line by line—producing a messy, unreadable diff where every row appears changed. By contrast, when tables are generated from a YAML source, all you need to do is remove the corresponding key-value pairs in the YAML file. That change is perfectly legible in a Git diff. An even better approach is to edit the **script that generates the table**: often just a few lines of code, producing a simple, human-readable change that’s easier to review, merge, and revert.
+
+---
+
 ### Growing with your YAML
 
 Our **oil-types.yaml** started as a simple table but evolved into a **single source of truth**:
