@@ -39,6 +39,10 @@ Looks neat, right? But as your product line grows, so does the complexity. Addin
 
 Some teams start with **DITA reference XML**, thinking structure solves the problem:
 
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>DITA reference XML</summary>
 ```xml
 <reference id="oil-types">
   <title>Oil types</title>
@@ -65,6 +69,9 @@ Some teams start with **DITA reference XML**, thinking structure solves the prob
   </refbody>
 </reference>
 ```
+    </details>
+  </blockquote>
+</article>
 
 It seems neat at first. Each oil has a dedicated section. But the moment prices change, new products are added, or you want to track extra attributes, the XML becomes cumbersome.
 
@@ -173,17 +180,25 @@ Rendered in Markdown, it produces a clean table:
 
 One of the key advantages of using structured data formats like YAML is **versatility**. The same dataset can be rendered in multiple ways—lists, tables, or even more complex layouts—without changing the source file.
 
-For example, you can display your data as a **simple list**:
-
-<blockquote>
-<ToolsList />
-</blockquote>
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Example: Display your data as a **simple list**</summary>
+      <ToolsList />
+    </details>
+  </blockquote>
+</article>
 
 Or you can present it as a **styled two-column table on desktop (that automatically collapses into individual labeled rows inside cards on mobile)**:
 
-<blockquote>
-<ToolsTable />
-</blockquote>
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Example: Display your data as a **styled two-column table**</summary>
+      <ToolsTable />
+    </details>
+  </blockquote>
+</article>
 
 If you need a richer display, you can even switch to a **five-column table on desktop (that automatically stacks into a single-column card view on mobile)**—all without editing the source YAML.
 
@@ -257,9 +272,14 @@ flowchart LR
 `} />
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**
 
-<blockquote>
-<ToolsTableFourCols />
-</blockquote>
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Example: Display your data as a **dynamic HTML table**</summary>
+      <ToolsTableFourCols />
+    </details>
+  </blockquote>
+</article>
 
 This flexibility allows your documentation to adapt to different contexts—whether it’s a quick reference list for users, a detailed table for technical readers, or a complex component in a UI. By separating content from presentation, you can maintain a single source of truth while offering multiple ways to consume the data.
 
@@ -269,6 +289,10 @@ This flexibility allows your documentation to adapt to different contexts—whet
 
 One hidden drawback of Markdown tables is how poorly they behave in version control. If you remove or reorder a column, Git compares the file line by line—producing a messy, unreadable diff where every row appears changed.
 
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Git diff</summary>
 ```diff
 diff --git a/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx b/src/content/blog/scalable-maintainable-technical-docs-with-yaml.mdx
 index 61dadd8..0f70057 100644
@@ -288,20 +312,32 @@ index 61dadd8..0f70057 100644
 +| Secondary oil | Two-cylinder engines | 17    | 5W-30           |
 ```
 
-<blockquote>
-💡 **Tip: Mitigate the issue with third-party tools**
+    </details>
+  </blockquote>
+</article>
 
-To partially improve the readability of table diffs, you can use tools like **GitHub Desktop** or **git diff --word-diff**, or define a custom diff driver in **.gitattributes**.
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>💡 **Tip: Mitigate the issue with third-party tools**</summary>
 
-These approaches make diffs more palatable to human readers, but under the hood, Git still considers entire lines as changed.
+	To partially improve the readability of table diffs, you can use tools like **GitHub Desktop** or **git diff --word-diff**, or define a custom diff driver in **.gitattributes**.
 
-![GitHub Desktop screenshot showing a more human-readable diff, even though Git internally still sees full-line changes.](/images/blog/githubdesktop.png)
+	These approaches make diffs more palatable to human readers, but under the hood, Git still considers entire lines as changed.
 
-GitHub Desktop and the command line highlight deletions in green, reflecting Git’s line-based diffing: it sees entire lines as modified, even if the change was only a deletion.
-</blockquote>
+	![GitHub Desktop screenshot showing a more human-readable diff, even though Git internally still sees full-line changes.](/images/blog/githubdesktop.png)
+
+	GitHub Desktop and the command line highlight deletions in green, reflecting Git’s line-based diffing: it sees entire lines as modified, even if the change was only a deletion.
+    </details>
+  </blockquote>
+</article>
 
 By contrast, when tables are generated from a YAML source, all you need to do is remove the corresponding key-value pairs in the YAML file.
 
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Git diff</summary>
 ```diff
 diff --git a/src/data/oil-types.yaml b/src/data/oil-types.yaml
 index 11eef57..87c04df 100644
@@ -331,11 +367,18 @@ index 11eef57..87c04df 100644
        cylinders: 2
        viscosity_grade: 5W-30
 ```
+    </details>
+  </blockquote>
+</article>
 
 That change is perfectly legible in a Git diff.
 
 An even better approach is to edit the **script that generates the table**: often just a few lines of code, producing a simple, human-readable change that’s easier to review, merge, and revert.
 
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary>Git diff</summary>
 ```diff
 diff --git a/src/components/table.astro b/src/components/table.astro
 index c05af99..d594203 100644
@@ -365,6 +408,9 @@ index c05af99..d594203 100644
            <td data-label="Viscosity grade">{row.viscosity_grade}</td>
            <td data-label="Price">${row.price.toFixed(2)}</td>
 ```
+    </details>
+  </blockquote>
+</article>
 
 ---
 
