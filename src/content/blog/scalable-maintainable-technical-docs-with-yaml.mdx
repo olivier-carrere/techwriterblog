@@ -111,6 +111,27 @@ They render nicely and are human-friendly—but they carry hidden maintainabilit
 | **Ambiguities**                | Values like `Price: 15` lack units, which can cause misinterpretation.              |
 | **Limited Reusability**        | Tables are hard to reuse across multiple documents, creating redundancy.            |
 
+<article class="prose">
+  <blockquote>
+    <details>
+      <summary><img src="/images/blog/warning.svg" alt="Warning sign" class="inline-block w-8 h-8 ml-2 align-middle" /> **The limits of Markdown tables**</summary>
+Markdown was designed so that the *source* should be almost as human-readable as the *output*, whether rendered as HTML, PDF, or another format. But tables are an exception: they introduce several challenges.
+
+Long lines quickly become a nightmare to read and edit, as text editors wrap them and make it hard to distinguish one row from another. The visual benefit of tables for readers—having columns neatly aligned on the same vertical lines—turns into a problem for authors.
+
+```markdown
+| Oil Type | Brand | Use  | Price | Viscosity Grade |
+| - | - | - | - | - |
+| Primary oil | A1X | One-cylinder engines | 15 | 0W-20 |
+| Secondary oil | B2Z | Two-cylinder engines | 17 | 5W-30 |
+```
+**Markdown source table**
+
+Some text editors can automatically realign table columns when you edit a cell, but this triggers a full table refactor. The result? A very noisy Git diff, where Git flags entire lines as changed even though only a few whitespace characters were adjusted. Conversely, if you avoid reformatting and keep column widths fixed, the table becomes hard for humans to parse and maintain.
+</details>
+  </blockquote>
+</article>
+
 Markdown is fine for static pages—but as your documentation grows, you need a better approach.
 
 ---
