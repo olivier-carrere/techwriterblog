@@ -11,69 +11,131 @@ tags: ["minimalism", "documentation", "UX writing", "Kahneman", "layering"]
 ---
 
 In *Thinking, Fast and Slow*, Daniel Kahneman showed that people prefer simple, plausible stories over statistically accurate ones.
-In psychological experiments, **a good story often feels more convincing than a good probability**.
+In his experiments, **a coherent story often feels more convincing than a correct one**.
 This insight captures a powerful idea: *less is more.*
 
-In technical writing, *less is more* takes on a different—but equally vital—meaning.
-The minimalist approach emphasizes **clarity, focus, and reduction of cognitive load**.
-Readers shouldn’t have to work hard to find the essential information; it should stand out clearly and immediately.
+In **technical writing**, *less is more* takes on a practical dimension.
+Minimalism isn’t about cutting content — it’s about **reducing cognitive load** and making sure every word earns its place.
+Readers shouldn’t have to dig for essential information; it should **stand out clearly and immediately**.
 
-When we combine these two meanings, an interesting lesson emerges for anyone writing concept pages or documentation:
+When we connect these two meanings — psychological and practical — an important lesson emerges for writers of docs, help centers, and concept pages:
 
-- A clear, focused main message keeps readers from being misled by too much detail.
-- Supporting or secondary information should be layered—placed in secondary pages or expandable sections—so that readers can explore only as deeply as they need.
+* A clear, focused main message keeps readers from being misled by unnecessary detail.
+* Supporting information can still exist — just not all at once.
+  It should be **layered**, so readers can explore as deeply as they need.
 
-In other words, *less is more* means telling the right story, not the whole story.
+In short: *less is more* means telling the **right story**, not the **whole story**.
 
 ---
 
 ## Layering: A Safety Net for Minimalism
 
-In *Layering as a Safety Net for Minimalist Documentation* (1998), **David Farkas** identified a central challenge of minimalist documentation:
-**how to be concise without being incomplete**.
+In *Layering as a Safety Net for Minimalist Documentation* (1998), **David Farkas** identified a recurring problem in minimalist documentation:
+**how to be concise without being incomplete.**
 
-The minimalist writer’s goal is to provide just enough information for users to succeed, but some readers will inevitably need more—more context, more reassurance, or more detailed procedures.
+Minimalist writing delivers focus — but if readers can’t find deeper explanations when needed, it backfires.
+Farkas proposed **layering** as the solution.
+Layering organizes information into **progressive levels of depth** that match readers’ curiosity and needs:
 
-Farkas proposed **layering** as the solution. In layered documentation, information is structured into levels that match readers’ needs and curiosity:
+* **The top layer** presents the *core task or idea* most users came for.
+* **Deeper layers** provide optional explanations, examples, and edge cases.
 
-- **The top layer** presents the *core information*—the key task, concept, or takeaway that most users seek.
-- **Deeper layers** offer optional explanations, examples, and conceptual depth for readers who want to understand more.
+This turns minimalism from a risky reduction into a *safe simplification*.
+Each layer acts as a safety net: if the top-level summary isn’t enough, the next layer is ready to catch the reader.
 
-This approach transforms minimalism from a risky reduction into a *safe simplification*.
-Instead of overwhelming every page with exhaustive detail, writers create **progressive levels of depth**.
-Each layer acts as a safety net: if readers don’t understand something at one level, the next layer is ready to catch them.
+### Example
 
-For example:
+**Before (non-minimalist):**
 
-- A **concept page** introduces a core idea and its purpose.
-- Linked **reference pages** or **expandable sections** describe parameters, exceptions, or underlying principles.
-- **Tutorials and examples** form an outer layer, showing how the concept works in practice.
+> The `deploy` command triggers a sequence of automated scripts that transfer the compiled assets and configuration files to the production server environment, unless overridden with the `--staging` flag.
 
-Layering mirrors how people naturally process information online:
-they **skim first**, then **dive deeper only when needed**.
-It supports both the fast, intuitive thinking Kahneman described (*System 1*) and the slower, analytical reasoning of *System 2*.
+**After (minimalist + layered):**
+
+> To deploy your app, run:
+>
+> ```bash
+> deploy
+> ```
+>
+> This sends your build to the production server.
+> [Learn more about deployment flags →]
+
+Same information, different experience.
+The second version prioritizes clarity and action first, and depth second — exactly how users read online.
+
+---
+
+## Reading Behavior: System 1 and System 2
+
+Kahneman described two modes of thinking:
+
+* **System 1** — fast, intuitive, effortless
+* **System 2** — slow, deliberate, analytical
+
+Readers constantly switch between these modes when using documentation.
+
+| Mode         | Behavior                                 | What They Need                                        |
+| ------------ | ---------------------------------------- | ----------------------------------------------------- |
+| **System 1** | Scanning quickly for the answer          | Short sentences, strong headings, scannable structure |
+| **System 2** | Troubleshooting, comparing, or reasoning | Deeper explanations, linked references, rationale     |
+
+Layered documentation supports both:
+it gives System 1 a frictionless path to success, and System 2 the room to dig deeper when needed.
+
+When designing or editing a page, ask yourself:
+
+* Can a first-time reader grasp the core idea in 10 seconds? (*System 1 test*)
+* If they need more context, is there a clear next step or link? (*System 2 safety net*)
+
+---
+
+## Patterns for Layered Documentation
+
+Layering doesn’t require complex design — just conscious structure.
+Here are common patterns used by minimalist writers:
+
+* **Progressive disclosure** — reveal advanced options or examples only when needed.
+* **Concept–Task–Reference (CTR)** — separate *what it is*, *how to do it*, and *detailed syntax*.
+* **Expandable sections or tooltips** — micro-layering within a single page.
+* **Linked journeys** — short concept pages leading to tutorials or API references.
+
+These patterns reduce friction while preserving completeness — a balance every technical writer aims for.
 
 ---
 
 ## The Balance Between Clarity and Completeness
 
-When applied together, **minimalism and layering** create a balance between clarity and completeness.
-Minimalism gives documentation its focus; layering gives it resilience.
+When applied together, **minimalism and layering** create a natural balance.
+Minimalism gives documentation focus; layering gives it depth.
 
-By structuring content so that readers can move from **main message → details → depth**, we ensure that
-*less is more* never becomes *less is not enough*.
+Readers move smoothly from **main message → details → depth**, controlling how much they consume.
+That’s how you ensure that *less is more* never becomes *less is not enough*.
 
-The result is documentation that tells a clear story—one that invites readers to learn just as much as they need, when they need it.
+---
+
+## Applying “Less Is More” to Your Own Docs
+
+Try this simple reflection exercise:
+
+1. Pick one of your most complex documentation pages.
+2. Identify the **core story** — what users *really* need from this page.
+3. Move supporting explanations or exceptions into secondary layers (links, tabs, or collapsible sections).
+4. Re-read the top layer alone.
+
+   * Does it stand alone?
+   * Is it coherent, plausible, and easy to grasp?
+
+If yes, you’ve reached the “less is more” balance: a page that tells the right story clearly, while keeping all necessary depth close at hand.
 
 ---
 
 ## Further Reading
 
-- **Daniel Kahneman** — *Thinking, Fast and Slow* (2011)
+* **Daniel Kahneman** — *Thinking, Fast and Slow* (2011)
   Explores the two systems of human thinking and why we prefer simple, coherent stories over complex probabilities.
 
-- **David Farkas** — *Layering as a Safety Net for Minimalist Documentation* (Technical Communication, January 1998)
+* **David Farkas** — *Layering as a Safety Net for Minimalist Documentation* (*Technical Communication*, January 1998)
   A foundational article on how layered structures support minimalism in technical communication.
 
-- **John M. Carroll** — *The Nurnberg Funnel: Designing Minimalist Instruction for Practical Computer Skill* (1990)
+* **John M. Carroll** — *The Nurnberg Funnel: Designing Minimalist Instruction for Practical Computer Skill* (1990)
   The seminal work introducing the minimalist approach to documentation.
