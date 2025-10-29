@@ -170,6 +170,9 @@ It works in three stages:
 
 1. **AI-based Evaluation**
    Each **.md** file is read and sent to an OpenAI model. The model assigns a raw score from **1 to 10**, estimating how strongly the text relates to the target theme.
+   
+*Distribution of articles across combined scores, shown as a Gaussian curve*
+![Number of articles for each combined score graph](/images/blog/compound.png)
 
 2. **Gaussian Normalization**
    To ensure a smooth and realistic distribution of results, the raw scores are rebalanced using a **Gaussian (normal) curve**, spreading the final values evenly across the 1–10 range. This avoids clusters of identical scores and makes large-scale data more insightful.
