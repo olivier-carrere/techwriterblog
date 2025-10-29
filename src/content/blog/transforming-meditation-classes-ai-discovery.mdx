@@ -1,0 +1,177 @@
+---
+draft: false
+title: "Transforming a Corpus of 1,800 Meditation Classes into an AI-Powered Discovery Service"
+snippet: "DITA brought structure through XML, but its complexity often felt heavy. Markdown offers a lightweight alternative where technical writers can still apply DITA’s information typing principles—using open, freely available tools and without the XML overhead."
+image: {
+    src: "/images/blog/transforming-meditation-classes-ai-discovery.webp",
+    alt: "Illustration of a feather symbolizing Markdown as a lightweight alternative to DITA XML"
+}
+publishDate: "2025-10-28"
+category: "Blog"
+author: "Olivier Carrère"
+tags: [AI, Meditation, Discovery, Content]
+---
+
+We'll explore how to **leverage a corpus of 1,800 meditation classes (~8 million words)** to create an **intelligent discovery service**, making classes accessible, interactive, and insightful through AI.
+
+---
+
+## Objective
+
+The goal is to transform a vast, heterogeneous collection of meditation teachings into a **structured, AI-enabled knowledge platform**. This system should:
+
+* Organize the corpus systematically for human and machine readability.
+* Enrich the content with **metadata, themes, and scores** for improved discoverability.
+* Enable **fast search and thematic navigation** across thousands of teachings.
+* Provide an **interactive AI layer** that guides users, answers questions, and contextualizes the teachings.
+
+![Labels](/images/blog/transforming-meditation-classes-ai-discovery-large.webp)
+
+
+The ultimate aim is to make teachings **more discoverable, approachable, and meaningful**, without losing the depth and subtlety of the original classes.
+
+---
+
+## Approach
+
+### 1. Analysis and Cleaning
+
+Before AI can meaningfully process the corpus, the data must be **clean and consistent**:
+
+* **Deduplication:** Identify repeated classes and remove redundant content.
+* **Formatting normalization:** Standardize headers, timestamps, and text encoding.
+* **Quality checks:** Flag incomplete or corrupted classes for review.
+* **Consistency enforcement:** Align style, terminology, and structure for AI readability.
+
+import Mermaid from '@/components/Mermaid.astro';
+
+<Mermaid chart={`
+flowchart LR
+    %% === CORPUS ===
+    subgraph Corpus
+        A["Raw Corpus: 1,800 Meditation Classes (~8M words)"]
+    end
+
+    %% === PROCESSING ===
+    subgraph Processing
+        B["Analysis & Cleaning"]
+        C["Metadata & Tagging"]
+        D["Indexing & Search"]
+    end
+
+    %% === AI LAYER ===
+    subgraph AI_Layer["AI Layer"]
+        E["Interactive AI System"]
+    end
+
+    %% === ACCESS ===
+    subgraph Access
+        F["Deployment & Access"]
+        G["Users: Practitioners, Researchers, Enthusiasts"]
+    end
+
+    %% --- Main pipeline ---
+    A --> B --> C --> D --> E --> F --> G
+
+    %% --- Cleaning details ---
+    B -->|"Subprocess"| B1["Deduplication"]
+    B -->|"Subprocess"| B2["Formatting Normalization"]
+    B -->|"Subprocess"| B3["Quality Checks"]
+    B -->|"Subprocess"| B4["Consistency Enforcement"]
+
+    %% --- Metadata details ---
+    C -->|"Subprocess"| C1["SEO Metadata"]
+    C -->|"Subprocess"| C2["Theme Categorization"]
+    C -->|"Subprocess"| C3["Interest Scoring"]
+    C -->|"Subprocess"| C4["Content Enrichment"]
+
+    %% --- Indexing details ---
+    D -->|"Subprocess"| D1["Full-text Search"]
+    D -->|"Subprocess"| D2["Thematic Navigation"]
+    D -->|"Subprocess"| D3["Semantic Search (Embeddings)"]
+    D -->|"Subprocess"| D4["Cross-linking Related Classes"]
+
+    %% --- AI layer details ---
+    E -->|"Feature"| E1["Personalized Recommendations"]
+    E -->|"Feature"| E2["Contextual Explanations"]
+    E -->|"Feature"| E3["Conversational Exploration"]
+    E -->|"Feature"| E4["Content Insights"]
+
+    %% --- Deployment details ---
+    F -->|"Channel"| F1["Web Interface"]
+    F -->|"Channel"| F2["API Access"]
+    F -->|"Channel"| F3["Scalability & Maintenance"]
+    F -->|"Channel"| F4["Preservation of Original Text"]
+
+    %% --- Feedback loops ---
+    G -->|"Feedback"| E
+    E -->|"Improves"| D
+    G -->|"Analytics"| D
+    G -->|"Feedback"| C
+`} />
+
+
+This step ensures a **high-quality foundation**, which is critical for metadata generation, indexing, and AI interaction.
+
+---
+
+### 2. Metadata and Tagging
+
+Metadata transforms a large corpus into a **discoverable and analyzable knowledge base**:
+
+* **SEO metadata:** Generate titles, descriptions, and keywords to support web-based exploration.
+* **Theme categorization:** Automatically assign thematic labels such as meditation, karma, lineage, practice, and daily life.
+* **Scoring and ranking:** Assign interest scores or relevance indicators based on user or expert priorities.
+* **Content enrichment:** Insert cross-references, summaries, or abbreviations for Japanese terms to improve clarity and searchability.
+
+**AI can assist here** by reading each class and suggesting thematic tags or highlights while maintaining consistency across the corpus.
+
+---
+
+### 3. Indexing and Search
+
+A robust indexing system enables **fast, accurate retrieval**:
+
+* **Full-text search:** Index content to allow keyword-based queries.
+* **Thematic navigation:** Enable filtering by topics, scores, or temporal context.
+* **Semantic search:** Use embeddings or vector search to capture meaning beyond exact keywords, letting users find related concepts even if phrased differently.
+* **Cross-linking:** Automatically connect related classes to create a **web of knowledge** that mirrors teaching interconnections.
+
+This ensures that users can **explore the corpus efficiently**, whether seeking a specific lesson or discovering related concepts.
+
+---
+
+### 4. Interactive AI Layer
+
+The AI layer transforms static content into an **intelligent, interactive discovery platform**:
+
+* **Personalized recommendations:** Suggest classes or themes based on user interests or previous interactions.
+* **Contextual explanations:** Summarize complex teachings or provide background on terminology and lineage.
+* **Conversational exploration:** Allow users to ask questions, clarify concepts, or explore teachings dynamically.
+* **Content insights:** Generate summaries, highlight patterns, or identify frequently referenced masters or concepts.
+
+This layer **bridges the gap between static text and dynamic understanding**, making the teachings more accessible to practitioners and researchers alike.
+
+---
+
+### 5. Deployment and Access
+
+Finally, the platform should be **easily accessible**:
+
+* **Web interface:** User-friendly dashboards for browsing, filtering, and exploring classes.
+* **API access:** Allow other applications or AI systems to query the corpus programmatically.
+* **Scalability:** Ensure smooth operation even as new classes or supplementary materials are added.
+* **Preservation of integrity:** Maintain original text alongside enriched metadata to honor the authenticity of the teachings.
+
+---
+
+## Outcome
+
+The result is a **scalable AI-powered platform** where users can:
+
+* Discover meditation classes by **theme, master, or score**.
+* Interact with teachings via **search, exploration, and AI conversation**.
+* Access layered insights without losing the **depth and nuance** of the teachings.
+
+Practitioners, scholars, and enthusiasts gain a tool that **respects the integrity of the teachings** while making them **intelligible, searchable, and personally meaningful**.
+
