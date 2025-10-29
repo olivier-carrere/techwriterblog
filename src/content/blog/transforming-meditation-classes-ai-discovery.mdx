@@ -224,18 +224,20 @@ No one will ever read eight million words of articles in print. Since the full c
 <Mermaid chart={`
 flowchart TD
 A[Raw Articles 1800 Markdown Files] --> B[AI Based Evaluation]
-B --> C[Assign Raw Score 1 to 10 for Theme]
+B --> C[Assign Raw Score 1 to 10 for Theme Daily Life]
 C --> D[Gaussian Normalization of Scores]
 D --> E[Update YAML Frontmatter with Score]
-E --> F1[Score Above Threshold Yes]
-E --> F2[Score Below Threshold No]
-F1 --> G[Select Articles for LaTeX Book]
-F2 --> H[Available Digitally Only]
-G --> I[Convert Markdown to LaTeX Chapters]
+
+E --> F{Score Above Threshold?}
+F -->|Yes| I[Convert Markdown to LaTeX Chapters]
+F -->|No| H[Available Digitally Only]
+
+
 I --> J[Assemble LaTeX Book main tex]
 J --> K[Compile PDF with XeLaTeX or LuaLaTeX]
 K --> L[Final Curated Book Ready for Print]
-H --> M[Accessible via Digital Platform AI Exploration]
+
+H --> M[Accessible via Digital Platform or AI Exploration]
 L --> M[Digital Version Also Available]
 `} />
 
