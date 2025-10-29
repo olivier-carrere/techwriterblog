@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Transforming a Corpus of 1,800 Meditation Articles into an AI-Powered Discovery Service"
+title: "Transforming a Corpus of 1,800 Articles into an AI-Powered Discovery Service"
 snippet: "DITA brought structure through XML, but its complexity often felt heavy. Markdown offers a lightweight alternative where technical writers can still apply DITA’s information typing principles—using open, freely available tools and without the XML overhead."
 image: {
     src: "/images/blog/transforming-meditation-classes-ai-discovery.webp",
@@ -12,22 +12,22 @@ author: "Olivier Carrère"
 tags: [AI, Meditation, Discovery, Content]
 ---
 
-We'll explore how to **leverage a corpus of 1,800 meditation articles (~8 million words)** to create an **intelligent discovery service**, making articles accessible, interactive, and insightful through AI.
+We'll explore how to **leverage a corpus of 1,800 articles (~8 million words)** to create an **intelligent discovery service**, making articles accessible, interactive, and insightful through AI.
 
 ---
 
 ## Objective
 
-The goal is to transform a vast, heterogeneous collection of meditation teachings into a **structured, AI-enabled knowledge platform**. This system should:
+The goal is to transform a vast, heterogeneous collection of articles into a **structured, AI-enabled knowledge platform**. This system should:
 
 * Organize the corpus systematically for human and machine readability.
 * Enrich the content with **metadata, themes, and scores** for improved discoverability.
-* Enable **fast search and thematic navigation** across thousands of teachings.
-* Provide an **interactive AI layer** that guides users, answers questions, and contextualizes the teachings.
+* Enable **fast search and thematic navigation** across thousands of articles.
+* Provide an **interactive AI layer** that guides users, answers questions, and contextualizes the articles.
 
 ![Labels](/images/blog/transforming-meditation-classes-ai-discovery-large.webp)
 
-The ultimate aim is to make teachings **more discoverable, approachable, and meaningful**, without losing the depth and subtlety of the original articles.
+The ultimate aim is to make articles **more discoverable, approachable, and meaningful**, without losing the depth and subtlety of the original articles.
 
 ---
 
@@ -46,7 +46,7 @@ import Mermaid from '@/components/Mermaid.astro';
 flowchart LR
     %% === CORPUS ===
     subgraph Corpus
-        A["Raw Corpus: 1,800 Meditation Articles (~8M words)"]
+        A["Raw Corpus: 1,800 Articles (~8M words)"]
     end
 
     %% === PROCESSING ===
@@ -132,7 +132,7 @@ A robust indexing system enables **fast, accurate retrieval**:
 * **Full-text search:** Index content to allow keyword-based queries.
 * **Thematic navigation:** Enable filtering by topics, scores, or temporal context.
 * **Semantic search:** Use embeddings or vector search to capture meaning beyond exact keywords, letting users find related concepts even if phrased differently.
-* **Cross-linking:** Automatically connect related articles to create a **web of knowledge** that mirrors teaching interconnections.
+* **Cross-linking:** Automatically connect related articles to create a **web of knowledge** that mirrors article interconnections.
 
 This ensures that users can **explore the corpus efficiently**, whether seeking a specific lesson or discovering related concepts.
 
@@ -143,11 +143,11 @@ This ensures that users can **explore the corpus efficiently**, whether seeking 
 The AI layer transforms static content into an **intelligent, interactive discovery platform**:
 
 * **Personalized recommendations:** Suggest articles or themes based on user interests or previous interactions.
-* **Contextual explanations:** Summarize complex teachings or provide background on terminology and lineage.
-* **Conversational exploration:** Allow users to ask questions, clarify concepts, or explore teachings dynamically.
+* **Contextual explanations:** Summarize complex articles or provide background on terminology and lineage.
+* **Conversational exploration:** Allow users to ask questions, clarify concepts, or explore articles dynamically.
 * **Content insights:** Generate summaries, highlight patterns, or identify frequently referenced masters or concepts.
 
-This layer **bridges the gap between static text and dynamic understanding**, making the teachings more accessible to practitioners and researchers alike.
+This layer **bridges the gap between static text and dynamic understanding**, making the articles more accessible to practitioners and researchers alike.
 
 ---
 
@@ -158,7 +158,7 @@ Finally, the platform should be **easily accessible**:
 * **Web interface:** User-friendly dashboards for browsing, filtering, and exploring articles.
 * **API access:** Allow other applications or AI systems to query the corpus programmatically.
 * **Scalability:** Ensure smooth operation even as new articles or supplementary materials are added.
-* **Preservation of integrity:** Maintain original text alongside enriched metadata to honor the authenticity of the teachings.
+* **Preservation of integrity:** Maintain original text alongside enriched metadata to honor the authenticity of the articles.
 
 ---
 
@@ -178,7 +178,7 @@ It works in three stages:
 ---
 <details>
   <summary><strong>AI-Generated Metadata Example</strong></summary>
-The metadata for this article was generated from an AI-assisted analysis of hundreds of meditation teachings. By identifying recurring themes of awareness, balance, and mindful attention, the AI distilled key insights into how stillness can nurture clarity and calm in everyday life.
+The metadata for this article was generated from an AI-assisted analysis of hundreds of articles. By identifying recurring themes of awareness, balance, and mindful attention, the AI distilled key insights into how stillness can nurture clarity and calm in everyday life.
 
 ```yaml
 title: The Power of Stillness – Deepening Awareness Through Mindful Sitting
@@ -219,9 +219,9 @@ The result: a harmonized dataset of Markdown texts, each carrying a consistent, 
 
 ## From Markdown to LaTeX: Automating the Creation of Various Anthologies
 
-No one will ever read eight million words of teachings in print. Since the full corpus of 1,800 articles is already available online, the real challenge is curation — selecting and assembling themed anthologies that offer readers beautifully printed excerpts aligned with their center of interest.
+No one will ever read eight million words of articles in print. Since the full corpus of 1,800 articles is already available online, the real challenge is curation — selecting and assembling themed anthologies that offer readers beautifully printed excerpts aligned with their center of interest.
 
-Yet another Python script can automate the **conversion and assembly of Markdown teachings into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
+Yet another Python script can automate the **conversion and assembly of Markdown articles into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
 
 It performs the entire workflow in a few elegant steps:
 
@@ -246,21 +246,21 @@ It performs the entire workflow in a few elegant steps:
 3. **Book Assembly**
    The script then reconstructs a master file, **main.tex**, combining:
 
-   * a custom-themed LaTeX preamble (Garamond typography, A5 format, glossary of practice-related terms),
+   * a custom-themed LaTeX preamble (Garamond typography, A5 format, glossary of practice-related@ terms),
    * **\input{}** references for each chapter,
    * and a closing section with a glossary of key words.
 
-   The result is a complete, typeset-ready LaTeX book automatically regenerated each time a new teaching is added.
+   The result is a complete, typeset-ready LaTeX book automatically regenerated each time a new article is added.
 
-This script bridges editorial workflow and craftsmanship: it transforms hundreds of Markdown teachings into a unified anthology.
+This script bridges editorial workflow and craftsmanship: it transforms hundreds of Markdown articles into a unified anthology.
 
 ## Outcome
 
 The result is a **scalable AI-powered platform** where users can:
 
-* Discover meditation articles by **theme, master, or score**.
-* Interact with teachings via **search, exploration, and AI conversation**.
-* Access layered insights without losing the **depth and nuance** of the teachings.
+* Discover articles by **theme, master, or score**.
+* Interact with articles via **search, exploration, and AI conversation**.
+* Access layered insights without losing the **depth and nuance** of the articles.
 
-Practitioners and enthusiasts gain a tool that **respects the integrity of the teachings** while making them **intelligible, searchable, and personally meaningful**.
+Practitioners and enthusiasts gain a tool that **respects the integrity of the articles** while making them **intelligible, searchable, and personally meaningful**.
 
