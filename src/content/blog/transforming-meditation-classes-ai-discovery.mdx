@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Transforming a Corpus of 1,800 Meditation Classes into an AI-Powered Discovery Service"
+title: "Transforming a Corpus of 1,800 Meditation Articles into an AI-Powered Discovery Service"
 snippet: "DITA brought structure through XML, but its complexity often felt heavy. Markdown offers a lightweight alternative where technical writers can still apply DITA’s information typing principles—using open, freely available tools and without the XML overhead."
 image: {
     src: "/images/blog/transforming-meditation-classes-ai-discovery.webp",
@@ -12,7 +12,7 @@ author: "Olivier Carrère"
 tags: [AI, Meditation, Discovery, Content]
 ---
 
-We'll explore how to **leverage a corpus of 1,800 meditation classes (~8 million words)** to create an **intelligent discovery service**, making classes accessible, interactive, and insightful through AI.
+We'll explore how to **leverage a corpus of 1,800 meditation articles (~8 million words)** to create an **intelligent discovery service**, making articles accessible, interactive, and insightful through AI.
 
 ---
 
@@ -27,7 +27,7 @@ The goal is to transform a vast, heterogeneous collection of meditation teaching
 
 ![Labels](/images/blog/transforming-meditation-classes-ai-discovery-large.webp)
 
-The ultimate aim is to make teachings **more discoverable, approachable, and meaningful**, without losing the depth and subtlety of the original classes.
+The ultimate aim is to make teachings **more discoverable, approachable, and meaningful**, without losing the depth and subtlety of the original articles.
 
 ---
 
@@ -35,9 +35,9 @@ The ultimate aim is to make teachings **more discoverable, approachable, and mea
 
 Before AI can meaningfully process the corpus, the data must be **clean and consistent**:
 
-* **Deduplication:** Identify repeated classes and remove redundant content.
+* **Deduplication:** Identify repeated articles and remove redundant content.
 * **Formatting normalization:** Standardize headers, timestamps, and text encoding.
-* **Quality checks:** Flag incomplete or corrupted classes for review.
+* **Quality checks:** Flag incomplete or corrupted articles for review.
 * **Consistency enforcement:** Align style, terminology, and structure for AI readability.
 
 import Mermaid from '@/components/Mermaid.astro';
@@ -46,7 +46,7 @@ import Mermaid from '@/components/Mermaid.astro';
 flowchart LR
     %% === CORPUS ===
     subgraph Corpus
-        A["Raw Corpus: 1,800 Meditation Classes (~8M words)"]
+        A["Raw Corpus: 1,800 Meditation Articles (~8M words)"]
     end
 
     %% === PROCESSING ===
@@ -86,7 +86,7 @@ flowchart LR
     D -->|"Subprocess"| D1["Full-text Search"]
     D -->|"Subprocess"| D2["Thematic Navigation"]
     D -->|"Subprocess"| D3["Semantic Search (Embeddings)"]
-    D -->|"Subprocess"| D4["Cross-linking Related Classes"]
+    D -->|"Subprocess"| D4["Cross-linking Related Articles"]
 
     %% --- AI layer details ---
     E -->|"Feature"| E1["Personalized Recommendations"]
@@ -121,7 +121,7 @@ Metadata transforms a large corpus into a **discoverable and analyzable knowledg
 * **Scoring and ranking:** Assign interest scores or relevance indicators based on user or expert priorities.
 * **Content enrichment:** Insert cross-references, summaries, or abbreviations for Japanese terms to improve clarity and searchability.
 
-**AI can assist here** by reading each class and suggesting thematic tags or highlights while maintaining consistency across the corpus.
+**AI can assist here** by reading each article and suggesting thematic tags or highlights while maintaining consistency across the corpus.
 
 ---
 
@@ -132,7 +132,7 @@ A robust indexing system enables **fast, accurate retrieval**:
 * **Full-text search:** Index content to allow keyword-based queries.
 * **Thematic navigation:** Enable filtering by topics, scores, or temporal context.
 * **Semantic search:** Use embeddings or vector search to capture meaning beyond exact keywords, letting users find related concepts even if phrased differently.
-* **Cross-linking:** Automatically connect related classes to create a **web of knowledge** that mirrors teaching interconnections.
+* **Cross-linking:** Automatically connect related articles to create a **web of knowledge** that mirrors teaching interconnections.
 
 This ensures that users can **explore the corpus efficiently**, whether seeking a specific lesson or discovering related concepts.
 
@@ -142,7 +142,7 @@ This ensures that users can **explore the corpus efficiently**, whether seeking 
 
 The AI layer transforms static content into an **intelligent, interactive discovery platform**:
 
-* **Personalized recommendations:** Suggest classes or themes based on user interests or previous interactions.
+* **Personalized recommendations:** Suggest articles or themes based on user interests or previous interactions.
 * **Contextual explanations:** Summarize complex teachings or provide background on terminology and lineage.
 * **Conversational exploration:** Allow users to ask questions, clarify concepts, or explore teachings dynamically.
 * **Content insights:** Generate summaries, highlight patterns, or identify frequently referenced masters or concepts.
@@ -155,9 +155,9 @@ This layer **bridges the gap between static text and dynamic understanding**, ma
 
 Finally, the platform should be **easily accessible**:
 
-* **Web interface:** User-friendly dashboards for browsing, filtering, and exploring classes.
+* **Web interface:** User-friendly dashboards for browsing, filtering, and exploring articles.
 * **API access:** Allow other applications or AI systems to query the corpus programmatically.
-* **Scalability:** Ensure smooth operation even as new classes or supplementary materials are added.
+* **Scalability:** Ensure smooth operation even as new articles or supplementary materials are added.
 * **Preservation of integrity:** Maintain original text alongside enriched metadata to honor the authenticity of the teachings.
 
 ---
@@ -258,7 +258,7 @@ This script bridges editorial workflow and craftsmanship: it transforms hundreds
 
 The result is a **scalable AI-powered platform** where users can:
 
-* Discover meditation classes by **theme, master, or score**.
+* Discover meditation articles by **theme, master, or score**.
 * Interact with teachings via **search, exploration, and AI conversation**.
 * Access layered insights without losing the **depth and nuance** of the teachings.
 
