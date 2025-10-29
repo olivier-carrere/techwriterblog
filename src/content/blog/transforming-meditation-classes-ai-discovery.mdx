@@ -163,7 +163,7 @@ Finally, the platform should be **easily accessible**:
 
 ---
 
-### Automated Thematic Scoring of Markdown Files with GPT
+## Automated Thematic Scoring of Markdown Files with GPT
 
 We can use a Python script to automate the evaluation and enrichment of Markdown files by assigning a **semantic score** related to any theme, for instance, *daily life*
 
@@ -185,6 +185,38 @@ It works in three stages:
 The result: a harmonized dataset of Markdown texts, each carrying a consistent, AI-generated metric of thematic relevance — ready for visualization, filtering, or content analytics.
 
 ---
+
+## From Markdown to LaTeX: Automating the Creation of Various Anthologies
+
+No one will ever read eight million words of teachings in print. Since the full corpus of 1,800 articles is already available online, the real challenge is curation — selecting and assembling themed anthologies that offer readers beautifully printed excerpts aligned with their center of interest.
+
+Yet another Python script can automate the **conversion and assembly of Markdown teachings into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
+
+It performs the entire workflow in a few elegant steps:
+
+1. **Markdown Cleaning and Conversion**
+   Given a Markdown file, the script:
+
+   * extracts its title from the YAML frontmatter,
+   * removes HTML markup and Markdown links,
+   * converts the text into **LaTeX** using *Pandoc*.
+
+   Each `.md` file becomes a clean, self-contained `.tex` chapter with a proper `\chapter{Title}` heading.
+
+2. **Chapter Management**
+   Every generated chapter file is recorded in a hidden list (`.chapters_list.txt`).
+   This ensures that chapters are automatically tracked and appear in the correct order when the book is rebuilt.
+
+3. **Book Assembly**
+   The script then reconstructs a master file, `main.tex`, combining:
+
+   * a custom-themed LaTeX preamble (Garamond typography, A5 format, glossary of Japanese terms),
+   * `\input{}` references for each chapter,
+   * and a closing section with a glossary of key words.
+
+   The result is a complete, typeset-ready LaTeX book automatically regenerated each time a new teaching is added.
+
+This script bridges editorial workflow and craftsmanship: it transforms hundreds of Markdown teachings into a unified anthology.
 
 ## Outcome
 
