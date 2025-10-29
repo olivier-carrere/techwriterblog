@@ -221,6 +221,24 @@ The result: a harmonized dataset of Markdown texts, each carrying a consistent, 
 
 No one will ever read eight million words of articles in print. Since the full corpus of 1,800 articles is already available online, the real challenge is curation — selecting and assembling themed anthologies that offer readers beautifully printed excerpts aligned with their center of interest.
 
+<Mermaid chart={`
+flowchart TD
+A[Raw Articles 1800 Markdown Files] --> B[AI Based Evaluation]
+B --> C[Assign Raw Score 1 to 10 for Theme]
+C --> D[Gaussian Normalization of Scores]
+D --> E[Update YAML Frontmatter with Score]
+E --> F1[Score Above Threshold Yes]
+E --> F2[Score Below Threshold No]
+F1 --> G[Select Articles for LaTeX Book]
+F2 --> H[Available Digitally Only]
+G --> I[Convert Markdown to LaTeX Chapters]
+I --> J[Assemble LaTeX Book main tex]
+J --> K[Compile PDF with XeLaTeX or LuaLaTeX]
+K --> L[Final Curated Book Ready for Print]
+H --> M[Accessible via Digital Platform AI Exploration]
+L --> M[Digital Version Also Available]
+`} />
+
 Yet another Python script can automate the **conversion and assembly of Markdown articles into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
 
 It performs the entire workflow in a few elegant steps:
