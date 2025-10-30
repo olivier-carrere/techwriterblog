@@ -12,7 +12,7 @@ author: "Olivier Carrère"
 tags: [AI, LaTeX, Discovery, Content]
 ---
 
-We'll explore how to **leverage a corpus of 1,800 articles (~8 million words)** to create an **intelligent discovery service**, making articles accessible, interactive, and insightful through AI.
+We'll explore how to **leverage a corpus of 1,800 articles (~1.8 million words)** to create an **intelligent discovery service**, making articles accessible, interactive, and insightful through AI.
 
 ---
 
@@ -157,11 +157,11 @@ The result: a harmonized dataset of Markdown texts, each carrying a consistent, 
 
 ## From Markdown to LaTeX: Automating the Creation of Various Anthologies
 
-No one could realistically read eight million words of articles in print — even a skilled reader would need **about 600 hours**, or roughly **75 full eight-hour reading days**, to get through them all. Since the full corpus of 1,800 articles is already available online, the real challenge is curation: selecting and assembling themed anthologies that present readers with beautifully printed excerpts tailored to their interests.
+No one could realistically read 1.8 million words of articles in print — even a skilled reader would need **about 120 hours**, or roughly **15 full eight-hour reading days**, to get through them all. Since the full corpus of 1,800 articles is already available online, the real challenge is curation: selecting and assembling themed anthologies that present readers with beautifully printed excerpts tailored to their interests.
 
 <Mermaid chart={`
 flowchart TD
-Files[1,800 Markdown files\n~8 million words] --> AI_Eval[AI Scoring]
+Files[1,800 Markdown files\n~1.8 million words] --> AI_Eval[AI Scoring]
 AI_Eval --> ScoreCheck{Score Above Threshold?}
 ScoreCheck -->|Yes| BookCheck{Already in Existing Book?}
 
