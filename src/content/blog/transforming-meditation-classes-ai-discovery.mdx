@@ -157,22 +157,14 @@ No one will ever read eight million words of articles in print. Since the full c
 
 <Mermaid chart={`
 flowchart TD
-A[Raw Articles 1800 Markdown Files] --> B[AI Based Evaluation]
-B --> C[Assign Raw Score 1 to 10 for Given Theme]
-C --> D[Gaussian Normalization of Scores]
-D --> E[Update YAML Frontmatter with Score]
+Files[1,800 Markdown files] --> AI_Eval[AI Scoring]
+AI_Eval --> ScoreCheck{Score Above Threshold?}
+ScoreCheck -->|Yes| BookCheck{Already in Existing Book?}
 
-E --> F{Score Above Threshold?}
-F -->|Yes| I[Convert Markdown to LaTeX Chapters]
-F -->|No| H[Available Digitally Only]
+AI_Eval -->DigitalPlatform[Web Version]
+BookCheck -->|No| BuildBook[PDF Version]
 
 
-I --> J[Assemble LaTeX Book main tex]
-J --> K[Compile PDF with XeLaTeX or LuaLaTeX]
-K --> L[Final Curated Book Ready for Print]
-
-H --> M[Accessible via Digital Platform or AI Exploration]
-L --> M[Digital Version Also Available]
 `} />
 
 Yet another Python script can automate the **conversion and assembly of Markdown articles into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
