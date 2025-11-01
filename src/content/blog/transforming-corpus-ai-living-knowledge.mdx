@@ -26,7 +26,7 @@ Files[1.8 million words\n1,800 articles\n7,000 pages]-->Public[Potential audienc
 
 
 This project extends a broader effort to **leverage a massive corpus—1,800 articles, 1.8 million words, 7,000 pages—into a discovery system** that makes exploration smarter, more meaningful, and deeply human.
-Instead of letting a monumental archive gather digital dust, the goal is to let it *speak again*—one insight, one quote, one theme at a time.
+Instead of letting a monumental archive gather digital dust, the goal is to let it *speak again*—one insight, one quote, one topic at a time.
 
 ---
 
@@ -66,26 +66,26 @@ The responses revealed three main areas of concern:
 
 Insights like these allow the non-profit to **tailor its content and digests**, ensuring the corpus of articles speaks directly to the needs and questions of younger audiences, while also informing social media and micro-blogging strategies.
 
-## Curating Content and Quotes from Identified Themes
+## Curating Content and Quotes from Identified Topics
 
-Once the system had identified key themes within the corpus, the next step was to **leverage those insights for discovery and engagement**.
+Once the system had identified key topics within the corpus, the next step was to **leverage those insights for discovery and engagement**.
 
-For each theme, the workflow involved:
+For each topic, the workflow involved:
 
 * **Querying the corpus** to surface the most relevant articles.
 * **Curating these articles** to make them more visible on the website and to compile them into **themed digests** for deeper reading.
-* **Extracting quotes** from these articles that resonate strongly with each theme, ready to be shared **daily on micro-blogging platforms**.
+* **Extracting quotes** from these articles that resonate strongly with each topic, ready to be shared **daily on micro-blogging platforms**.
 
 <Mermaid chart={`
 flowchart LR
 Files[1.8 million words\n1,800 articles\n7,000 pages]
 Files --> Web{1 article per day\non website}
 Files --> Quotes{Quote ranking\n& retrieval}
-Files --> ScoreCheck{Print - 200 pages\ndigests by theme}
+Files --> ScoreCheck{Print - 200 pages\ndigests by topic}
 Quotes --> blue[Micro-blogging]
-ScoreCheck --> a[Theme 1\nTime and consistency]
-ScoreCheck --> b[Theme 2\nAuthenticity]
-ScoreCheck --> c[Theme 3\nEffectiveness & safety]
+ScoreCheck --> a[Topic 1\nTime and consistency]
+ScoreCheck --> b[Topic 2\nAuthenticity]
+ScoreCheck --> c[Topic 3\nEffectiveness & safety]
 `} />
 
 This process transforms the archive from a static repository into a **living, thematic ecosystem**, where content is both discoverable and shareable.
@@ -108,13 +108,13 @@ This ensures a **high-quality foundation** for metadata generation, indexing, an
 ## Scoring, Metadata, and Thematic Discovery
 
 Metadata transforms the corpus into a **discoverable and analyzable knowledge base**.
-Automated workflows assist in reading each article, identifying **themes, tags, and relevance scores**, and maintaining consistency across the entire collection.
+Automated workflows assist in reading each article, identifying **topics, tags, and relevance scores**, and maintaining consistency across the entire collection.
 
-- **Theme categorization** – automatically labeling content by domain or focus.
+- **Topic categorization** – automatically labeling content by domain or focus.
 - **Scoring and ranking** – assigning *interest scores* to highlight resonance and contextual depth.
 - **Content enrichment** – adding summaries, cross-references, and definitions for practice-related terms.
 
-A Python-based workflow evaluates every article, assigning **semantic scores** that reflect each theme’s presence and intensity.
+A Python-based workflow evaluates every article, assigning **semantic scores** that reflect each topic’s presence and intensity.
 The result is a **harmonized dataset**, where every page carries structured metadata—ready for discovery, filtering, or print curation.
 
 ---
@@ -143,7 +143,7 @@ This is more than content recycling; it’s **content renewal**.
 A living editorial process transforms static archives into **intelligent, evolving knowledge**.
 
 Readers can:
-- **Discover** articles by theme, relevance, or context.
+- **Discover** articles by topic, relevance, or context.
 - **Explore** cross-linked insights through search or guidance.
 - **Read** beautifully designed print anthologies—curated 200-page digests generated from the same dataset.
 
