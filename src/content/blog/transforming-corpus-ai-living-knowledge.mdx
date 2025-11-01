@@ -109,14 +109,15 @@ For each topic, the workflow involved:
 
 <Mermaid chart={`
 flowchart LR
-Files[1.8 million words\n1,800 articles\n7,000 pages]
-Files --> Web[1 article per day\non website]
+Files@{ shape: cyl, label: "1.8 million words\n1,800 articles\n7,000 pages" }
+
+Files --> C@{ shape: docs, label: "1 article per day\non website"}
 Files --> Quotes{Quote ranking\n& retrieval}
 Files --> ScoreCheck{Print - 200 pages\ndigests by topic}
 Quotes --> blue[Micro-blogging]
-ScoreCheck --> a[Topic 1\nTime and consistency]
-ScoreCheck --> b[Topic 2\nAuthenticity]
-ScoreCheck --> c[Topic 3\nEffectiveness & safety]
+ScoreCheck --> E@{ shape: paper-tape, label: "Topic 1\nTime and consistency"}
+ScoreCheck --> F@{ shape: paper-tape, label: "Topic 2\nAuthenticity"}
+ScoreCheck --> G@{ shape: paper-tape, label: "Topic 3\nEffectiveness & safety"}
 `} />
 
 This process transforms the archive from a static repository into a **living, thematic ecosystem**, where content is both discoverable and shareable.
