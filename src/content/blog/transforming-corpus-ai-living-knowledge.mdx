@@ -68,15 +68,20 @@ The next phase involves:
 - Creating thematic digests or short reading paths that directly answer these questions.
 - Measuring engagement shifts across age and gender segments to evaluate accessibility and impact.
 
-*This chart visualizes how the website’s audience compares to the general population across age groups. Each point represents the ratio of visitors in that age range relative to their proportion in the broader population — values above 100 % indicate overrepresentation, while values below 100 % show underrepresentation.*
+
+*This radar chart shows the website audience across six age groups, alongside gender distribution. Each axis displays the* **Website Audience ratio** *relative to the general population and the corresponding* **male and female percentages**. *Values above 100% indicate that the website has proportionally more visitors than the general population in that age group.*
 
 <Mermaid chart={`
 ---
-title: "Website Audience Ratios by Age Group"
+title: "Website Audience and Gender Distribution by Age Group"
 ---
 radar-beta
   axis a["18–24 (4%)"], b["25–34 (60%)"], c["35–44 (104%)"], d["45–54 (156%)"], e["55–64 (236%)"], f["65+ (284%)"]
-  curve w["Audience"]{4, 60, 104, 156, 236, 284}
+  
+  curve m["Male"]{77.8, 77.8, 77.8, 77.8, 77.8, 77.8}
+  curve w["Age"]{4, 60, 104, 156, 236, 284}
+
+  curve f["Female"]{22.2, 22.2, 22.2, 22.2, 22.2, 22.2}
 
   max 300
   min 0
