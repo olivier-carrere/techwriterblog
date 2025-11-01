@@ -21,7 +21,7 @@ import Mermaid from '@/components/Mermaid.astro';
 
 <Mermaid chart={`
 flowchart LR
-Files[1.8 million words\n1,800 articles\n7,000 pages]-->Public[Potential audience]
+Files[1.8 million words\n1,800 articles\n7,000 pages]-->Public[Target audience]
 `} />
 
 
@@ -63,6 +63,14 @@ The responses revealed three main areas of concern:
 1. **Time and consistency** — many feel too busy to practice regularly.
 2. **Authenticity** — skepticism about mindfulness being over-commercialized or shallow.
 3. **Effectiveness and safety** — worry that mindfulness might not work or could bring up difficult emotions.
+
+<Mermaid chart={`
+flowchart LR
+ScoreCheck[Target audience]
+ScoreCheck --> a[Topic 1\nTime and consistency]
+ScoreCheck --> b[Topic 2\nAuthenticity]
+ScoreCheck --> c[Topic 3\nEffectiveness & safety]
+`} />
 
 Insights like these allow the non-profit to **tailor its content and digests**, ensuring the corpus of articles speaks directly to the needs and questions of younger audiences, while also informing social media and micro-blogging strategies.
 
