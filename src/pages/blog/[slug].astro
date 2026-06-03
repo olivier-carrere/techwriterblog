@@ -89,13 +89,13 @@ const jsonLd = {
 
   <div id="reading-progress" aria-hidden="true"></div>
 
-  <div class="sticky top-14 z-40 bg-white border-b border-gray-100 shadow-sm">
-    <div class="max-w-5xl mx-auto px-4 h-9 flex items-center gap-1.5 text-sm text-gray-500 min-w-0">
-      <a href="/" class="hover:text-gray-900 transition shrink-0">Home</a>
-      <span class="text-gray-300 shrink-0">›</span>
-      <a href="/" class="hover:text-gray-900 transition shrink-0">Blog</a>
-      <span class="text-gray-300 shrink-0">›</span>
-      <span class="text-gray-700 truncate">{entry.data.title}</span>
+  <div class="sticky top-14 z-40 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 h-9 flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400 min-w-0">
+      <a href="/" class="hover:text-gray-900 dark:hover:text-white transition shrink-0">Home</a>
+      <span class="text-gray-300 dark:text-slate-600 shrink-0">›</span>
+      <a href="/" class="hover:text-gray-900 dark:hover:text-white transition shrink-0">Blog</a>
+      <span class="text-gray-300 dark:text-slate-600 shrink-0">›</span>
+      <span class="text-gray-700 dark:text-slate-300 truncate">{entry.data.title}</span>
     </div>
   </div>
 
@@ -131,18 +131,18 @@ const jsonLd = {
       </div>
     </div>
 
-    <div class="mx-auto prose prose-lg mt-6" style="max-width: 68ch">
+    <div class="mx-auto prose prose-lg dark:prose-invert mt-6" style="max-width: 68ch">
       {Content ? <Content /> : <p>Content not available.</p>}
     </div>
 
     {relatedPosts.length > 0 && (
-      <div class="mx-auto max-w-3xl mt-16 border-t pt-10">
+      <div class="mx-auto max-w-3xl mt-16 border-t dark:border-slate-700 pt-10">
         <h2 class="text-2xl font-bold mb-6">Related posts</h2>
         <div class="grid gap-6 sm:grid-cols-3">
           {relatedPosts.map((post) => (
             <a
               href={`/blog/${post.slug}`}
-              class="group block rounded-xl border border-gray-100 p-4 hover:border-blue-200 hover:bg-blue-50 transition"
+              class="group block rounded-xl border border-gray-100 dark:border-slate-700 p-4 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-slate-800 transition"
             >
               {post.data.image?.src && (
                 <img
@@ -152,10 +152,10 @@ const jsonLd = {
                   loading="lazy"
                 />
               )}
-              <p class="font-semibold text-sm leading-snug group-hover:text-blue-700 transition">
+              <p class="font-semibold text-sm leading-snug group-hover:text-blue-700 dark:text-slate-200 dark:group-hover:text-blue-400 transition">
                 {post.data.title}
               </p>
-              <p class="text-xs text-gray-400 mt-1">
+              <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">
                 {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
               </p>
             </a>
@@ -165,7 +165,7 @@ const jsonLd = {
     )}
 
     <!-- LinkedIn CTA -->
-    <div class="mx-auto max-w-3xl mt-10 mb-16 rounded-xl bg-blue-50 border border-blue-100 px-8 py-7 flex flex-col sm:flex-row items-center gap-5">
+    <div class="mx-auto max-w-3xl mt-10 mb-16 rounded-xl bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 px-8 py-7 flex flex-col sm:flex-row items-center gap-5">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-10 h-10 fill-[#0A66C2] shrink-0" aria-hidden="true">
         <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.88 0 54.11S24.09 0 53.79 0s53.79 24.22 53.79 54.11-24.1 54-53.79 54zM447.9 448h-92.68V302.4c0-34.7-12.42-58.3-43.5-58.3-23.73 0-37.84 16-44.04 31.4-2.28 5.6-2.85 13.4-2.85 21.2V448h-92.68s1.24-241.8 0-266.1h92.68v37.7c12.3-19 34.3-46.2 83.3-46.2 60.8 0 106.5 39.7 106.5 125.1V448z"/>
       </svg>

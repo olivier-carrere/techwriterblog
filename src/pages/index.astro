@@ -66,7 +66,7 @@ const rest = publishedBlogEntries.slice(3);
       <h2 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">Latest</h2>
       <div class="grid gap-6 sm:grid-cols-3">
         {featured.map((post, index) => (
-          <a href={`/blog/${post.slug}`} class="group flex flex-col rounded-xl border border-gray-100 overflow-hidden hover:border-blue-200 hover:shadow-md transition">
+          <a href={`/blog/${post.slug}`} class="group flex flex-col rounded-xl border border-gray-100 dark:border-slate-700 overflow-hidden hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-md transition">
             <img
               src={post.data.image.src}
               alt={post.data.image.alt}
@@ -74,12 +74,12 @@ const rest = publishedBlogEntries.slice(3);
               loading={index === 0 ? "eager" : "lazy"}
               decoding={index === 0 ? "sync" : "async"}
             />
-            <div class="flex flex-col flex-1 p-4">
+            <div class="flex flex-col flex-1 p-4 bg-white dark:bg-slate-800">
               <span class="text-xs font-medium text-blue-500 uppercase tracking-wider mb-1">{post.data.category}</span>
-              <h3 class="font-semibold text-gray-900 leading-snug group-hover:text-blue-700 transition mb-2">
+              <h3 class="font-semibold text-gray-900 dark:text-slate-100 leading-snug group-hover:text-blue-700 dark:group-hover:text-blue-400 transition mb-2">
                 {post.data.title}
               </h3>
-              <p class="text-sm text-gray-500 line-clamp-2 flex-1">{post.data.snippet}</p>
+              <p class="text-sm text-gray-500 dark:text-slate-400 line-clamp-2 flex-1">{post.data.snippet}</p>
               <div class="flex items-center gap-2 mt-3">
                 <time class="text-xs text-gray-400" datetime={post.data.publishDate.toISOString()}>
                   {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
@@ -97,12 +97,12 @@ const rest = publishedBlogEntries.slice(3);
     {rest.length > 0 && (
       <section class="mt-14 mb-16">
         <h2 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">More articles</h2>
-        <ul class="divide-y divide-gray-100">
+        <ul class="divide-y divide-gray-100 dark:divide-slate-800">
           {rest.map((post) => (
             <li>
-              <a href={`/blog/${post.slug}`} class="group flex items-baseline justify-between gap-4 py-3 hover:text-blue-700 transition">
-                <span class="font-medium text-gray-800 group-hover:text-blue-700 leading-snug">{post.data.title}</span>
-                <span class="text-xs text-gray-400 shrink-0 flex gap-2">
+              <a href={`/blog/${post.slug}`} class="group flex items-baseline justify-between gap-4 py-3 hover:text-blue-700 dark:hover:text-blue-400 transition">
+                <span class="font-medium text-gray-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-snug">{post.data.title}</span>
+                <span class="text-xs text-gray-400 dark:text-slate-500 shrink-0 flex gap-2">
                   <time datetime={post.data.publishDate.toISOString()}>
                     {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
                   </time>

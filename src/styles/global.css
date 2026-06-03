@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @plugin '@tailwindcss/typography';
 
 @theme {
@@ -31,19 +33,24 @@
      Typography: Blockquotes
   ----------------------------- */
   .prose blockquote {
-    font-style: normal !important;          /* remove italics */
-    font-weight: inherit !important;        /* match normal text */
-    font-size: inherit !important;          /* same as <p> */
-    line-height: inherit !important;        /* same as <p> */
-    background-color: #FFF4CD;   /* warm light background */
+    font-style: normal !important;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    background-color: #FFF4CD;
     padding: 0.75rem 1rem;
-    border-left: 0.25rem solid #FFDE68; /* muted border */
+    border-left: 0.25rem solid #FFDE68;
     border-radius: 0.375rem;
+  }
+
+  .dark .prose blockquote {
+    background-color: #1e293b;
+    border-left-color: #475569;
   }
 
   .prose blockquote p:first-of-type::before,
   .prose blockquote p:last-of-type::after {
-    content: none !important; /* remove quotes */
+    content: none !important;
   }
 
 }
