@@ -12,7 +12,7 @@ author: "Olivier Carrère"
 tags: [AI, Translation, Technical Writing, Markdown, DeepL, GPT-4o]
 ---
 
-Translating large sets of legacy documentation is always a challenge. Professional human translation ensures quality, but it is time-consuming and costly—especially when dealing with dozens or even hundreds of Markdown files, diagrams, and embedded metadata.
+Translating large sets of legacy documentation is always a challenge. Professional human translation ensures quality, but it is time-consuming and costly—especially when dealing with dozens or even hundreds of [Markdown files](/blog/dita-xml-to-markdown-lightweight-information-typing), diagrams, and embedded metadata.
 
 import Mermaid from '@/components/Mermaid.astro';
 
@@ -92,7 +92,7 @@ The first step is to generate raw English translations of all French Markdown fi
 
 This produces usable English content quickly, but the results often contain **broken Markdown tables**, **mismatched frontmatter**, or literal translations that sound clumsy.
 
-## Manual cleanup
+## Manual cleanup of broken Markdown after DeepL translation
 
 Before moving on, fix structural issues in the translated Markdown:
 
@@ -156,7 +156,7 @@ graph LR
   linkStyle default stroke:#df9277,stroke-width:2px;
 `} />
 
-This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history.
+This workflow is ideal when a file contains unrelated edits—such as AI-generated suggestions—because it gives you full control over what goes into your commit history. Storing content in [plain files rather than a database](/blog/manage-content-in-files-not-databases) makes this kind of granular review straightforward.
 
 <div style="background-color:#2e2e2e; color:#ffffff; font-family: monospace; font-size: 0.75em; padding: 1em; white-space: pre-wrap; border-radius: 8px;">
   <span style="color:#df9277;">diff --git a/communication-technique.md b/communication-technique.md</span>
@@ -182,7 +182,7 @@ Then discard the rest with:
 $ git reset --hard
 ```
 
-## Build the site and fix media
+## Build the Astro site and fix translated media
 
 When the text is ready, build the site locally to catch any remaining errors. Common fixes include:
 
@@ -190,7 +190,7 @@ When the text is ready, build the site locally to catch any remaining errors. Co
 * Copying SVG diagrams from **fr/** into a new **en/** folder.
 * Translating diagrams manually in **Inkscape** and updating file paths.
 
-## Rinse and repeat
+## Iterating through the full documentation set
 
 The process is iterative:
 
@@ -202,4 +202,4 @@ Repeat until the full documentation set is translated.
 
 This workflow isn’t a replacement for professional translation, but it’s **“good enough” for legacy content** where perfect nuance is less critical. For high-visibility or customer-facing material, plan on a final round of **human proofreading**.
 
-With this pipeline, you can **translate and modernize a large corpus of technical documentation efficiently**—combining the strengths of DeepL, GPT, and a bit of manual oversight.
+With this pipeline, you can **translate and modernize a large corpus of technical documentation efficiently**—combining the strengths of DeepL, GPT, and a bit of manual oversight. For a broader AI-driven approach to working with large content archives, see [transforming a corpus of 7,000 pages into living knowledge](/blog/transforming-corpus-ai-living-knowledge).

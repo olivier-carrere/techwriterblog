@@ -102,7 +102,7 @@ Automation at scale required care. The process looked like this:
 3. **Stopped the script and tuned the GPT prompt** whenever adjustments were needed.
 4. Once results were solid, **reran the process on all 1,500 files** in batch mode.
 
-This balance of **AI automation with human oversight** ensured quality and consistency.
+This balance of **AI automation with human oversight** ensured quality and consistency. A similar iterative loop—using Git diffs to selectively accept or reject AI-generated changes—is at the heart of [AI-based translation of legacy Markdown documentation](/blog/ai-translation-legacy-technical-docs).
 
 ## The scale of the project
 
@@ -117,7 +117,7 @@ This balance of **AI automation with human oversight** ensured quality and consi
 
 ## A living digital archive
 
-Thanks to this workflow, the non-profit now has a **self-sustaining publication pipeline**:
+Thanks to this workflow, the non-profit now has a **self-sustaining publication pipeline** built on [plain Markdown files stored under Git](/blog/manage-content-in-files-not-databases):
 
 - A steady stream of daily conference publications extending into the next decade
 - A browsable, SEO-friendly archive that will continue to attract readers and researchers
@@ -125,7 +125,7 @@ Thanks to this workflow, the non-profit now has a **self-sustaining publication 
 
 This project shows how **AI-assisted automation** can help even resource-limited organizations bring their cultural heritage online.
 
-## Lessons learned
+## Lessons learned converting Word archives to web pages with AI
 
 * **Cost control is possible**: By running scripts iteratively, reviewing diffs, and only scaling once satisfied, we kept the entire project under **\$30**.
 * **Human-in-the-loop matters**: Automated metadata generation is powerful, but occasional prompt tuning and git-based review were essential for accuracy.
@@ -133,7 +133,7 @@ This project shows how **AI-assisted automation** can help even resource-limited
 * **Environmental awareness is key**: Processing 6 million tokens had a measurable carbon footprint. Future work should explore greener infrastructure and ways to minimize energy use.
 * **AI is a collaborator, not a replacement**: The best results came from combining GPT automation with careful human validation.
 
-## Looking ahead
+## Next steps for the digital archive and AI content pipeline
 
 The next steps include:
 
