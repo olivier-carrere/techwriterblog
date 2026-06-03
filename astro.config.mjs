@@ -8,7 +8,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://redaction-technique.org",
   output: "server",          // required for serverless API routes
   adapter: vercel(),         // Vercel serverless adapter
   integrations: [

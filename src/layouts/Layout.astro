@@ -9,6 +9,8 @@ import Analytics from '@vercel/analytics/astro';
 
 export interface Props {
   title: string;
+  description?: string;
+  ogImage?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -18,9 +20,11 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 
-const makeTitle = title ? `${title} | Redaction-technique.org` : "`A blog about all things documentation as code";
+const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about all things documentation as code";
+const metaDescription = description ?? "Expert articles on technical writing, docs-as-code, DITA XML, Markdown, YAML, and AI-assisted documentation workflows.";
+const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedImageWithDomain;
 ---
 
 <!doctype html>
@@ -34,22 +38,21 @@ const makeTitle = title ? `${title} | Redaction-technique.org` : "`A blog about 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Markup and Meaning"
+      description={metaDescription}
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@OlivierCarrere",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: "website",
-          title: `Markdown & AI-Aided Rapid Documentation Development`,
-          image: resolvedImageWithDomain,
+          type: "article",
+          title: title ?? "Markdown & AI-Aided Rapid Documentation Development",
+          image: ogImageUrl,
         },
         image: {
-          alt: "Markup and Meaning",
+          alt: metaDescription,
         },
       }}
     />

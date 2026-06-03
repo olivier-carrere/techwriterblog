@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 
-// Generate paths for all blog entries
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry) => ({
@@ -11,25 +10,67 @@ export async function getStaticPaths() {
   }));
 }
 
-// Get the entry by slug from params
 const { slug } = Astro.params;
 const entries = await getCollection("blog");
 const entry = entries.find((e) => e.slug === slug);
 
-// If no entry found, throw 404
 if (!entry) {
   throw new Error(`Blog entry not found for slug: ${slug}`);
 }
 
-// Render MDX content safely
+// Related posts: rank by shared tags, exclude current, take top 3
+const relatedPosts = entries
+  .filter((e) => e.slug !== slug && !e.data.draft)
+  .map((e) => ({
+    entry: e,
+    sharedTags: e.data.tags.filter((t) =>
+      entry.data.tags.map((x) => x.toLowerCase()).includes(t.toLowerCase())
+    ).length,
+  }))
+  .sort((a, b) => b.sharedTags - a.sharedTags || b.entry.data.publishDate.getTime() - a.entry.data.publishDate.getTime())
+  .slice(0, 3)
+  .map((r) => r.entry);
+
 let Content = null;
 if (entry.render && typeof entry.render === "function") {
   const rendered = await entry.render();
   Content = rendered.Content;
 }
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://redaction-technique.org";
+const canonicalUrl = `${siteUrl}/blog/${slug}`;
+const datePublished = entry.data.publishDate.toISOString().slice(0, 10);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: entry.data.title,
+  description: entry.data.snippet,
+  url: canonicalUrl,
+  datePublished,
+  dateModified: datePublished,
+  image: entry.data.image?.src ? `${siteUrl}${entry.data.image.src}` : undefined,
+  author: {
+    "@type": "Person",
+    name: entry.data.author ?? "Olivier Carrère",
+    url: siteUrl,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Olivier Carrère",
+    url: siteUrl,
+  },
+  keywords: entry.data.tags.join(", "),
+};
 ---
 
-<Layout title={entry.data.title}>
+<Layout
+  title={entry.data.title}
+  description={entry.data.snippet}
+  ogImage={entry.data.image?.src}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <Container>
     <div class="mx-auto max-w-3xl mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
@@ -59,7 +100,36 @@ if (entry.render && typeof entry.render === "function") {
       {Content ? <Content /> : <p>Content not available.</p>}
     </div>
 
-    <div class="text-center mt-8">
+    {relatedPosts.length > 0 && (
+      <div class="mx-auto max-w-3xl mt-16 border-t pt-10">
+        <h2 class="text-2xl font-bold mb-6">Related posts</h2>
+        <div class="grid gap-6 sm:grid-cols-3">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group block rounded-xl border border-gray-100 p-4 hover:border-blue-200 hover:bg-blue-50 transition"
+            >
+              {post.data.image?.src && (
+                <img
+                  src={post.data.image.src}
+                  alt={post.data.image.alt ?? post.data.title}
+                  class="w-full h-32 object-cover rounded-lg mb-3"
+                  loading="lazy"
+                />
+              )}
+              <p class="font-semibold text-sm leading-snug group-hover:text-blue-700 transition">
+                {post.data.title}
+              </p>
+              <p class="text-xs text-gray-400 mt-1">
+                {post.data.publishDate.toDateString()}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="text-center mt-10">
       <a
         href="/"
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
