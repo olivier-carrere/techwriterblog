@@ -1,64 +1,66 @@
 ---
-import Container from "@/components/container.astro";
-import Link from "@/components/ui/link.astro";
-import Dropdown from "./dropdown.astro";
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-
-const menuitems = [
-  {
-    title: "Smart Docs with DITA",
-    path: "https://docs.redaction-technique.org/",
-  },
-];
 ---
 
-<Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
-    <Astronav>
-      <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg">
-          <span class="font-bold text-slate-800">Technical</span>
-          <span class="text-slate-500"> Writing</span>
-        </a>
-        <div class="block lg:hidden">
-          <MenuIcon class="w-4 h-4 text-gray-800" />
-        </div>
-      </div>
-      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <ul class="flex flex-col lg:flex-row lg:gap-3">
-          {
-            menuitems.map((item, index) => (
-              <>
-                {item.children && (
-                  <Dropdown
-                    title={item.title}
-                    children={item.children}
-                    lastItem={index === menuitems.length - 1}
-                  />
-                )}
+<nav id="site-nav" class="sticky top-0 z-50 bg-white border-b border-gray-100 transition-shadow duration-200">
+  <div class="max-w-5xl mx-auto px-4 flex items-center justify-between h-14">
+    <a href="/" class="font-bold text-slate-800 text-lg hover:text-slate-600 transition">
+      Technical<span class="font-normal text-slate-500"> Writing</span>
+    </a>
 
-                {!item.children && (
-                  <li>
-                    <a
-                      href={item.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
-                    >
-                      <span>{item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
-                    </a>
-                  </li>
-                )}
-              </>
-            ))
-          }
-        </ul>
-      </MenuItems>
-    </Astronav>
-  </header>
-</Container>
+    <!-- Desktop nav -->
+    <ul class="hidden sm:flex items-center gap-1 text-sm font-medium">
+      <li><a href="/" class="px-3 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition">Home</a></li>
+      <li><a href="/topics" class="px-3 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition">Topics</a></li>
+      <li><a href="/about" class="px-3 py-1.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition">About</a></li>
+      <li>
+        <a href="https://docs.redaction-technique.org/" target="_blank" rel="noopener noreferrer"
+          class="ml-2 px-3 py-1.5 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition text-sm">
+          Smart Docs →
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button id="nav-toggle" class="sm:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-gray-100 bg-white">
+    <ul class="flex flex-col px-4 py-3 gap-1 text-sm font-medium">
+      <li><a href="/" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50">Home</a></li>
+      <li><a href="/topics" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50">Topics</a></li>
+      <li><a href="/about" class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50">About</a></li>
+      <li>
+        <a href="https://docs.redaction-technique.org/" target="_blank" rel="noopener noreferrer"
+          class="block px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50">
+          Smart Docs →
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+  });
+
+  window.addEventListener("scroll", () => {
+    document.getElementById("site-nav")?.classList.toggle("shadow-md", window.scrollY > 8);
+  }, { passive: true });
+</script>
