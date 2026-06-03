@@ -48,6 +48,10 @@
     border-left-color: #475569;
   }
 
+  .dark .prose img[src$=".svg"] {
+    filter: brightness(0) invert(1);
+  }
+
   .prose blockquote p:first-of-type::before,
   .prose blockquote p:last-of-type::after {
     content: none !important;
