@@ -116,6 +116,14 @@
   // Initialise icons to match current state
   syncIcons(document.documentElement.classList.contains("dark"));
 
+  // Follow device changes in real-time when the user hasn't set a manual preference
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      document.documentElement.classList.toggle("dark", e.matches);
+      syncIcons(e.matches);
+    }
+  });
+
   document.getElementById("theme-toggle")?.addEventListener("click", () => {
     applyTheme(!document.documentElement.classList.contains("dark"));
   });
