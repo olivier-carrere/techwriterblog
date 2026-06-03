@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import yaml from "@rollup/plugin-yaml";
 import vercel from "@astrojs/vercel/serverless";
+import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
   output: "server",          // required for serverless API routes
   adapter: vercel(),         // Vercel serverless adapter
   integrations: [
+    pagefind(),
     mdx(),
     sitemap(),
     icon()

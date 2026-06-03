@@ -26,6 +26,7 @@
     "astro-expressive-code": "^0.41.3",
     "astro-icon": "^1.1.5",
     "astro-navbar": "^2.3.9",
+    "astro-pagefind": "^2.0.0",
     "astro-seo": "^0.8.4",
     "js-yaml": "^4.1.0",
     "mermaid-cli": "^0.2.4",

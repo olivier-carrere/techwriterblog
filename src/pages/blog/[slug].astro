@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry) => ({
@@ -71,8 +73,18 @@ const jsonLd = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+  <div class="sticky top-14 z-40 bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 h-9 flex items-center gap-1.5 text-sm text-gray-500 min-w-0">
+      <a href="/" class="hover:text-gray-900 transition shrink-0">Home</a>
+      <span class="text-gray-300 shrink-0">›</span>
+      <a href="/" class="hover:text-gray-900 transition shrink-0">Blog</a>
+      <span class="text-gray-300 shrink-0">›</span>
+      <span class="text-gray-700 truncate">{entry.data.title}</span>
+    </div>
+  </div>
+
   <Container>
-    <div class="mx-auto max-w-3xl mt-14">
+    <div class="mx-auto max-w-3xl mt-10">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>

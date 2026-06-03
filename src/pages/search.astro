@@ -1,0 +1,40 @@
+---
+export const prerender = true;
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+---
+
+<Layout
+  title="Search — Technical Writing Blog"
+  description="Search all articles on technical writing, docs-as-code, DITA XML, YAML, and AI documentation."
+>
+  <Container>
+    <div class="mx-auto max-w-3xl mt-14 mb-20">
+      <p class="text-blue-400 uppercase tracking-wider text-sm font-medium mb-2">Search</p>
+      <h1 class="text-4xl font-bold mb-8">Find an article</h1>
+      <div id="search" class="pagefind-ui"></div>
+    </div>
+  </Container>
+</Layout>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    new PagefindUI({ element: "#search", showImages: true, resetStyles: false });
+  });
+</script>
+
+<style>
+  .pagefind-ui {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: #2563eb;
+    --pagefind-ui-text: #374151;
+    --pagefind-ui-background: #ffffff;
+    --pagefind-ui-border: #e5e7eb;
+    --pagefind-ui-tag: #eff6ff;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-font: inherit;
+  }
+</style>

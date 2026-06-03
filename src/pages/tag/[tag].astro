@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
   const tagMap = new Map<string, typeof posts>();
