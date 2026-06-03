@@ -162,13 +162,27 @@ const jsonLd = {
       </div>
     )}
 
-    <div class="text-center mt-10">
+    <!-- LinkedIn CTA -->
+    <div class="mx-auto max-w-3xl mt-10 mb-16 rounded-xl bg-blue-50 border border-blue-100 px-8 py-7 flex flex-col sm:flex-row items-center gap-5">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-10 h-10 fill-[#0A66C2] shrink-0" aria-hidden="true">
+        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.88 0 54.11S24.09 0 53.79 0s53.79 24.22 53.79 54.11-24.1 54-53.79 54zM447.9 448h-92.68V302.4c0-34.7-12.42-58.3-43.5-58.3-23.73 0-37.84 16-44.04 31.4-2.28 5.6-2.85 13.4-2.85 21.2V448h-92.68s1.24-241.8 0-266.1h92.68v37.7c12.3-19 34.3-46.2 83.3-46.2 60.8 0 106.5 39.7 106.5 125.1V448z"/>
+      </svg>
+      <div class="flex-1 text-center sm:text-left">
+        <p class="font-semibold text-gray-900">Follow on LinkedIn for more</p>
+        <p class="text-sm text-gray-500 mt-0.5">Articles on docs-as-code, DITA XML, YAML, and AI-assisted documentation.</p>
+      </div>
       <a
-        href="/"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        href="https://www.linkedin.com/in/carrereolivier/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 px-5 py-2.5 rounded-lg bg-[#0A66C2] text-white text-sm font-medium hover:bg-[#004182] transition"
       >
-        ← Back to Blog
+        Follow
       </a>
+    </div>
+
+    <div class="text-center mb-16">
+      <a href="/" class="text-sm text-gray-400 hover:text-gray-700 transition">← Back to Blog</a>
     </div>
   </Container>
 </Layout>
