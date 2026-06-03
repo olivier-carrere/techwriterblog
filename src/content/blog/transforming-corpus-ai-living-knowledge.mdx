@@ -16,13 +16,12 @@ tags: [AI, Knowledge, Curation, Discovery]
 
 How can a non-profit turn 7,000 pages of articles—a vast sea of text—into content that is alive, readable, and meaningful every day?
 
-import Mermaid from '@/components/Mermaid.astro';
 
 
-<Mermaid chart={`
+```mermaid
 flowchart LR
 Files@{ shape: cyl, label: "1.8 million words\n1,800 articles\n7,000 pages" }-->Public[Target audience]
-`} />
+```
 
 
 This project extends a broader effort to **leverage a massive corpus—1,800 articles, 1.8 million words, 7,000 pages—into a discovery system** that makes exploration smarter, more meaningful, and deeply human.
@@ -38,25 +37,25 @@ While loyal and deeply engaged, this profile highlights a **challenge for the or
 
 To ensure greater inclusivity and enable a **renewal of generations**, the non-profit’s communication now aims to **better engage women and people aged 25 to 35**, fostering a more balanced and sustainable community over time.
 
-<Mermaid chart={`
+```mermaid
 xychart
     title "Age Distribution of Website Audience"
     x-axis ["18–24", "25–34", "35–44", "45–54", "55–64", "65+"]
     y-axis "Percentage (%)" 0 --> 30
     bar [0, 3.7, 15, 21.7, 28.4, 31.2]
-`} />
+```
 
 
 To bridge this gap, the corpus of 1,800 articles is being used not only as a knowledge base but also as a **dialogue tool**.
 By aligning the content’s depth with the audience’s real concerns, the project aims to make long-form wisdom resonate with new generations of readers.
 
-<Mermaid chart={`
+```mermaid
 xychart
     title "Gender Distribution of Website Audience"
     x-axis ["Female", "Male"]
     y-axis "Percentage (%)" 0 --> 100
     bar [22.2, 77.8]
-`} />
+```
 
 As a first step, we asked an automated system to **scan public forums, discussion boards, and thematic websites**, gathering the **ten most common questions** this audience expresses about the non-profit’s field of activity.
 These questions become **entry points**—bridges between lived curiosity and archival insight.
@@ -71,7 +70,7 @@ The next phase involves:
 
 *This radar chart shows the website audience across six age groups, alongside gender distribution. Each axis displays the* **Website Audience ratio** *relative to the general population and the corresponding* **male and female percentages**. *Values above 100% indicate that the website has proportionally more visitors than the general population in that age group.*
 
-<Mermaid chart={`
+```mermaid
 ---
 title: "Website Audience and Gender Distribution by Age Group"
 ---
@@ -85,7 +84,7 @@ radar-beta
 
   max 300
   min 0
-`} />
+```
 
 
 Through this approach, the archive evolves from a static collection into a **responsive, audience-aware ecosystem**—one that listens as much as it speaks.
@@ -107,13 +106,13 @@ The responses revealed three main areas of concern:
 
 The non-profit operates with a very limited budget and cannot afford to hire a consulting group or conduct formal market research. To make the best possible well-informed, data-driven decisions, it relies on ChatGPT as a **cost-effective tool** for exploring audience concerns, identifying trends, and guiding content strategy based on publicly available information.
 
-<Mermaid chart={`
+```mermaid
 flowchart LR
 ScoreCheck[Target audience]
 ScoreCheck --> a[Topic 1\nTime and consistency]
 ScoreCheck --> b[Topic 2\nAuthenticity]
 ScoreCheck --> c[Topic 3\nEffectiveness & safety]
-`} />
+```
 
 Insights like these allow the non-profit to **tailor its content and digests**, ensuring the corpus of articles speaks directly to the needs and questions of younger audiences, while also informing social media and micro-blogging strategies.
 
@@ -127,7 +126,7 @@ For each topic, the workflow involved:
 * **Curating these articles** to make them more visible on the website and to compile them into **themed digests** for deeper reading.
 * **Extracting quotes** from these articles that resonate strongly with each topic, ready to be shared **daily on micro-blogging platforms**.
 
-<Mermaid chart={`
+```mermaid
 flowchart LR
 Files@{ shape: cyl, label: "1.8 million words\n1,800 articles\n7,000 pages" }
 
@@ -138,7 +137,7 @@ Quotes --> blue[Micro-blogging]
 ScoreCheck --> E@{ shape: paper-tape, label: "Topic 1\nTime and consistency"}
 ScoreCheck --> F@{ shape: paper-tape, label: "Topic 2\nAuthenticity"}
 ScoreCheck --> G@{ shape: paper-tape, label: "Topic 3\nEffectiveness & safety"}
-`} />
+```
 
 This process transforms the archive from a static repository into a **living, thematic ecosystem**, where content is both discoverable and shareable.
 Readers can explore topics in depth, while daily quotes keep the conversation active and ongoing, bridging the gap between long-form articles and real-time engagement.

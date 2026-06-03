@@ -6,6 +6,7 @@ import icon from "astro-icon";
 import yaml from "@rollup/plugin-yaml";
 import vercel from "@astrojs/vercel/serverless";
 import pagefind from "astro-pagefind";
+import rehypeMermaid from "rehype-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +19,9 @@ export default defineConfig({
     sitemap(),
     icon()
   ],
+  markdown: {
+    rehypePlugins: [[rehypeMermaid, { strategy: "inline-svg" }]],
+  },
   vite: {
     plugins: [
       yaml(),                // enable YAML imports

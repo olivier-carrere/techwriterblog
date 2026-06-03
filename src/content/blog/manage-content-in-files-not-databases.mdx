@@ -54,9 +54,8 @@ Storing content in files means it sits naturally in Git:
 * Work in branches, open PRs, review diffs, merge — exactly the developer workflow you trust.
   These visibility and workflow features are either painful or impossible in many popular CMSes (WordPress, Drupal) where the “published” state is buried behind admin UIs and database rows.
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 graph TD
   %% Nodes
   U1["Alice: VS Code"]
@@ -103,11 +102,11 @@ graph TD
   class PUBLISH remote;
 
   linkStyle default stroke:#df9277,stroke-width:2px;
-`} />
+```
 
 ## Feature Branch Workflow for Documentation
 
-<Mermaid chart={`
+```mermaid
 gitGraph TB:
    commit id:"doc feature C init" tag:"release 1.1"
    commit id:"doc feature C update"
@@ -130,7 +129,7 @@ gitGraph TB:
    commit id:"doc feature D update" tag:"release 1.2"
    merge Bob
    commit id:"doc feature E init"
-`} />
+```
 
 This Git workflow illustrates a documentation development process using feature branches. The main branch tracks official releases, while contributors create separate branches for their own work.
 

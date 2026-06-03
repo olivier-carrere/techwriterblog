@@ -22,9 +22,8 @@ Markdown is a **lightweight markup language**. Unlike XML, it’s human-readable
 
 Instead of relying on heavy XML toolchains, writers can leverage **open, freely available tools**—including static site generators like [**Astro**](https://astro.build/) and its [**Starlight**](https://starlight.astro.build/) theme. Structured documentation is now accessible to a wider audience: individual writers, small teams, open-source contributors, and enterprise documentation teams alike. For a deeper look at how to apply DITA's information typing discipline in Markdown, see [strong information typing without the XML overhead](/blog/strong-information-typing-without-xml-overhead).
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 graph TB
   %% Nodes
   ASTRO["Astro"]
@@ -60,7 +59,7 @@ a5@{ animation: slow }
 
   %% Link styles
   linkStyle default stroke:#df9277,stroke-width:2px;
-`} />
+```
 
 This blog is a **work in progress**. Most [legacy content remains in French](https://docs.redaction-technique.org/), but **new content will primarily be in English**. Over time, older posts may be translated or curated to align with this new focus.
 

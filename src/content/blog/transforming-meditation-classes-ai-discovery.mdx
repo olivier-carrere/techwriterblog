@@ -48,7 +48,6 @@ Before AI can meaningfully process the corpus, the data must be **clean and cons
 * **Quality checks:** Flag incomplete or corrupted articles for review.
 * **Consistency enforcement:** Align style, terminology, and structure for AI readability.
 
-import Mermaid from '@/components/Mermaid.astro';
 
 This step ensures a **high-quality foundation**, which is critical for metadata generation, indexing, and AI interaction.
 
@@ -159,7 +158,7 @@ The result: a harmonized dataset of Markdown texts, each carrying a consistent, 
 
 No one could realistically read 1.8 million words of articles in print — even a skilled reader would need **about 120 hours**, or roughly **two full weeks of reading**, to get through them all. Since the full corpus of 1,800 articles is already available online, the real challenge is curation: selecting and assembling themed anthologies that present readers with beautifully printed excerpts tailored to their interests.
 
-<Mermaid chart={`
+```mermaid
 flowchart TD
 Files[1,800 Markdown files\n~1.8 million words] --> AI_Eval[AI Scoring]
 AI_Eval --> ScoreCheck{Score Above Threshold?}
@@ -167,9 +166,7 @@ ScoreCheck -->|Yes| BookCheck{Already in Existing Book?}
 
 AI_Eval -->DigitalPlatform[Web Version]
 BookCheck -->|No| BuildBook[PDF Version]
-
-
-`} />
+```
 
 Yet another Python script can automate the **conversion and assembly of Markdown articles into a single, beautifully formatted LaTeX book** — ready to compile with *XeLaTeX* or *LuaLaTeX* on Overleaf.
 

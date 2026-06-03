@@ -32,9 +32,8 @@ From this one source of truth, the data can flow into **interactive API document
 
 The diagram below shows how the same YAML powers multiple outputs without duplication or extra maintenance:
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 graph LR
     %% Nodes
     A["📄 YAML Source File"]:::topic
@@ -71,7 +70,7 @@ graph LR
 
     %% Link styles
     linkStyle default stroke:#d97d61,stroke-width:2px;
-`} />
+```
 
 ## Querying the API in Practice
 

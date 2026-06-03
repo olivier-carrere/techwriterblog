@@ -30,6 +30,8 @@
     "astro-seo": "^0.8.4",
     "js-yaml": "^4.1.0",
     "mermaid-cli": "^0.2.4",
+    "playwright": "^1.60.0",
+    "rehype-mermaid": "^3.0.0",
     "remark-mermaid-dataurl": "^3.0.1",
     "sharp": "^0.33.5",
     "swagger-ui-dist": "^5.29.0",

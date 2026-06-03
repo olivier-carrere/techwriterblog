@@ -223,9 +223,8 @@ Or you can present it as a **styled two-column table on desktop (that automatica
 
 If you need a richer display, you can even switch to a **five-column table on desktop (that automatically stacks into a single-column card view on mobile)**—all without editing the source YAML.
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 flowchart LR
     %% Nodes
     B["YAML data"]
@@ -290,7 +289,7 @@ flowchart LR
 
     %% Link styles
     linkStyle default stroke:#d97d61,stroke-width:2px;
-`} />
+```
 **Processing Oil Data: From YAML Import to Dynamic HTML Table**
 
 <article class="prose">

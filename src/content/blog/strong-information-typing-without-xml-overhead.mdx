@@ -54,9 +54,8 @@ DITA task topics have strict rules: short context, prerequisites, ordered steps,
 </details>
 ---
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 graph LR
   %% Nodes
   T[Task Topic]
@@ -104,7 +103,7 @@ graph LR
   class S1,S1a,S1b,S1c,S2,S2a,S2b,S2c substep
 
   linkStyle default stroke:#df9277,stroke-width:2px;
-`} />
+```
 **Hierarchy of Elements in a DITA Task Topic (Steps, Commands, Information, and Metadata)**
 
 

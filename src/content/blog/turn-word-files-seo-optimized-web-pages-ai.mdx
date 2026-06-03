@@ -17,9 +17,8 @@ A non-profit organization holds a unique archive: decades of conference transcri
 
 They were rich in content but poor in structure—long documents without proper titles, headings, or metadata. Making them available online, searchable, and SEO-friendly required a modern, scalable solution.
 
-import Mermaid from '@/components/Mermaid.astro';
 
-<Mermaid chart={`
+```mermaid
 graph TD
   %% Nodes
   WORD["Legacy Word Files"]
@@ -61,7 +60,7 @@ a5@{ animation: slow }
 
   %% Link styles
   linkStyle default stroke:#df9277,stroke-width:2px;
-`} />
+```
 
 
 This post explains how we achieved that transformation with a mix of **Markdown, Pandoc, and GPT-powered automation**, at a total cost of about **$30**.
