@@ -113,7 +113,7 @@ const jsonLd = {
           {entry.data.author && <span class="text-gray-400">•</span>}
           {entry.data.publishDate && (
             <time class="text-gray-400" datetime={entry.data.publishDate.toISOString()}>
-              {entry.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+              {entry.data.publishDate.toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "2-digit" })}
             </time>
           )}
           <span class="text-gray-400">•</span>
@@ -156,7 +156,7 @@ const jsonLd = {
                 {post.data.title}
               </p>
               <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">
-                {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                {post.data.publishDate.toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "2-digit" })}
               </p>
             </a>
           ))}
