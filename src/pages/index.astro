@@ -1,19 +1,16 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
 
-// Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
-// Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+publishedBlogEntries.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const featured = publishedBlogEntries.slice(0, 3);
+const rest = publishedBlogEntries.slice(3);
 ---
 
 <Layout
@@ -39,57 +36,64 @@ publishedBlogEntries.sort(function (a, b) {
       "sameAs": ["https://www.linkedin.com/in/carrereolivier/"]
     }
   ])} />
+
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Markup and Meaning</Fragment>
-      <Fragment slot="desc">
-        Clarity, structure, and automation in technical communication.
-      </Fragment>
-    </Sectionhead>
-    <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
-        {
-          publishedBlogEntries.map((blogPostEntry, index) => (
+    <!-- Hero -->
+    <div class="mt-16 mb-14 max-w-2xl">
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+        Markup and Meaning
+      </h1>
+      <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+        Articles on docs-as-code, structured authoring, and AI-assisted documentation by Olivier Carrère — a technical writer specialising in DITA XML, Markdown, and YAML.
+        Practical writing on how structure, automation, and the right tools make documentation scale.
+      </p>
+    </div>
+
+    <!-- Featured: 3 most recent as cards -->
+    <section>
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">Latest</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        {featured.map((post, index) => (
+          <a href={`/blog/${post.slug}`} class="group flex flex-col rounded-xl border border-gray-100 overflow-hidden hover:border-blue-200 hover:shadow-md transition">
+            <img
+              src={post.data.image.src}
+              alt={post.data.image.alt}
+              class="w-full h-44 object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding={index === 0 ? "sync" : "async"}
+            />
+            <div class="flex flex-col flex-1 p-4">
+              <span class="text-xs font-medium text-blue-500 uppercase tracking-wider mb-1">{post.data.category}</span>
+              <h3 class="font-semibold text-gray-900 leading-snug group-hover:text-blue-700 transition mb-2">
+                {post.data.title}
+              </h3>
+              <p class="text-sm text-gray-500 line-clamp-2 flex-1">{post.data.snippet}</p>
+              <time class="text-xs text-gray-400 mt-3" datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+              </time>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Compact list for remaining posts -->
+    {rest.length > 0 && (
+      <section class="mt-14 mb-16">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">More articles</h2>
+        <ul class="divide-y divide-gray-100">
+          {rest.map((post) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    width={800}
-                    height={600}
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md object-cover object-center bg-white"
-                  />
-                  <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
-                    </span>
-
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
-                    </h2>
-
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
-                        {blogPostEntry.data.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
-                      <time
-                        class="text-gray-400"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}>
-                        {blogPostEntry.data.publishDate.toDateString()}
-                      </time>
-                    </div>
-                  </div>
-                </div>
+              <a href={`/blog/${post.slug}`} class="group flex items-baseline justify-between gap-4 py-3 hover:text-blue-700 transition">
+                <span class="font-medium text-gray-800 group-hover:text-blue-700 leading-snug">{post.data.title}</span>
+                <time class="text-xs text-gray-400 shrink-0" datetime={post.data.publishDate.toISOString()}>
+                  {post.data.publishDate.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                </time>
               </a>
             </li>
-          ))
-        }
-      </ul>
-    </main>
+          ))}
+        </ul>
+      </section>
+    )}
   </Container>
 </Layout>
