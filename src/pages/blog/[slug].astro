@@ -84,6 +84,9 @@ const jsonLd = {
   title={entry.data.title}
   description={entry.data.snippet}
   ogImage={entry.data.image?.src}
+  author={entry.data.author}
+  lang={entry.data.lang}
+  frAlternateUrl={entry.data.frAlternateUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

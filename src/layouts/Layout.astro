@@ -11,6 +11,9 @@ export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  author?: string;
+  lang?: string;
+  frAlternateUrl?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -20,7 +23,7 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, author, lang = 'en', frAlternateUrl } = Astro.props;
 
 const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about all things documentation as code";
 const metaDescription = description ?? "Expert articles on technical writing, docs-as-code, DITA XML, Markdown, YAML, and AI-assisted documentation workflows.";
@@ -28,7 +31,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -43,6 +46,9 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
     </script>
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    {author && <meta name="author" content={author} />}
+    {frAlternateUrl && <link rel="alternate" hreflang="fr" href={frAlternateUrl} />}
+    {frAlternateUrl && <link rel="alternate" hreflang="en" href={canonicalURL} />}
     <SEO
       title={makeTitle}
       description={metaDescription}

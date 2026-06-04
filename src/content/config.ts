@@ -15,6 +15,8 @@ const blogCollection = defineCollection({
     author: z.string().default('Olivier Carrère'),
     category: z.string(),
     tags: z.array(z.string()),
+    lang: z.string().default('en'),
+    frAlternateUrl: z.string().optional(),
   }),
 });
 

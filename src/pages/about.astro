@@ -11,7 +11,18 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 });
 ---
 
-<Layout title="About">
+<Layout title="About" description="Olivier Carrère — technical writer specialising in docs-as-code, DITA XML, Markdown, and AI-assisted documentation workflows.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Olivier Carrère",
+    "url": "https://redaction-technique.org",
+    "jobTitle": "Technical Writer",
+    "knowsAbout": ["DITA XML", "Markdown", "docs-as-code", "technical writing", "AI documentation"],
+    "sameAs": [
+      "https://www.linkedin.com/in/carrereolivier/"
+    ]
+  })} />
   <Container>
     <Sectionhead>
       <Fragment slot="title">About</Fragment>
