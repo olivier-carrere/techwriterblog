@@ -51,12 +51,12 @@ publishedBlogEntries.sort(function (a, b) {
                     </h2>
 
                     <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
+                      <span class="text-gray-500">
                         {blogPostEntry.data.author}
                       </span>
-                      <span class="text-gray-400">• </span>
+                      <span class="text-gray-500">• </span>
                       <time
-                        class="text-gray-400"
+                        class="text-gray-500"
                         datetime={blogPostEntry.data.publishDate.toISOString()}>
                         {blogPostEntry.data.publishDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                       </time>
