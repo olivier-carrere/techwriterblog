@@ -23,14 +23,31 @@
     border-color: var(--color-gray-200, currentColor);
   }
 
-  /* Remove focus ring on mouse/touch clicks; keep it for keyboard navigation */
+  /* html/body must never show a focus ring (page-load navigation focus) */
+  html:focus, html:focus-visible,
+  body:focus, body:focus-visible {
+    outline: none;
+  }
+
+  /* Remove focus ring on mouse/touch clicks */
   :focus:not(:focus-visible) {
     outline: none;
+  }
+
+  /* Keyboard focus: use site blue, never the OS accent colour (purple on some macOS themes) */
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
   }
 
   /* Suppress tap highlight on mobile browsers */
   a, button {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Visited links keep their inherited colour (suppress browser-default purple) */
+  a:visited {
+    color: inherit;
   }
 }
 
