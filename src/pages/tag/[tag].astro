@@ -10,7 +10,7 @@ export async function getStaticPaths() {
   const tagMap = new Map<string, typeof posts>();
   for (const post of posts) {
     for (const tag of post.data.tags ?? []) {
-      const key = tag.toLowerCase();
+      const key = tag.toLowerCase().replace(/\s+/g, "-");
       if (!tagMap.has(key)) tagMap.set(key, []);
       tagMap.get(key)!.push(post);
     }
@@ -27,7 +27,8 @@ export async function getStaticPaths() {
 }
 
 const { tag, articles } = Astro.props;
-const displayTag = tag.charAt(0).toUpperCase() + tag.slice(1);
+const rawDisplay = tag.replace(/-/g, " ");
+const displayTag = rawDisplay.charAt(0).toUpperCase() + rawDisplay.slice(1);
 ---
 
 <Layout

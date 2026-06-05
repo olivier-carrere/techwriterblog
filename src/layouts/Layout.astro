@@ -60,7 +60,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: "article",
+          type: Astro.url.pathname.startsWith("/blog/") ? "article" : "website",
           title: title ?? "Markdown & AI-Aided Rapid Documentation Development",
           image: ogImageUrl,
         },

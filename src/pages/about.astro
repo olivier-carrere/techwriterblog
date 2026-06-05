@@ -1,68 +1,150 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+const siteUrl = "https://redaction-technique.org";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#olivier-carrere`,
+  name: "Olivier Carrère",
+  url: siteUrl,
+  jobTitle: "Technical Writer",
+  description:
+    "Technical writer at Unity, specialising in docs-as-code, DITA XML, structured authoring, and AI-assisted documentation workflows.",
+  knowsAbout: [
+    "DITA XML",
+    "Markdown",
+    "docs-as-code",
+    "technical writing",
+    "YAML",
+    "AI documentation",
+    "structured authoring",
+    "information architecture",
+  ],
+  sameAs: ["https://www.linkedin.com/in/carrereolivier/"],
+};
+
+const expertise = [
+  {
+    title: "Docs-as-code",
+    desc: "Git-based workflows, CI/CD pipelines for documentation, Markdown and lightweight markup at scale.",
+  },
+  {
+    title: "Structured authoring",
+    desc: "DITA XML topic-based writing, content reuse strategies, single-sourcing, and information typing.",
+  },
+  {
+    title: "AI-assisted workflows",
+    desc: "Integrating LLMs into documentation pipelines — translation, first-draft generation, and quality checks.",
+  },
+  {
+    title: "Information architecture",
+    desc: "Taxonomy design, content modelling, and navigation systems for large documentation sets.",
+  },
+  {
+    title: "YAML & data-driven docs",
+    desc: "Generating structured content from YAML data sources; separating content from presentation.",
+  },
+  {
+    title: "Developer documentation",
+    desc: "API references, SDK guides, onboarding docs, and code-adjacent content for technical audiences.",
+  },
+];
+
+const tools = [
+  "DITA XML / Oxygen XML",
+  "Markdown / MDX",
+  "Git & GitHub",
+  "Astro / Static site generators",
+  "YAML",
+  "Mermaid diagrams",
+  "VS Code",
+  "LLM-assisted editing",
+];
 ---
 
-<Layout title="About" description="Olivier Carrère — technical writer specialising in docs-as-code, DITA XML, Markdown, and AI-assisted documentation workflows.">
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Olivier Carrère",
-    "url": "https://redaction-technique.org",
-    "jobTitle": "Technical Writer",
-    "knowsAbout": ["DITA XML", "Markdown", "docs-as-code", "technical writing", "AI documentation"],
-    "sameAs": [
-      "https://www.linkedin.com/in/carrereolivier/"
-    ]
-  })} />
+<Layout
+  title="About Olivier Carrère — Technical Writer"
+  description="Olivier Carrère is a technical writer at Unity, specialising in docs-as-code, DITA XML, structured authoring, and AI-assisted documentation."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
-    </Sectionhead>
+    <div class="mx-auto max-w-3xl mt-14 mb-20">
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+      <!-- Intro -->
+      <p class="text-blue-600 uppercase tracking-wider text-sm font-medium mb-3">About</p>
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
+        Olivier Carrère
+      </h1>
+      <p class="text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+        Technical writer at <strong class="text-gray-900 dark:text-slate-100">Unity</strong>, specialising in
+        <strong class="text-gray-900 dark:text-slate-100">docs-as-code</strong>,
+        <strong class="text-gray-900 dark:text-slate-100">DITA XML</strong>, and
+        <strong class="text-gray-900 dark:text-slate-100">AI-assisted documentation workflows</strong>.
       </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-sm transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+        I work on documentation systems that scale — from structured authoring pipelines to
+        multi-product content architectures. My focus is on structure, automation, and the
+        right tooling choices for long-lived technical content.
+      </p>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+        This blog is where I publish practical articles on the tools and methods I use daily:
+        markup languages, content modelling, AI in the documentation workflow, and the craft of
+        writing clearly for technical audiences.
+      </p>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
+      <!-- Expertise grid -->
+      <h2 class="text-2xl font-bold mt-16 mb-6">Domains of expertise</h2>
+      <div class="grid sm:grid-cols-2 gap-5">
+        {expertise.map((item) => (
+          <div class="rounded-xl border border-gray-100 dark:border-slate-700 p-5 bg-gray-50 dark:bg-slate-800">
+            <h3 class="font-semibold text-gray-900 dark:text-slate-100 mb-1">{item.title}</h3>
+            <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
           </div>
-        ))
-      }
+        ))}
+      </div>
+
+      <!-- Tools -->
+      <h2 class="text-2xl font-bold mt-14 mb-5">Tools & technologies</h2>
+      <ul class="flex flex-wrap gap-2">
+        {tools.map((tool) => (
+          <li class="px-3 py-1.5 rounded-full bg-blue-50 dark:bg-slate-700 text-blue-700 dark:text-blue-300 text-sm font-medium">
+            {tool}
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA block -->
+      <div class="mt-16 rounded-xl bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">Want to discuss documentation?</h2>
+        <p class="text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">
+          Whether you want to discuss something you read here, exchange ideas on docs-as-code or DITA,
+          or simply connect professionally — feel free to reach out.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+          >
+            Get in touch
+          </a>
+          <a
+            href="https://www.linkedin.com/in/carrereolivier/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 text-sm font-medium hover:border-blue-300 dark:hover:border-blue-500 hover:text-blue-700 dark:hover:text-blue-400 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 fill-current" aria-hidden="true">
+              <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.88 0 54.11S24.09 0 53.79 0s53.79 24.22 53.79 54.11-24.1 54-53.79 54zM447.9 448h-92.68V302.4c0-34.7-12.42-58.3-43.5-58.3-23.73 0-37.84 16-44.04 31.4-2.28 5.6-2.85 13.4-2.85 21.2V448h-92.68s1.24-241.8 0-266.1h92.68v37.7c12.3-19 34.3-46.2 83.3-46.2 60.8 0 106.5 39.7 106.5 125.1V448z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
     </div>
   </Container>
 </Layout>

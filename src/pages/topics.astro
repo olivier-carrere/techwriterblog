@@ -7,7 +7,7 @@ const posts = await getCollection("blog", ({ data }) => !data.draft);
 const tagMap = new Map<string, number>();
 for (const post of posts) {
   for (const tag of post.data.tags ?? []) {
-    const key = tag.toLowerCase();
+    const key = tag.toLowerCase().replace(/\s+/g, "-");
     tagMap.set(key, (tagMap.get(key) ?? 0) + 1);
   }
 }
@@ -26,7 +26,8 @@ const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1] || a[0].localeComp
 
       <ul class="flex flex-wrap gap-3">
         {tags.map(([tag, count]) => {
-          const display = tag.charAt(0).toUpperCase() + tag.slice(1);
+          const rawDisplay = tag.replace(/-/g, " ");
+          const display = rawDisplay.charAt(0).toUpperCase() + rawDisplay.slice(1);
           return (
             <li>
               <a
