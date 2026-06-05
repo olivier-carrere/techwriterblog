@@ -23,6 +23,15 @@
     border-color: var(--color-gray-200, currentColor);
   }
 
+  /* Remove focus ring on mouse/touch clicks; keep it for keyboard navigation */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Suppress tap highlight on mobile browsers */
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* ----------------------------------------
