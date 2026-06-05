@@ -14,92 +14,34 @@ import Layout from "@/layouts/Layout.astro";
       <h1 class="text-4xl font-bold tracking-tight mb-4">Get in touch</h1>
       <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10">
         I write about docs-as-code, DITA XML, structured authoring, and AI in documentation. If you
-        want to discuss something you read, exchange ideas, or connect professionally — use the form below.
+        want to discuss something you read, exchange ideas, or connect professionally — reach out via
+        LinkedIn or email.
       </p>
 
-      <form id="contact-form" class="flex flex-col gap-5" novalidate>
-        <div class="flex flex-col gap-1.5">
-          <label for="name" class="text-sm font-medium text-gray-700 dark:text-slate-300">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Your name"
-            class="rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label for="email" class="text-sm font-medium text-gray-700 dark:text-slate-300">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            class="rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label for="message" class="text-sm font-medium text-gray-700 dark:text-slate-300">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows="5"
-            placeholder="Tell me about your project…"
-            class="rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-y"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="self-start px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
-        >
-          Send message
-        </button>
-      </form>
-
-      <p class="mt-8 text-sm text-gray-500 dark:text-slate-400">
-        Prefer direct email?
-        <a href="mailto:olivier@redaction-technique.org" class="text-blue-600 hover:underline">
-          olivier@redaction-technique.org
-        </a>
-      </p>
-
-      <div class="mt-10 pt-8 border-t border-gray-100 dark:border-slate-700">
+      <div class="flex flex-col gap-4">
         <a
           href="https://www.linkedin.com/in/carrereolivier/"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-400 transition"
+          class="inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-blue-400 hover:text-blue-700 dark:hover:text-blue-400 transition w-fit"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 fill-current" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 fill-current shrink-0" aria-hidden="true">
             <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.88 0 54.11S24.09 0 53.79 0s53.79 24.22 53.79 54.11-24.1 54-53.79 54zM447.9 448h-92.68V302.4c0-34.7-12.42-58.3-43.5-58.3-23.73 0-37.84 16-44.04 31.4-2.28 5.6-2.85 13.4-2.85 21.2V448h-92.68s1.24-241.8 0-266.1h92.68v37.7c12.3-19 34.3-46.2 83.3-46.2 60.8 0 106.5 39.7 106.5 125.1V448z"/>
           </svg>
           Connect on LinkedIn
+        </a>
+
+        <a
+          href="mailto:olivier@redaction-technique.org"
+          class="inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-blue-400 hover:text-blue-700 dark:hover:text-blue-400 transition w-fit"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          olivier@redaction-technique.org
         </a>
       </div>
 
     </div>
   </Container>
 </Layout>
-
-<script>
-  const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    const name = (document.getElementById("name") as HTMLInputElement).value.trim();
-    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
-    const message = (document.getElementById("message") as HTMLTextAreaElement).value.trim();
-    const subject = encodeURIComponent(`Contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:olivier@redaction-technique.org?subject=${subject}&body=${body}`;
-  });
-</script>
