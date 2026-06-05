@@ -2,8 +2,6 @@
 import { SEO } from "astro-seo";
 import Footer from "@/components/footer.astro";
 import Navbar from "@/components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
-import "@fontsource-variable/bricolage-grotesque";
 import "../styles/global.css";
 import Analytics from '@vercel/analytics/astro';
 
@@ -45,7 +43,9 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
       }
     </script>
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
     {author && <meta name="author" content={author} />}
     {frAlternateUrl && <link rel="alternate" hreflang="fr" href={frAlternateUrl} />}
     {frAlternateUrl && <link rel="alternate" hreflang="en" href={canonicalURL} />}
