@@ -23,32 +23,43 @@
     border-color: var(--color-gray-200, currentColor);
   }
 
-  /* html/body must never show a focus ring (page-load navigation focus) */
-  html:focus, html:focus-visible,
-  body:focus, body:focus-visible {
+  /* Override OS accent colour (purple on some macOS themes) for all browser-rendered UI */
+  :root {
+    accent-color: #2563eb;
+  }
+
+  /* Remove click/tap highlight on every element, not just a/button */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Remove ALL default focus outlines; keyboard outline re-added below */
+  :focus {
     outline: none;
   }
 
-  /* Remove focus ring on mouse/touch clicks */
-  :focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  /* Keyboard focus: use site blue, never the OS accent colour (purple on some macOS themes) */
+  /* Keyboard navigation: consistent blue, never inherits OS accent purple */
   :focus-visible {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
   }
 
-  /* Suppress tap highlight on mobile browsers */
-  a, button {
-    -webkit-tap-highlight-color: transparent;
+  /* html/body must never show a focus ring */
+  html:focus-visible,
+  body:focus-visible {
+    outline: none;
   }
 
-  /* Visited links keep their inherited colour (suppress browser-default purple) */
+  /* Suppress browser-default purple for visited links */
   a:visited {
     color: inherit;
   }
+}
+
+/* Suppress browser-applied view-transition animations (Chrome 126+ auto same-origin transitions) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
 }
 
 /* ----------------------------------------
