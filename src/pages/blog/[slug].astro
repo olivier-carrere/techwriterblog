@@ -193,6 +193,18 @@ const jsonLd = {
 </Layout>
 
 <script>
+  // Reading progress bar (JS-driven, avoids animation-timeline scroll() rendering artifacts)
+  const bar = document.getElementById("reading-progress");
+  if (bar) {
+    function updateProgress() {
+      const scrolled = document.documentElement.scrollTop;
+      const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      (bar as HTMLElement).style.transform = `scaleX(${total > 0 ? scrolled / total : 0})`;
+    }
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+  }
+
   const diagrams = document.querySelectorAll<HTMLElement>(".mermaid-diagram");
   if (diagrams.length > 0) {
     const { default: mermaid } = await import("mermaid");
@@ -221,14 +233,5 @@ const jsonLd = {
     transform-origin: left;
     transform: scaleX(0);
     z-index: 200;
-    animation-name: grow-progress;
-    animation-duration: auto;
-    animation-timing-function: linear;
-    animation-timeline: scroll();
-  }
-
-  @keyframes grow-progress {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
   }
 </style>

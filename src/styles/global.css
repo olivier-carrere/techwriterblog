@@ -56,9 +56,13 @@
   }
 }
 
-/* Suppress browser-applied view-transition animations (Chrome 126+ auto same-origin transitions) */
-::view-transition-old(root),
-::view-transition-new(root) {
+/* Completely disable cross-document view transitions (Chrome 126+ automatic same-origin transitions) */
+@view-transition {
+  navigation: none;
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
   animation: none;
 }
 
