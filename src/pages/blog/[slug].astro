@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
+import NewsletterCTA from "@/components/NewsletterCTA.astro";
 
 export const prerender = true;
 
@@ -147,6 +148,8 @@ const jsonLdArray = [
     <div class="mx-auto prose prose-lg dark:prose-invert mt-6" style="max-width: 68ch">
       {Content ? <Content /> : <p>Content not available.</p>}
     </div>
+
+    <NewsletterCTA />
 
     {relatedPosts.length > 0 && (
       <div class="mx-auto max-w-3xl mt-16 border-t dark:border-slate-700 pt-10">
