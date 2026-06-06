@@ -1,38 +1,151 @@
 ---
 import Container from "@/components/container.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const siteUrl = "https://redaction-technique.org";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Contact", item: `${siteUrl}/contact` },
+  ],
+};
 ---
 
 <Layout
   title="Contact — Olivier Carrère, Technical Writer"
   description="Get in touch with Olivier Carrère, technical writer at Unity, to discuss documentation, docs-as-code, or AI-assisted workflows."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <Container>
-    <div class="mx-auto max-w-2xl mt-14 mb-20">
+    <div class="mx-auto max-w-xl mt-14 mb-20">
 
       <p class="text-blue-600 uppercase tracking-wider text-sm font-medium mb-3">Contact</p>
-      <h1 class="text-4xl font-bold tracking-tight mb-4">Get in touch</h1>
+      <h1 class="text-4xl font-bold tracking-tight mb-3">Get in touch</h1>
       <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10">
-        I write about docs-as-code, DITA XML, structured authoring, and AI in documentation. If you
-        want to discuss something you read, exchange ideas, or connect professionally — reach out via
-        LinkedIn or email.
+        Want to discuss something you read here, exchange ideas on docs-as-code or DITA,
+        or connect professionally? Use the form below.
       </p>
 
-      <div class="flex flex-col gap-4">
-        <a
-          href="https://www.linkedin.com/in/carrereolivier/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-blue-400 hover:text-blue-700 dark:hover:text-blue-400 transition w-fit"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 fill-current shrink-0" aria-hidden="true">
-            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.88 0 54.11S24.09 0 53.79 0s53.79 24.22 53.79 54.11-24.1 54-53.79 54zM447.9 448h-92.68V302.4c0-34.7-12.42-58.3-43.5-58.3-23.73 0-37.84 16-44.04 31.4-2.28 5.6-2.85 13.4-2.85 21.2V448h-92.68s1.24-241.8 0-266.1h92.68v37.7c12.3-19 34.3-46.2 83.3-46.2 60.8 0 106.5 39.7 106.5 125.1V448z"/>
-          </svg>
-          Connect on LinkedIn
-        </a>
+      <form id="contact-form" class="space-y-5" novalidate>
+        <input type="hidden" name="access_key" value="726cf15d-321e-47cc-afe8-f9dfcc9c273e" />
+        <input type="hidden" name="subject" value="Message from redaction-technique.org/contact" />
+        <input type="hidden" name="from_name" value="redaction-technique.org" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
 
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="cf-name" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5">
+              Name <span class="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="cf-name"
+              type="text"
+              name="name"
+              required
+              autocomplete="name"
+              placeholder="Your name"
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
+            />
+          </div>
+          <div>
+            <label for="cf-email" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5">
+              Email <span class="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="cf-email"
+              type="email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="your@email.com"
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="cf-message" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5">
+            Message <span class="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="cf-message"
+            name="message"
+            required
+            rows="6"
+            placeholder="Your message…"
+            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none text-sm"
+          ></textarea>
+        </div>
+
+        <div class="flex items-center gap-4 flex-wrap">
+          <button
+            type="submit"
+            id="cf-submit"
+            class="px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Send message
+          </button>
+          <p id="cf-status" class="text-sm" aria-live="polite" role="status"></p>
+        </div>
+      </form>
+
+      <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800">
+        <p class="text-sm text-gray-400 dark:text-slate-500">
+          Prefer LinkedIn?
+          <a
+            href="https://www.linkedin.com/in/carrereolivier/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-600 hover:underline"
+          >Connect there instead.</a>
+        </p>
       </div>
 
     </div>
   </Container>
 </Layout>
+
+<script>
+  const form   = document.getElementById("contact-form") as HTMLFormElement | null;
+  const btn    = document.getElementById("cf-submit") as HTMLButtonElement | null;
+  const status = document.getElementById("cf-status");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    if (btn) btn.disabled = true;
+    if (status) { status.textContent = "Sending…"; status.className = "text-sm text-gray-500"; }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        if (status) {
+          status.textContent = "Message sent — thank you!";
+          status.className = "text-sm text-green-600 dark:text-green-400";
+        }
+        form.reset();
+      } else {
+        throw new Error(data.message ?? "Submission failed");
+      }
+    } catch {
+      if (status) {
+        status.textContent = "Something went wrong. Please try again.";
+        status.className = "text-sm text-red-600 dark:text-red-400";
+      }
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  });
+</script>
