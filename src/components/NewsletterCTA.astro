@@ -1,90 +1,25 @@
 ---
-// Newsletter / contact capture — end of article.
-// Submissions arrive by email via Web3Forms (free tier).
-// Migrate to a newsletter service (Resend, Buttondown…) by swapping the action URL.
 ---
 
 <aside
-  aria-label="Stay in the loop"
+  aria-label="Get in touch"
   class="mx-auto mt-16 mb-4"
   style="max-width: 68ch"
 >
-  <div class="rounded-xl border border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/60 px-7 py-7">
-    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-slate-500 mb-1">
-      Stay in the loop
-    </p>
-    <h2 class="text-lg font-bold text-gray-900 dark:text-slate-100 mb-1">
-      New articles on docs-as-code, DITA, and AI documentation
-    </h2>
-    <p class="text-sm text-gray-500 dark:text-slate-400 mb-5">
-      No noise. Just articles when they go live.
-    </p>
-
-    <form id="newsletter-form" class="flex gap-2 flex-wrap sm:flex-nowrap" novalidate>
-      <input type="hidden" name="access_key"  value="726cf15d-321e-47cc-afe8-f9dfcc9c273e" />
-      <input type="hidden" name="subject"     value="Newsletter signup — redaction-technique.org" />
-      <input type="hidden" name="from_name"   value="Blog newsletter" />
-      <input type="hidden" name="name"        value="Newsletter subscriber" />
-      <input type="checkbox" name="botcheck"  class="hidden" style="display:none" tabindex="-1" aria-hidden="true" />
-
-      <label for="nl-email" class="sr-only">Email address</label>
-      <input
-        id="nl-email"
-        type="email"
-        name="email"
-        required
-        autocomplete="email"
-        placeholder="your@email.com"
-        class="flex-1 min-w-0 px-4 py-2.5 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
-      />
-      <button
-        type="submit"
-        id="nl-submit"
-        class="shrink-0 px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        Subscribe
-      </button>
-    </form>
-
-    <p id="nl-status" class="text-sm mt-2.5 min-h-[1.25rem]" aria-live="polite" role="status"></p>
+  <div class="rounded-xl border border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/60 px-7 py-7 flex flex-col sm:flex-row sm:items-center gap-5">
+    <div class="flex-1">
+      <p class="font-semibold text-gray-900 dark:text-slate-100 mb-1">
+        Want to discuss this article?
+      </p>
+      <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">
+        Questions, feedback, or just want to exchange ideas on docs-as-code, DITA, or AI documentation — I read every message.
+      </p>
+    </div>
+    <a
+      href="/contact"
+      class="shrink-0 px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition"
+    >
+      Get in touch
+    </a>
   </div>
 </aside>
-
-<script>
-  const form   = document.getElementById("newsletter-form") as HTMLFormElement | null;
-  const btn    = document.getElementById("nl-submit") as HTMLButtonElement | null;
-  const status = document.getElementById("nl-status");
-
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-
-    if (btn) btn.disabled = true;
-    if (status) { status.textContent = "Sending…"; status.className = "text-sm text-gray-400 dark:text-slate-500"; }
-
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        if (status) {
-          status.textContent = "You're in — thank you!";
-          status.className = "text-sm text-green-600 dark:text-green-400";
-        }
-        form.reset();
-      } else {
-        throw new Error(data.message ?? "Submission failed");
-      }
-    } catch {
-      if (status) {
-        status.textContent = "Something went wrong. Please try again.";
-        status.className = "text-sm text-red-600 dark:text-red-400";
-      }
-    } finally {
-      if (btn) btn.disabled = false;
-    }
-  });
-</script>
