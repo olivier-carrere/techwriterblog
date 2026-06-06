@@ -1,5 +1,16 @@
 {
   "redirects": [
+    { "source": "/tag/cognitive%20psychology", "destination": "/tag/cognitive-psychology", "permanent": true },
+    { "source": "/tag/content%20management",   "destination": "/tag/content-management",   "permanent": true },
+    { "source": "/tag/content%20model",        "destination": "/tag/content-model",        "permanent": true },
+    { "source": "/tag/content%20reuse",        "destination": "/tag/content-reuse",        "permanent": true },
+    { "source": "/tag/digital%20archives",     "destination": "/tag/digital-archives",     "permanent": true },
+    { "source": "/tag/information%20typing",   "destination": "/tag/information-typing",   "permanent": true },
+    { "source": "/tag/static%20sites",         "destination": "/tag/static-sites",         "permanent": true },
+    { "source": "/tag/structured%20data",      "destination": "/tag/structured-data",      "permanent": true },
+    { "source": "/tag/technical%20writing",    "destination": "/tag/technical-writing",    "permanent": true },
+    { "source": "/tag/unix%20philosophy",      "destination": "/tag/unix-philosophy",      "permanent": true },
+    { "source": "/tag/ux%20writing",           "destination": "/tag/ux-writing",           "permanent": true },
     {
       "source": "/creation-du-contenu.html",
       "destination": "https://docs.redaction-technique.org/fr/process/creation-du-contenu/",

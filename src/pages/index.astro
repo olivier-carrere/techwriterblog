@@ -29,25 +29,27 @@ const rest = publishedBlogEntries.slice(3);
   title="Docs-as-Code & Technical Writing — Olivier Carrère"
   description="Expert articles on technical writing, docs-as-code, DITA XML, Markdown, YAML, and AI-assisted documentation workflows by Olivier Carrère."
 >
-  <script type="application/ld+json" set:html={JSON.stringify([
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://redaction-technique.org/#website",
-      "url": "https://redaction-technique.org",
-      "name": "Redaction-technique.org",
-      "author": { "@id": "https://redaction-technique.org/#olivier-carrere" }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://redaction-technique.org/#olivier-carrere",
-      "name": "Olivier Carrère",
-      "url": "https://redaction-technique.org",
-      "jobTitle": "Technical Writer",
-      "sameAs": ["https://www.linkedin.com/in/carrereolivier/"]
-    }
-  ])} />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://redaction-technique.org/#website",
+        "url": "https://redaction-technique.org",
+        "name": "Redaction-technique.org",
+        "author": { "@id": "https://redaction-technique.org/#olivier-carrere" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://redaction-technique.org/#olivier-carrere",
+        "name": "Olivier Carrère",
+        "url": "https://redaction-technique.org",
+        "jobTitle": "Technical Writer",
+        "sameAs": ["https://www.linkedin.com/in/carrereolivier/"]
+      }
+    ])} />
+  </Fragment>
 
   <Container>
     <!-- Hero -->

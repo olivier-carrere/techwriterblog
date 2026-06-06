@@ -9,6 +9,7 @@ export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: "website" | "article";
   author?: string;
   lang?: string;
   frAlternateUrl?: string;
@@ -21,7 +22,7 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title, description, ogImage, author, lang = 'en', frAlternateUrl } = Astro.props;
+const { title, description, ogImage, ogType = "website", author, lang = 'en', frAlternateUrl } = Astro.props;
 
 const makeTitle = title ? `${title} | Redaction-technique.org` : "A blog about all things documentation as code";
 const metaDescription = description ?? "Expert articles on technical writing, docs-as-code, DITA XML, Markdown, YAML, and AI-assisted documentation workflows.";
@@ -47,8 +48,9 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
     {author && <meta name="author" content={author} />}
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
     {frAlternateUrl && <link rel="alternate" hreflang="fr" href={frAlternateUrl} />}
-    {frAlternateUrl && <link rel="alternate" hreflang="en" href={canonicalURL} />}
     <SEO
       title={makeTitle}
       description={metaDescription}
@@ -60,7 +62,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
       openGraph={{
         basic: {
           url: canonicalURL,
-          type: Astro.url.pathname.startsWith("/blog/") ? "article" : "website",
+          type: ogType,
           title: title ?? "Markdown & AI-Aided Rapid Documentation Development",
           image: ogImageUrl,
         },
@@ -70,6 +72,7 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).toString() : resolvedI
       }}
     />
     <Analytics />
+    <slot name="head" />
     </head>
   <body class="bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 transition-colors duration-200">
     <Navbar />

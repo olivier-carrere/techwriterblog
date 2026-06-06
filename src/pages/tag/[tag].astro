@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
+import { formatTagDisplay } from "@/utils/all";
 
 export const prerender = true;
 
@@ -27,8 +28,7 @@ export async function getStaticPaths() {
 }
 
 const { tag, articles } = Astro.props;
-const rawDisplay = tag.replace(/-/g, " ");
-const displayTag = rawDisplay.charAt(0).toUpperCase() + rawDisplay.slice(1);
+const displayTag = formatTagDisplay(tag);
 ---
 
 <Layout
