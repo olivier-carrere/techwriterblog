@@ -41,7 +41,7 @@ The flow is linear and auditable:
 >
 > A parallel branch exports Markdown → the web. A third denoises the audio for streaming. QR codes stitch the three back together.
 
-Every physical copy carries the **Git commit hash** in its colophon. That single detail captures the whole philosophy: a book you can trace back to an exact source revision is a book that was *engineered*, not just typeset.
+Every physical copy carries the **Git commit hash** in its colophon. Check out that revision and the volume in your hands rebuilds, byte for byte, from the same source.
 
 ---
 
@@ -81,7 +81,7 @@ flowchart TD
     p1 --> gl --> p2 --> p3 --> pdf
 ```
 
-> **Note:** the A4 two-column edition is the quiet winner of this list. It costs nothing extra to produce — it's just another target — yet it's ideal for institutional use. An asset you get for free is an asset worth promoting.
+> **Note:** the A4 two-column edition costs nothing extra to produce — it's just another target — yet it suits institutional use well: libraries, reading groups, and anyone printing on office hardware.
 
 ---
 
@@ -121,7 +121,7 @@ flowchart TD
     n9 -.-> mistral
 ```
 
-What makes it a *loop* rather than a one-shot is direction. AI output feeds back into the LaTeX sources, which can then be re-checked against the next pass — **a continuous quality cycle, not a single verdict**. The machine drafts and flags; the human decides and commits. This is the same instinct behind an [AI-assisted workflow for translating legacy content](https://redaction-technique.org/blog/ai-translation-legacy-technical-docs): let automation carry the volume, and reserve judgment for the parts that need it.
+What makes it a *loop* rather than a one-shot is direction: AI output feeds back into the LaTeX sources, which are re-checked on the next pass. The machine drafts and flags; the human decides and commits. It's the same split I leaned on in an [AI-assisted workflow for translating legacy content](https://redaction-technique.org/blog/ai-translation-legacy-technical-docs).
 
 ---
 
@@ -134,7 +134,7 @@ The body font was tested against Libertinus, Crimson Pro, Cardo, and Gentium Plu
 
 None of that is glamorous. All of it is the difference between a PDF and a book.
 
-> **Tip:** when a tool makes the mechanical work cheap, spend the time you save on the judgment work — the kerning, the grey values, the page that simply *feels* settled. Cheap iteration is only an advantage if you reinvest it in craft.
+> **Tip:** when a tool makes the mechanical work cheap, spend the time you save on the judgment work — the kerning, the grey values, the page that simply *feels* settled.
 
 ---
 
@@ -143,7 +143,7 @@ None of that is glamorous. All of it is the difference between a PDF and a book.
 
 The most affecting design decision is also the simplest. Every chapter carries a **QR code linking to the original recording** — dozens of talks migrated off an aging podcast host and onto a stable channel. A reader following the printed transcription can, in one scan, hear the teacher's actual voice saying the same words.
 
-That is the whole project in one gesture: the book is not a replacement for the talks, it's **an index into them**. Print and digital stop competing and start reinforcing each other — text you can study, voice you can return to. It's the same bridge between archive and living attention I wrote about in [turning a corpus into living knowledge](https://redaction-technique.org/blog/transforming-corpus-ai-living-knowledge), here made literal with a square of black and white ink.
+That is the whole project in one gesture: the book is not a replacement for the talks, it's **an index into them**. Print and digital stop competing and start reinforcing each other — text you can study, a voice you can return to. The same bridge between archive and living attention runs through [turning a corpus into living knowledge](https://redaction-technique.org/blog/transforming-corpus-ai-living-knowledge); here it's just a square of black-and-white ink, scanned off the page.
 
 ---
 
@@ -152,7 +152,7 @@ That is the whole project in one gesture: the book is not a replacement for the 
 
 Commercial publishing would have been the wrong fit. The project runs on a **community-supported model**: published by a non-profit association for its members, sources open on GitHub, funded by roughly fifty named supporters across three tiers. The model isn't a workaround for a missing budget; it's an expression of how the community already works.
 
-Open sources reinforce it. Anyone can rebuild the book from the repository, and the commit hash in each copy ties the artifact to the exact text that produced it. The result is a publication that is both **freely inspectable and physically trustworthy** — an unusual pairing that the docs-as-code approach makes ordinary.
+Open sources reinforce it. Anyone can rebuild the book from the repository, and the commit hash in each copy ties the artifact back to the exact text that produced it. Inspect the source, check the hash, print your own — the verification path is open from end to end.
 
 ---
 
@@ -173,7 +173,7 @@ A few observations from inside the sprint, for anyone building books this way:
 
 It's tempting to tell this story as a feat of tooling — the build targets, the two models, the 167 commits in thirteen days. But the tooling was always in service of something plainer.
 
-A teacher spoke for twenty years. People recorded it, transcribed it, and wanted others to be able to read it, hold it, and hear it. **Docs-as-code didn't make the talks; it kept them legible, reproducible, and alive** — one source, many books, a voice you can still scan your way back to.
+A teacher spoke for twenty years. People recorded it, transcribed it, and wanted others to be able to read it, hold it, and hear it. Docs-as-code didn't make the talks. It kept them legible, reproducible, and reachable — one source, many books, and a QR code back to the voice itself.
 
 Automation, used well, isn't a substitute for attention. It's an instrument for it.
 
