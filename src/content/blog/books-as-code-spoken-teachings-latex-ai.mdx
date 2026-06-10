@@ -46,6 +46,15 @@ Every physical copy carries the **Git commit hash** in its colophon. Check out t
 ---
 
 
+## Traceability down to the machine
+
+The colophon goes further than the commit hash. It also records the machine the PDF was built on — hostname, operating system, and LuaTeX version — so the full build environment is part of the artifact. A reader holding the book can establish not just *what source produced it* but *where and how it was compiled*.
+
+This matters more than it sounds. Subtle rendering differences between LaTeX versions, font renderers, or OS-level libraries can affect line breaks, hyphenation, and spacing in ways that shift page counts and reflowing. The machine record closes that gap: if the output ever looks different, you know whether the source changed, the environment changed, or both.
+
+---
+
+
 ## One source, many books
 
 The point of a structured source is never the source itself — it's what you can do with it without touching it again. The same LaTeX corpus drives every deliverable through a `make` target. Nothing is hand-assembled.
