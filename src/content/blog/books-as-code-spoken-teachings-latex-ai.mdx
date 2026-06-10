@@ -121,7 +121,9 @@ flowchart TD
     n9 -.-> mistral
 ```
 
-What makes it a *loop* rather than a one-shot is direction: AI output feeds back into the LaTeX sources, which are re-checked on the next pass. The machine drafts and flags; the human decides and commits. It's the same split I leaned on in an [AI-assisted workflow for translating legacy content](https://redaction-technique.org/blog/ai-translation-legacy-technical-docs).
+Not every step held up. The sentence-splitting pass (`split_sentences.py`) was the clearest failure: Mistral cut long sentences at grammatically valid but rhythmically wrong points, producing choppy fragments that lost the teacher's spoken cadence — the quality the project existed to preserve. The output had to be reviewed and rewritten by hand, which took longer than leaving the original sentences alone would have. That step earns its place in the diagram but not in the success column.
+
+What makes it a *loop* rather than a one-shot is direction: AI output feeds back into the LaTeX sources, which are re-checked on the next pass. The machine drafts and flags; the human decides and commits — and sometimes decides the draft isn't worth keeping.
 
 ---
 
