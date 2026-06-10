@@ -123,6 +123,8 @@ flowchart TD
 
 Not every step held up. The sentence-splitting pass (`split_sentences.py`) was the clearest failure: Mistral cut long sentences at grammatically valid but rhythmically wrong points, producing choppy fragments that lost the teacher's spoken cadence — the quality the project existed to preserve. The output had to be reviewed and rewritten by hand, which took longer than leaving the original sentences alone would have. That step earns its place in the diagram but not in the success column.
 
+Claude's LaTeX output had a different failure mode: it frequently didn't compile. A one-shot workflow would have made this expensive — generate, fail, debug by hand, repeat. Instead, the project ran Claude through the Claude Code CLI, which let it call `make` directly, read the compiler logs, and apply corrections in the same session. What looked like a reliability problem turned out to be a latency problem: the build errors were real, but the feedback loop was tight enough that Claude fixed most of them without human intervention. The iteration count was high; the manual work was not.
+
 What makes it a *loop* rather than a one-shot is direction: AI output feeds back into the LaTeX sources, which are re-checked on the next pass. The machine drafts and flags; the human decides and commits — and sometimes decides the draft isn't worth keeping.
 
 ---
