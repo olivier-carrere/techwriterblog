@@ -183,10 +183,10 @@ Automation, used well, isn't a substitute for attention. It's an instrument for 
 
 ## TL;DR
 
-- **Treat the book as a repository:** plain-text LaTeX sources, Git history, a `make`-driven build, the commit hash printed in every copy.
-- **One source, many outputs:** A5 print, web Markdown, and a Spanish edition all render from the same corpus — content separated from presentation.
-- **AI in a loop, not on top:** Mistral for structural and consistency work, Claude for LaTeX and translation, output fed back into the sources and re-checked.
-- **Keep the craft slow:** automation buys time; spend it on typography and judgment.
+- **Treat the book as a repository:** plain-text LaTeX sources, Git history, a `make`-driven build — 167 commits in thirteen days, the commit hash printed in every copy.
+- **One source, many outputs:** 7 `make` targets (A5 per volume, single-volume, crop-mark print, sample, Spanish, web Markdown) from one corpus.
+- **AI in a loop, not on top:** nine scripted steps, six calling Mistral; Claude handled LaTeX generation via the CLI, reading compile errors and self-correcting in the same session. One step (sentence splitting) failed and was redone by hand.
+- **Keep the craft slow:** twenty commits on type parameters; EB Garamond beat four alternatives, 10pt beat 11pt, italic small caps beat bold headers.
 - **Bridge print and voice:** a QR code in every chapter links the transcription to the original recording.
 
 ---
