@@ -60,7 +60,7 @@ The point of a structured source is never the source itself — it's what you ca
 | `make es-tome1` | Spanish Volume I | Spanish-speaking readers |
 | `make md-tome1` | Markdown export | The web edition |
 
-This is **separation of content and presentation** taken to its conclusion. The text, the dates, the cross-references live once; the format is a render target, not a copy. It's the same argument I made for [a YAML single source of truth](https://redaction-technique.org/blog/scalable-maintainable-technical-docs-with-yaml) — only here the outputs are a perfect-bound book and a screen layout instead of a table and an API.
+This is **separation of content and presentation** taken to its conclusion. The text, the dates, the cross-references live once; the format is a render target, not a copy — the same principle behind [a YAML single source of truth](https://redaction-technique.org/blog/scalable-maintainable-technical-docs-with-yaml), only here the outputs are a perfect-bound book and a screen layout instead of a table and an API.
 
 Each `make` target drives the same compilation sequence: inject the Git commit hash, run LuaLaTeX three times, resolve the glossary in between.
 
@@ -147,7 +147,7 @@ None of that is glamorous. All of it is the difference between a PDF and a book.
 
 The most affecting design decision is also the simplest. Every chapter carries a **QR code linking to the original recording** — dozens of talks migrated off an aging podcast host and onto a stable channel. A reader following the printed transcription can, in one scan, hear the teacher's actual voice saying the same words.
 
-That is the whole project in one gesture: the book is not a replacement for the talks, it's **an index into them**. Print and digital stop competing and start reinforcing each other — text you can study, a voice you can return to. The same bridge between archive and living attention runs through [turning a corpus into living knowledge](https://redaction-technique.org/blog/transforming-corpus-ai-living-knowledge); here it's just a square of black-and-white ink, scanned off the page.
+That is the whole project in one gesture: the book is not a replacement for the talks, it's **an index into them**. Print and digital stop competing and start reinforcing each other — text you can study, a voice you can return to — held together by a square of black-and-white ink, scanned off the page.
 
 ---
 
@@ -195,4 +195,3 @@ Automation, used well, isn't a substitute for attention. It's an instrument for 
 ---
 
 
-**Reference:** this case study draws on a real multi-volume production built with an open-source LaTeX pipeline. For the underlying principles, see [strong information typing without the XML overhead](https://redaction-technique.org/blog/strong-information-typing-without-xml-overhead) and [managing content in files, not databases](https://redaction-technique.org/blog/manage-content-in-files-not-databases).
