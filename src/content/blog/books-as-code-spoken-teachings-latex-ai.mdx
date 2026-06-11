@@ -98,7 +98,7 @@ It would be easy to bolt AI onto a pipeline as an afterthought — a spellcheck 
 
 Two models, two jobs:
 
-- **Mistral Large 3** handles the repetitive, structural work — glossary generation, index tagging and merging, cross-chapter consistency checks, chapter-difficulty classification, ornament placement, even a pass that flags AI-generated phrasing.
+- **Mistral Large 3** handles the repetitive, structural work — glossary generation, index tagging and merging, cross-chapter consistency checks, chapter-difficulty classification, ornament placement, even a pass that flags AI-generated phrasing. Mistral was the natural choice for a French-language corpus: as a French model, it handles the language natively rather than by translation.
 - **Claude Sonnet 4.6** handles the open-ended work — generating and fixing LaTeX, solving typographic problems, and assisting the Spanish translation.
 
 The pipeline that produces those `.tex` sources runs nine steps in sequence, six of them calling Mistral:
