@@ -141,7 +141,7 @@ flowchart LR
     done(["Artifact ready"])
 
     check -->|issue found| fix
-    fix --> check
+    fix -->|rinse and repeat| check
     check -->|clean| human
     human -->|approve| done
     human -->|redirect| check
