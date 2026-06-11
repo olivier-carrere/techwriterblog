@@ -133,6 +133,20 @@ Claude's LaTeX output had a different failure mode: it frequently didn't compile
 
 What makes it a *loop* rather than a one-shot is direction: AI output feeds back into the LaTeX sources, which are re-checked on the next pass. The machine drafts and flags; the human decides and commits — and sometimes decides the draft isn't worth keeping.
 
+```mermaid
+flowchart LR
+    check["AI checks output\n(compile / review)"]
+    fix["AI applies fix"]
+    human["Human in the loop\n(approve / reject / redirect)"]
+    done(["Artifact ready"])
+
+    check -->|issue found| fix
+    fix --> check
+    check -->|clean| human
+    human -->|approve| done
+    human -->|redirect| check
+```
+
 ---
 
 
