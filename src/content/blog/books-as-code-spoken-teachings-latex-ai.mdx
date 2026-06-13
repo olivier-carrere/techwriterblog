@@ -92,6 +92,40 @@ flowchart TD
 ---
 
 
+## Automating the build: from commit to PDF
+
+Running `make` locally is one thing. Guaranteeing that every contributor's push produces the same artifact — on a clean machine, with a pinned toolchain — is another. The project uses **GitHub Actions** to automate that guarantee.
+
+Three contributors feed changes into Git. Every push to `main` triggers a build on a fresh Ubuntu runner with TeX Live 2023. What comes out the other end is a reproducible PDF, without touching anyone's local environment.
+
+```mermaid
+flowchart TD
+    ed1["Editor 1"]
+    ed2["Editor 2"]
+    ed3["Contributor"]
+    git["Git\ncommit · push"]
+    github["GitHub\nbranch: main"]
+    ci["GitHub Actions\nUbuntu AMD64 · TeX Live 2023"]
+    tools["LuaLaTeX ×3\nmakeglossaries · pdfjam"]
+    pdf(["PDF files\nVolume I · printer's copy · flatplan"])
+
+    ed1 --> git
+    ed2 --> git
+    ed3 --> git
+    git --> github
+    github --> ci
+    ci --> pdf
+    ci -.-> tools
+    tools -.-> pdf
+```
+
+The dotted arrows mark the build toolchain: the Actions runner calls the tools; the tools produce the PDFs. The solid path — commit, push, trigger, artifact — is what contributors see. The dotted path is what runs behind it.
+
+This is the same logic behind software CI pipelines, turned toward a print artifact. A clean environment, a pinned dependency (TeX Live 2023), a deterministic output on every run. The PDF that emerges from GitHub Actions is the same PDF that would emerge from `make` on any machine with the same environment — which is the entire point of pinning.
+
+---
+
+
 ## AI in the loop, not on top
 
 It would be easy to bolt AI onto a pipeline as an afterthought — a spellcheck here, a summary there. This project did something more deliberate: **AI is structurally embedded, and documented openly** inside the book itself, model names and all, in a "how this book was made" section. Transparency isn't a footnote; it's part of the design.
